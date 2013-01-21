@@ -1,0 +1,168 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      type="topic"
+      id="date">
+
+<info>
+  <!-- edit xref to re-locate this topic in the help hierarchy -->
+  <link type="guide" xref="index#contents"/>
+  <credit type="author">
+    <name>Brian Douglass</name>
+    <email>bhdouglass@gmail.com</email>
+    <years>2012</years>
+  </credit>
+  <desc>Valid date options</desc>
+</info>
+
+<title>Valid Dates</title>
+<links type="section"/>
+
+<section id="singular">
+    <title>Valid Singular Dates</title>
+    <p>
+        Translations assume today's date is September 26, 2012 and date format is '12/31/2000'.
+        (All dates are case insensitive)
+    </p>
+    <list>
+        <item><code>today</code>
+        <list>
+            <item><p>Translation: 09/26/2012</p></item>
+        </list></item>
+        <item><code>tomorrow</code>
+        <list>
+            <item><p>Translation: 09/27/2012</p></item>
+        </list></item>
+        <item><code>yesterday</code>
+        <list>
+            <item><p>Translation: 09/25/2012</p></item>
+        </list></item>
+        <item><code>monday</code>
+        <list>
+            <item><p>Translation: 10/01/2012</p></item>
+            <item><p>Any day of the week is valid</p></item>
+            <item><p>See also <link xref="#short">Abbreviations</link></p></item>
+        </list></item>
+        <item><code>next monday</code>
+        <list>
+            <item><p>Translation: 10/08/2012</p></item>
+            <item><p>Any day of the week is valid</p></item>
+            <item><p>See also <link xref="#short">Abbreviations</link></p></item>
+        </list></item>
+        <item><code>October 28, 2012</code>
+        <list>
+            <item><p>Translation: 10/28/2012</p></item>
+        </list></item>
+        <item><code>oct 28</code>
+        <list>
+            <item><p>Translation: 10/28/2012</p></item>
+        </list></item>
+        <item><code>9/28/2012</code>
+        <list>
+            <item><p>Translation: 09/28/2012</p></item>
+        </list></item>
+        <item><code>9/28</code>
+        <list>
+            <item><p>Translation: 09/28/2012</p></item>
+        </list></item>
+        <item><code>9-28-2012</code>
+        <list>
+            <item><p>Translation: 09/28/2012</p></item>
+        </list></item>
+        <item><code>9-28</code>
+        <list>
+            <item><p>Translation: 09/28/2012</p></item>
+        </list></item>
+        <item><code>5</code>
+        <list>
+            <item><p>Translation: 10/01/2012</p></item>
+            <item><p>Five days from today</p></item>
+        </list></item>
+        <item><code>-5</code>
+        <list>
+            <item><p>Translation: 09/21/2012</p></item>
+            <item><p>Five days before today</p></item>
+        </list></item>
+        <item><code>next 31</code>
+        <list>
+            <item><p>Translation: 10/31/2012</p></item>
+            <item><p>Next 31st of the month (since Sept only has 30 days, this becomes Oct 31)</p></item>
+        </list></item>
+        <item><code>christmas</code>
+        <list>
+            <item><p>Translation: 12/25/2012</p></item>
+        </list></item>
+    </list>
+</section>
+
+<section id="repeating">
+    <title>Valid Repeating Dates</title>
+    <p>
+        For each repeating date the [ ] denote option attributes.  <var>start</var> and
+        <var>end</var> can be any of the above <link xref="#singular">singular dates</link>.
+        <var>X</var> is any positive integer.
+    </p>
+    <list>
+        <item><code>every monday [from <var>start</var> [to <var>end</var>]]</code>
+        <list>
+            <item><p>Every monday starting on/after <var>start</var> and ending on <var>end</var></p></item>
+            <item><p>If no end date is specified, the date repeats forever</p></item>
+            <item><p>Any day of the week is valid</p></item>
+            <item><p>See also <link xref="#short">Abbreviations</link></p></item>
+        </list></item>
+        <item><code>every day [from <var>start</var> [to <var>end</var>]]</code>
+        <list>
+            <item><p>Every day starting on <var>start</var> and ending on <var>end</var></p></item>
+            <item><p>If no end date is specified, the date repeats forever</p></item>
+        </list></item>
+        <item><code>every <var>X</var> [from <var>start</var> [to <var>end</var>]]</code>
+        <list>
+            <item><p>Every <var>X</var>th of the month starting on/after <var>start</var> and ending on <var>end</var></p></item>
+            <item><p>Valid integers for <var>X</var> are between 0 and 31 (including 0 and 31)</p></item>
+            <item><p>If no end date is specified, the date repeats forever</p></item>
+        </list></item>
+        <item><code>every <var>X</var> days [from <var>start</var> [to <var>end</var>]]</code>
+        <list>
+            <item><p>Every <var>X</var> days starting on <var>start</var> and ending on <var>end</var></p></item>
+            <item><p>If no start date is specified, today's date becomes the start date</p></item>
+            <item><p>If no end date is specified, the date repeats forever</p></item>
+        </list></item>
+        <item><code>every weekday [from <var>start</var> [to <var>end</var>]]</code>
+        <list>
+            <item><p>Every weekday (monday to friday) starting on/after <var>start</var> and ending on <var>end</var></p></item>
+            <item><p>If no end date is specified, the date repeats forever</p></item>
+        </list></item>
+        <item><code>every weekend [from <var>start</var> [to <var>end</var>]]</code>
+        <list>
+            <item><p>Every weekend day (saturday and sunday) starting on/after <var>start</var> and ending on <var>end</var></p></item>
+            <item><p>If no end date is specified, the date repeats forever</p></item>
+        </list></item>
+        <item><code>every other [from <var>start</var> [to <var>end</var>]]</code>
+        <list>
+            <item><p>Every other day starting on <var>start</var> and ending on <var>end</var></p></item>
+            <item><p>If no start date is specified, today's date becomes the start date</p></item>
+            <item><p>If no end date is specified, the date repeats forever</p></item>
+        </list></item>
+        <item><code>next <var>X</var> days [from <var>start</var>]</code>
+        <list>
+            <item><p>Every day for the next <var>X</var> days starting on <var>start</var></p></item>
+            <item><p>If no start date is specified, today's date becomes the start date</p></item>
+        </list></item>
+    </list>
+</section>
+
+<section id="short">
+    <title>Valid Abbreviations</title>
+    <list>
+        <item><p>monday - mon</p></item>
+        <item><p>tuesday - tues</p></item>
+        <item><p>wednesday - wed</p></item>
+        <item><p>thursday - thurs</p></item>
+        <item><p>friday - fri</p></item>
+        <item><p>saturday - sat</p></item>
+        <item><p>sunday - sun</p></item>
+        <item><p>tomorrow - tom</p></item>
+        <item><p>every - ev</p></item>
+        <item><p>next - nx</p></item>
+    </list>
+</section>
+
+</page>

@@ -1,0 +1,10 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: remindor-qt
+Upstream-Contact: Brian Douglass <bhdouglass@gmail.com>
+Source: https://launchpad.net/indicator-remindor
+
+Files: *
+Copyright: (C) 2012 Brian Douglass bhdouglass@gmail.com
+License: GPL-3
+ The full text of the GPL is distributed in
+ /usr/share/common-licenses/GPL-3 on Debian systems.

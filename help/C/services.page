@@ -1,0 +1,23 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      type="topic"
+      id="services">
+
+<info>
+  <!-- edit xref to re-locate this topic in the help hierarchy -->
+  <link type="guide" xref="index#contents"/>
+  <credit type="author">
+    <name>Brian Douglass</name>
+    <email>bhdouglass@gmail.com</email>
+    <years>2012</years>
+  </credit>
+  <desc>List of third-party services</desc>
+</info>
+
+<title>Services</title>
+<p><link href="http://boxcar.io/">Boxcar</link> is an app for iOS and Mac (coming soon to
+Windows and Andriod) that allows you to receive instant push notifications from various
+apps.  Indicator Remindor can send notifications to your Boxcar enabled devices if you set
+it up your Boxcar email in <link xref="preferences">preferences</link>.
+</p>
+
+</page>

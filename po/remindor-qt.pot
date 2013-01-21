@@ -1,0 +1,209 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-01-19 12:10-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../remindor-qt.desktop.in.h:1
+msgid "Remindor Qt"
+msgstr ""
+
+#: ../remindor-qt.desktop.in.h:2
+msgid "RemindorQt application"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:821
+#: ../remindor_common/datetimeutil.py:876
+msgid "christmas"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:822
+#: ../remindor_common/datetimeutil.py:877
+msgid "today"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:823
+#: ../remindor_common/datetimeutil.py:878
+msgid "yesterday"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:824
+#: ../remindor_common/datetimeutil.py:879
+msgid "tomorrow"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:825
+#: ../remindor_common/datetimeutil.py:881
+msgid "next"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:826
+#: ../remindor_common/datetimeutil.py:882
+msgid "every day"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:827
+#: ../remindor_common/datetimeutil.py:883
+msgid "every weekday"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:828
+#: ../remindor_common/datetimeutil.py:884
+msgid "every weekend"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:829
+#: ../remindor_common/datetimeutil.py:885
+msgid "every other"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:830
+#: ../remindor_common/datetimeutil.py:859
+#: ../remindor_common/datetimeutil.py:886
+#: ../remindor_common/datetimeutil.py:923
+msgid "every"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:831
+#: ../remindor_common/datetimeutil.py:887
+msgid "day"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:832
+#: ../remindor_common/datetimeutil.py:888
+msgid "days"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:834
+#: ../remindor_common/datetimeutil.py:890
+msgid "monday"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:835
+#: ../remindor_common/datetimeutil.py:891
+msgid "tuesday"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:836
+#: ../remindor_common/datetimeutil.py:892
+msgid "wednesday"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:837
+#: ../remindor_common/datetimeutil.py:893
+msgid "thursday"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:838
+#: ../remindor_common/datetimeutil.py:894
+msgid "friday"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:839
+#: ../remindor_common/datetimeutil.py:895
+msgid "saturday"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:840
+#: ../remindor_common/datetimeutil.py:896
+msgid "sunday"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:853
+#: ../remindor_common/datetimeutil.py:917
+msgid "now"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:854
+#: ../remindor_common/datetimeutil.py:918
+msgid "noon"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:855
+#: ../remindor_common/datetimeutil.py:919
+msgid "midday"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:856
+#: ../remindor_common/datetimeutil.py:920
+msgid "midnight"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:857
+#: ../remindor_common/datetimeutil.py:921
+msgid "every minute"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:858
+#: ../remindor_common/datetimeutil.py:922
+msgid "every hour"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:860
+#: ../remindor_common/datetimeutil.py:924
+msgid "minutes"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:861
+#: ../remindor_common/datetimeutil.py:925
+msgid "hours"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:862
+#: ../remindor_common/datetimeutil.py:926
+msgid "minute"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:863
+#: ../remindor_common/datetimeutil.py:927
+msgid "hour"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:880
+msgid "tom"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:898
+msgid "mon"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:899
+msgid "tues"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:900
+msgid "wed"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:901
+msgid "thurs"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:902
+msgid "fri"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:903
+msgid "sat"
+msgstr ""
+
+#: ../remindor_common/datetimeutil.py:904
+msgid "sun"
+msgstr ""
+
+#: ../remindor_qt/__init__.py:35
+msgid "Show debug messages (-vv debugs remindor_common also)"
+msgstr ""

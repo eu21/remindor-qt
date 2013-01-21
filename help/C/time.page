@@ -1,0 +1,66 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      type="topic"
+      id="time">
+
+<info>
+  <!-- edit xref to re-locate this topic in the help hierarchy -->
+  <link type="guide" xref="index#contents"/>
+  <credit type="author">
+    <name>Brian Douglass</name>
+    <email>bhdouglass@gmail.com</email>
+    <years>2012</years>
+  </credit>
+  <desc>Valid time options</desc>
+</info>
+
+<title>Valid Times</title>
+<links type="section"/>
+
+<section id="singular">
+    <title>Valid Singular Times</title>
+    <list>
+        <item><code>now</code>
+        <list>
+            <item><p>The current time</p></item>
+        </list>
+        </item>
+        <item><code>noon</code>
+        <list>
+            <item><p>12:00pm or 12:00</p></item>
+        </list>
+        </item>
+        <item><code>midday</code>
+        <list>
+            <item><p>12:00pm or 12:00</p></item>
+        </list>
+        </item>
+        <item><code>midnight</code>
+        <list>
+            <item><p>12:00am or 00:00</p></item>
+        </list>
+        </item>
+        <item><code>1:00pm</code></item>
+        <item><code>1:00 pm</code></item>
+        <item><code>13:00</code></item>
+        <item><code>13</code></item>
+        <item><code>1300</code></item>
+        <item><code>1pm</code></item>
+    </list>
+</section>
+
+<section id="repeating">
+    <title>Valid Repeating Dates</title>
+    <p>
+        For each repeating time the [ ] denote option attributes.  <var>start</var> and
+        <var>end</var> can be any of the above <link xref="#singular">singular times</link>.
+        <var>X</var> is any positive integer.
+    </p>
+    <list>
+        <item><code>every hour [from <var>start</var> to <var>end</var>]</code></item>
+        <item><code>every minute [from <var>start</var> to <var>end</var>]</code></item>
+        <item><code>every <var>X</var> minutes [from <var>start</var> to <var>end</var>]</code></item>
+        <item><code>every <var>X</var> hours  [from <var>start</var> to <var>end</var>]</code></item>
+    </list>
+</section>
+
+</page>

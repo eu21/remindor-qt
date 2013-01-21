@@ -1,0 +1,91 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      type="topic"
+      id="preferences">
+
+<info>
+  <!-- edit xref to re-locate this topic in the help hierarchy -->
+  <link type="guide" xref="index#contents"/>
+  <credit type="author">
+    <name>Brian Douglass</name>
+    <email>bhdouglass@gmail.com</email>
+    <years>2012</years>
+  </credit>
+  <desc>Preferences explained</desc>
+</info>
+
+<title>Preferences</title>
+<links type="section"/>
+
+<section id="standard">
+    <title>Standard Reminder</title>
+    <list>
+        <item><p>Default Label: The title for regular reminder</p></item>
+        <item><p><link xref="time">Default Time</link>: Time of day when you want reminders to run</p></item>
+        <item><p><link xref="date">Default Date</link>: Dates when you want reminders to run</p></item>
+        <item><p>Default Command: Command to run when reminders run</p></item>
+        <item><p>Minutes to Postpone: Number minutes to postpone reminders</p></item>
+    </list>
+</section>
+
+<section id="notification">
+    <title>Notifications</title>
+    <list>
+        <item><p>Popup: Whether or not to pop up a notification</p></item>
+        <item><p>Dialog: Whether or not to pop up a dialog window</p></item>
+        <item><p>Change Indicator Icon on Reminder: Whether or not to change the indicator
+            icon when an alarm runs (similar to the message menu's behavior for new messages)</p></item>
+    </list>
+</section>
+
+<section id="sound">
+    <title>Sound</title>
+    <list>
+        <item><p>Default Sound: Music to play when reminders run</p></item>
+        <item><p>Default Play Length: Play the file for x amount of seconds (0 to play the whole file)</p></item>
+        <item><p>Loop Sound: Whether or not to loop the sound file</p></item>
+        <item><p>Times to Loop: Number of times to loop the sound file</p></item>
+    </list>
+</section>
+
+<section id="">
+    <title>Quick Reminders</title>
+    <list>
+        <item><p>Default Quick Label: The default title for quick reminder</p></item>
+        <item><p>Default Quick Minutes: The default minutes from now for quick reminder</p></item>
+        <item><p>Use Slider: When On, use a slider to select minutes for a quick reminder.  When Off, use a spin box</p></item>
+        <item><p>Popup Notification: Whether or not show a popup notification with quick reminder</p></item>
+        <item><p>Dialog Notification: Whether or not show a dialog notification with quick reminder</p></item>
+        <item><p>Use standard reminder sound settings: Whether or not to use the sound settings for standard reminder with quick reminder</p></item>
+        <item><p>Show info on dialog: Whether or not show information about notifications on the quick reminder window</p></item>
+    </list>
+</section>
+
+<section id="interface">
+    <title>Interface Options</title>
+    <list>
+        <item><p>Today's Color: Color for "Today's Reminders" background</p></item>
+        <item><p>Future Color: Color for "Future Reminders" background</p></item>
+        <item><p>Past Color: Color for "Past Reminders" background</p></item>
+        <item><p>Show News Notification: Changes news button on manage window to "New News!" when a new post is in the <link href="http://indicator-remindor.tumblr.com/">blog</link></p></item>
+        <item><p>Hide Indicator: Hides the indicator (Only use this option if you know what you are doing!  Use the command "indicator-remindor -p" to open the preferences)</p></item>
+    </list>
+</section>
+
+<section id="format">
+    <title>Format</title>
+    <list>
+        <item><p>Time Format: Format for displaying times</p></item>
+        <item><p>Date Format: Format for displaying and specifying dates</p></item>
+    </list>
+</section>
+
+<section id="services">
+    <title>Services</title>
+    <p><link xref="services">More information about services</link></p>
+    <list>
+        <item><p><link xref="services">Boxcar</link> Email: Email address for your <link href="http://boxcar.io/">Boxcar account</link></p></item>
+        <item><p><link xref="services">Boxcar</link> Notification: Whether or not to send a notification to <link xref="services">Boxcar</link></p></item>
+    </list>
+</section>
+
+</page>

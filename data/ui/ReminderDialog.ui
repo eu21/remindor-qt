@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>add_reminder</class>
+ <widget class="QDialog" name="add_reminder">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>346</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Add Reminder</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="margin">
+    <number>0</number>
+   </property>
+   <item row="0" column="0">
+    <widget class="QTabWidget" name="tabs">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="reminder_tab">
+      <attribute name="title">
+       <string>Reminder</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="3" column="2">
+        <widget class="QPushButton" name="command_button">
+         <property name="text">
+          <string>Edit</string>
+         </property>
+         <property name="icon">
+          <iconset theme="stock_edit">
+           <normaloff/>
+          </iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="time_label">
+         <property name="text">
+          <string>Time</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="notes_label">
+         <property name="text">
+          <string>Notes:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="date_time"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="date_label">
+         <property name="text">
+          <string>Date</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_label">
+         <property name="text">
+          <string>Label</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="time_edit"/>
+       </item>
+       <item row="4" column="2">
+        <widget class="QPushButton" name="notes_button">
+         <property name="text">
+          <string>Insert</string>
+         </property>
+         <property name="icon">
+          <iconset theme="add">
+           <normaloff/>
+          </iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="label_edit"/>
+       </item>
+       <item row="5" column="0" colspan="3">
+        <widget class="QPlainTextEdit" name="notes_edit"/>
+       </item>
+       <item row="2" column="2">
+        <widget class="QPushButton" name="date_button">
+         <property name="text">
+          <string>Edit</string>
+         </property>
+         <property name="icon">
+          <iconset theme="stock_edit">
+           <normaloff/>
+          </iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QPushButton" name="time_button">
+         <property name="text">
+          <string>Edit</string>
+         </property>
+         <property name="icon">
+          <iconset theme="stock_edit">
+           <normaloff/>
+          </iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="command_edit"/>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="command_label">
+         <property name="text">
+          <string>Command</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="insert_combo">
+         <item>
+          <property name="text">
+           <string>Date</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Month</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Month Name</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Day</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Day name</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Day of Year</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Year</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Time</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Hour (24)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Hour (12)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Minutes</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Seconds</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Microseconds</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Sound File/Path</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Sound File</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Command</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="notification_tab">
+      <attribute name="title">
+       <string>Notification</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="3" column="0">
+        <spacer name="verticalspace">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="popup_check">
+         <property name="text">
+          <string>Popup</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="dialog_check">
+         <property name="text">
+          <string>Dialog Box</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="boxcar_check">
+         <property name="text">
+          <string>Boxcar</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="boxcar_label">
+         <property name="text">
+          <string>Boxcar has not been
+setup in Preferences</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="sound_tab">
+      <attribute name="title">
+       <string>Sound</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="2" column="0">
+        <widget class="QLabel" name="length_label">
+         <property name="text">
+          <string>Play Length</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="file_edit"/>
+       </item>
+       <item row="4" column="1">
+        <spacer name="verticalspacer2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="1">
+        <widget class="QCheckBox" name="loop_check">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="file_label">
+         <property name="text">
+          <string>Sound File</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="loop_label">
+         <property name="text">
+          <string>Loop</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="length_label2">
+         <property name="text">
+          <string>s (0 for end)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QCheckBox" name="sound_check">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QSpinBox" name="length_spin"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="sound_label">
+         <property name="text">
+          <string>Play Sound</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QToolButton" name="file_button">
+         <property name="text">
+          <string>...</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QWidget" name="button_widget" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="help_button">
+        <property name="text">
+         <string>Help</string>
+        </property>
+        <property name="icon">
+         <iconset theme="help">
+          <normaloff/>
+         </iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalspacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="cancel_button">
+        <property name="text">
+         <string>Cancel</string>
+        </property>
+        <property name="icon">
+         <iconset theme="cancel">
+          <normaloff/>
+         </iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="add_button">
+        <property name="text">
+         <string>Add</string>
+        </property>
+        <property name="icon">
+         <iconset theme="add">
+          <normaloff/>
+         </iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

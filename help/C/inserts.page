@@ -1,0 +1,106 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      type="topic"
+      id="inserts">
+
+<info>
+  <!-- edit xref to re-locate this topic in the help hierarchy -->
+  <link type="guide" xref="index#contents"/>
+  <credit type="author">
+    <name>Brian Douglass</name>
+    <email>bhdouglass@gmail.com</email>
+    <years>2012</years>
+  </credit>
+  <desc>Inserts for notes and commands</desc>
+</info>
+
+<title>Inserts</title>
+<p>You can add special text to notes and commands that will expand to something meaningful
+when the reminder is run.</p>
+<p>Ex: <code>It is currently +dayname+ and you are listening to +soundfile+!</code></p>
+<p>Translation: <code>It is currently Thursday and you are listening to alarm01.ogg</code></p>
+
+<list>
+    <item><code>+date+</code>
+    <list>
+        <item><p>The current date as specified by the format in <link xref="preferences">preferences</link></p></item>
+        <item><p>Ex: 12/13/2012</p></item>
+    </list></item>
+    <item><code>+month+</code>
+    <list>
+        <item><p>The current month as a number</p></item>
+        <item><p>Ex: 12</p></item>
+    </list></item>
+    <item><code>+monthname+</code>
+    <list>
+        <item><p>The full name of the current month</p></item>
+        <item><p>Ex: December</p></item>
+    </list></item>
+    <item><code>+day+</code>
+    <list>
+        <item><p>The current day of the month</p></item>
+        <item><p>Ex: 13</p></item>
+    </list></item>
+    <item><code>+dayname+</code>
+    <list>
+        <item><p>The current day of the week</p></item>
+        <item><p>Ex: Thursday</p></item>
+    </list></item>
+    <item><code>+yearday+</code>
+    <list>
+        <item><p>The current day of the year</p></item>
+        <item><p>Ex: 235</p></item>
+    </list></item>
+    <item><code>+year+</code>
+    <list>
+        <item><p>The current year</p></item>
+        <item><p>Ex: 2012</p></item>
+    </list></item>
+    <item><code>+time+</code>
+    <list>
+        <item><p>The current time as specified by the format in <link xref="preferences">preferences</link></p></item>
+        <item><p>Ex: 8:44PM</p></item>
+    </list></item>
+    <item><code>+hour+</code>
+    <list>
+        <item><p>The current hour (in 24 hour time)</p></item>
+        <item><p>Ex: 14</p></item>
+    </list></item>
+    <item><code>+hour12+</code>
+    <list>
+        <item><p>The current hour (in 12 hour time)</p></item>
+        <item><p>Ex: 1</p></item>
+    </list></item>
+    <item><code>+minute+</code>
+    <list>
+        <item><p>The current minute</p></item>
+        <item><p>Ex: 44</p></item>
+    </list></item>
+    <item><code>+second+</code>
+    <list>
+        <item><p>The current seconds</p></item>
+        <item><p>Ex: 01</p></item>
+    </list></item>
+    <item><code>+microsecond+</code>
+    <list>
+        <item><p>The current microsecond</p></item>
+        <item><p>Ex: 023</p></item>
+    </list></item>
+    <item><code>+soundfullfile+</code>
+    <list>
+        <item><p>The soundfile (with the path) used in this reminder</p></item>
+        <item><p>Ex: /home/user/music/alarm01.ogg</p></item>
+    </list></item>
+    <item><code>+soundfile+</code>
+    <list>
+        <item><p>The soundfile (without the path) used in this reminder</p></item>
+        <item><p>Ex: alarm01.ogg</p></item>
+    </list></item>
+    <item><code>+command+</code>
+    <list>
+        <item><p>The command used in this reminder</p></item>
+        <item><p>Ex: firefox http://google.com</p></item>
+        <item><p>Note: you can't use this as an insert for commands</p></item>
+    </list></item>
+</list>
+
+</page>

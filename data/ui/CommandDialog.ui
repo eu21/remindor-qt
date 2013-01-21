@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>edit_command</class>
+ <widget class="QDialog" name="edit_command">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>298</width>
+    <height>93</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Edit Command</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="margin">
+    <number>0</number>
+   </property>
+   <item row="0" column="1" colspan="2">
+    <widget class="QComboBox" name="insert_combo">
+     <item>
+      <property name="text">
+       <string>Date</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Month</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Month Name</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Day</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Day name</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Day of Year</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Year</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Hour (24)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Hour (12)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Minutes</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Seconds</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Microseconds</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Sound File/Path</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Sound File</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="command_label">
+     <property name="text">
+      <string>Command</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="command_edit"/>
+   </item>
+   <item row="0" column="0">
+    <widget class="QPushButton" name="insert_button">
+     <property name="text">
+      <string>Insert</string>
+     </property>
+     <property name="icon">
+      <iconset theme="add">
+       <normaloff/>
+      </iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QToolButton" name="command_button">
+     <property name="text">
+      <string>...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3">
+    <widget class="QWidget" name="button_widget" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <item>
+       <spacer name="horizontal_spacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="cancel_button">
+        <property name="text">
+         <string>Cancel</string>
+        </property>
+        <property name="icon">
+         <iconset theme="cancel">
+          <normaloff/>
+         </iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="ok_button">
+        <property name="text">
+         <string>Ok</string>
+        </property>
+        <property name="icon">
+         <iconset theme="dialog-ok">
+          <normaloff/>
+         </iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

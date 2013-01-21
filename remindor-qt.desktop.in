@@ -1,0 +1,8 @@
+[Desktop Entry]
+_Name=Remindor-Qt
+_Comment=Remindor-Qt application
+Categories=GNOME;Utility;
+Exec=remindor-qt
+Icon=remindor-qt
+Terminal=false
+Type=Application

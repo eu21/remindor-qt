@@ -1,0 +1,796 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>preferences</class>
+ <widget class="QDialog" name="preferences">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>327</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Preferences</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="margin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="preferences_widget" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QListWidget" name="list">
+        <property name="maximumSize">
+         <size>
+          <width>200</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="currentRow">
+         <number>0</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>Standard Reminders</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Notifications</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Sound</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Quick Reminders</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Interface</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Format</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Services</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QStackedWidget" name="stack">
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="standard_page">
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="1" colspan="2">
+           <widget class="QLineEdit" name="label_edit"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="date_label">
+            <property name="text">
+             <string>Default Date</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="command_label">
+            <property name="text">
+             <string>Default Command</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_label">
+            <property name="text">
+             <string>Default Label</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="time_label">
+            <property name="text">
+             <string>Default Time</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1" colspan="2">
+           <widget class="QSpinBox" name="postpone_spin">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>600</number>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QPushButton" name="date_button">
+            <property name="text">
+             <string>Edit</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="command_edit"/>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="date_edit"/>
+          </item>
+          <item row="3" column="2">
+           <widget class="QPushButton" name="command_button">
+            <property name="text">
+             <string>Edit</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="postpone_label">
+            <property name="text">
+             <string>Minutes to
+Postpone</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QPushButton" name="time_button">
+            <property name="text">
+             <string>Edit</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="time_edit"/>
+          </item>
+          <item row="4" column="0" colspan="3">
+           <widget class="Line" name="line">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <spacer name="verticalspacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="notifications_page">
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QCheckBox" name="popup_check">
+            <property name="text">
+             <string>Popup</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="dialog_check">
+            <property name="text">
+             <string>Dialog</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="change_icon_check">
+            <property name="text">
+             <string>Change Indicator Icon on Reminder</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalspacer2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="sound_page">
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="file_edit"/>
+          </item>
+          <item row="3" column="1">
+           <widget class="QSpinBox" name="time_loop_spin">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>100</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="length_label2">
+            <property name="text">
+             <string>s (0 for end)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QSpinBox" name="length_spin">
+            <property name="minimum">
+             <number>0</number>
+            </property>
+            <property name="maximum">
+             <number>600</number>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="sound_label">
+            <property name="text">
+             <string>Default Sound File</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="loop_label">
+            <property name="text">
+             <string>Loop Sound</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QCheckBox" name="loop_check">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="time_loop_label">
+            <property name="text">
+             <string>Times to Loop</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QToolButton" name="file_button">
+            <property name="text">
+             <string>...</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="length_label">
+            <property name="text">
+             <string>Default Play Length</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <spacer name="verticalspacer3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="quick_page">
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="6" column="0">
+           <widget class="QLabel" name="quick_sound_label">
+            <property name="text">
+             <string>Use standard reminder
+sound settings</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <widget class="QLabel" name="quick_info_label">
+            <property name="text">
+             <string>Show info on dialog</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="quick_minutes_label">
+            <property name="text">
+             <string>Default Quick Minutes</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="quick_popup_label">
+            <property name="text">
+             <string>Popup Notification</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="quick_label_label">
+            <property name="text">
+             <string>Default Quick Label</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="quick_dialog_label">
+            <property name="text">
+             <string>Dialog Notification</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0">
+           <spacer name="verticalspacer4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="quick_slider">
+            <property name="text">
+             <string>Use Slider</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="quick_label_edit"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="quick_minutes_edit"/>
+          </item>
+          <item row="3" column="0" colspan="2">
+           <widget class="Line" name="line2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0" colspan="2">
+           <widget class="Line" name="line3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QCheckBox" name="quick_slider_check">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QCheckBox" name="quick_popup_check">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QCheckBox" name="quick_dialog_check">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QCheckBox" name="quick_sound_check">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <widget class="QCheckBox" name="quick_info_check">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="interface_page">
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="1" column="0">
+           <widget class="QLabel" name="future_label">
+            <property name="text">
+             <string>Future Color</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="new_label">
+            <property name="text">
+             <string>Show News
+Notifications</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="hide_label">
+            <property name="text">
+             <string>Hide Tray Icon</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="today_label">
+            <property name="text">
+             <string>Today's Color</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0" colspan="2">
+           <widget class="Line" name="line4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="icon_label">
+            <property name="text">
+             <string>Tray Icon</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="past_label">
+            <property name="text">
+             <string>Past Color</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QCheckBox" name="new_check">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0">
+           <spacer name="verticalspacer5">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="today_button">
+            <property name="text">
+             <string>Color</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="future_button">
+            <property name="text">
+             <string>Color</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QPushButton" name="past_button">
+            <property name="text">
+             <string>Color</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QComboBox" name="icon_combo">
+            <item>
+             <property name="text">
+              <string>System Theme</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Light Icon</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Dark Icon</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>App Icon</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QCheckBox" name="hide_check">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="format_page">
+         <layout class="QGridLayout" name="gridLayout_6">
+          <item row="2" column="0">
+           <spacer name="verticalspacer6">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="date_format_label">
+            <property name="text">
+             <string>Date Format</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="time_format_label">
+            <property name="text">
+             <string>Time Format</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="time_format_combo">
+            <item>
+             <property name="text">
+              <string>1:12pm</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>13:12</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>1312</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QComboBox" name="date_format_combo">
+            <item>
+             <property name="text">
+              <string>12/31/2000</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>12-31-2000</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>12/31/00</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>12-31-00</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>31/12/2000</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>31-12-2000</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>31/12/00</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>31-12-00</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>2000/12/31</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>2000-12-31</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>00/12/31</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>00-12-31</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="services_page">
+         <layout class="QGridLayout" name="gridLayout_7">
+          <item row="2" column="0">
+           <spacer name="verticalspacer7">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="boxcar_notification_label">
+            <property name="text">
+             <string>Boxcar Notification</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="boxcar_email_edit"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QCheckBox" name="boxcar_notification_check">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QCommandLinkButton" name="boxcar_email_button">
+            <property name="text">
+             <string>Boxcar Email</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="button_widget" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="help_button">
+        <property name="text">
+         <string>Help</string>
+        </property>
+        <property name="icon">
+         <iconset theme="help">
+          <normaloff/>
+         </iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalspacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="cancel_button">
+        <property name="text">
+         <string>Cancel</string>
+        </property>
+        <property name="icon">
+         <iconset theme="cancel">
+          <normaloff/>
+         </iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="save_button">
+        <property name="text">
+         <string>Save</string>
+        </property>
+        <property name="icon">
+         <iconset theme="stock_save">
+          <normaloff/>
+         </iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>list</sender>
+   <signal>currentRowChanged(int)</signal>
+   <receiver>stack</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>69</x>
+     <y>146</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>296</x>
+     <y>146</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

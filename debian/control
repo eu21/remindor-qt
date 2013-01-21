@@ -1,0 +1,29 @@
+Source: remindor-qt
+Section: python
+Priority: extra
+Build-Depends: debhelper (>= 8),
+ python (>= 2.6.6-3~),
+ python-distutils-extra (>= 2.10)
+Maintainer: Brian Douglass <bhdouglass@gmail.com>
+Standards-Version: 3.9.3
+X-Python-Version: >= 2.6
+
+Package: remindor-qt
+Architecture: all
+Depends: ${misc:Depends},
+ ${python:Depends},
+ python-pyside.qtcore,
+ python-dbus,
+ python-requests,
+ python-feedparser,
+ python-dateutil,
+ gir1.2-gstreamer-0.10,
+ yelp,
+ appmenu-qt,
+ sni-qt
+Description: Schedule reminders easily from an indicator
+ Remindor-Qt is an indicator app that allows you to schedule reminders.
+ A reminder can be configured to show a notification, play a sound,
+ and/or run a command.  Reminders can be scheduled on one day or they can
+ be set to repeat every day, every monday, every 30 days, etc.  They can
+ also be set to repeat minutely or hourly.
