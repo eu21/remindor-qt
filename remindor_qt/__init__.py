@@ -43,6 +43,7 @@ def main():
 
     # Run the application.
     app = QApplication([""])
+    app.setWindowIcon(QIcon.fromTheme("remindor-qt"))
     window = RemindorQtWindow.RemindorQtWindow()
     window.show()
     app.exec_()

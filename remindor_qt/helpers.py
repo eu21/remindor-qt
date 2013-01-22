@@ -141,6 +141,7 @@ def setup_ui(widget, ui, mainwindow = False):
 
     QMetaObject.connectSlotsByName(widget)
     widget.setWindowTitle(centralwidget.windowTitle())
+    widget.setWindowIcon(centralwidget.windowIcon())
 
 def check_autostart():
     filename = os.getenv('HOME') + '/.config/autostart/remindor-qt.desktop'
