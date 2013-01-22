@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>Manage Reminders</string>
   </property>
+  <property name="windowIcon">
+   <iconset theme="remindor-qt">
+    <normaloff/>
+   </iconset>
+  </property>
   <property name="toolButtonStyle">
    <enum>Qt::ToolButtonTextUnderIcon</enum>
   </property>
@@ -101,6 +106,7 @@
     </property>
     <addaction name="action_refresh"/>
     <addaction name="action_clear_icon"/>
+    <addaction name="action_stop"/>
    </widget>
    <widget class="QMenu" name="menu_contribute">
     <property name="title">
@@ -407,6 +413,17 @@
    </property>
    <property name="toolTip">
     <string>About Remindor-Qt</string>
+   </property>
+  </action>
+  <action name="action_stop">
+   <property name="icon">
+    <iconset theme="media-playback-stop"/>
+   </property>
+   <property name="text">
+    <string>Stop Sound</string>
+   </property>
+   <property name="toolTip">
+    <string>Stop Playing Sound</string>
    </property>
   </action>
  </widget>

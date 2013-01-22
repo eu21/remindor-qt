@@ -7,11 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>271</width>
-    <height>185</height>
+    <height>190</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Add Quick Reminder</string>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="remindor-qt"/>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="margin">

@@ -34,6 +34,12 @@ from remindor_qt import helpers
 
 from remindor_common.constants import *
 from remindor_common.helpers import ManageWindowInfo
+from remindor_common.threads import BlogReader
+
+tray_icons = [QIcon.fromTheme("remindor-qt-active"),
+              QIcon(helpers.get_data_file("media", "remindor-qt-active.svg")),
+              QIcon(helpers.get_data_file("media", "remindor-qt-active_dark.svg")),
+              QIcon.fromTheme("remindor-qt")]
 
 class RemindorQtWindow(QMainWindow):
     setup_schedule = True
@@ -46,6 +52,8 @@ class RemindorQtWindow(QMainWindow):
         self.reminder_tree = self.findChild(QTreeWidget, "reminder_tree")
         self.reminder_tree.setColumnWidth(0, 200)
 
+        self.news_action = self.findChild(QAction, "action_news")
+
         self.tray_menu = QMenu()
         self.tray_menu.addAction(QIcon.fromTheme("add"), "Add", self, SLOT("on_action_add_triggered()"))
         self.tray_menu.addAction(QIcon.fromTheme("media-skip-forward"), "Quick Add", self, SLOT("on_action_quick_add_triggered()"))
@@ -53,14 +61,16 @@ class RemindorQtWindow(QMainWindow):
         self.tray_menu.addAction(QIcon.fromTheme("stock_properties"), "Manage", self, SLOT("show()"))
         self.tray_menu.addAction(QIcon.fromTheme("exit"), "Quit", self, SLOT("close()")) #TODO: change this when reimplementing x-close button
 
-        self.tray_icon = QSystemTrayIcon(QIcon(helpers.get_data_file("media", "remindor-qt-active.svg")), self)
+        self.tray_icon = QSystemTrayIcon(QIcon.fromTheme("remindor-qt-active"), self)
         self.tray_icon.setContextMenu(self.tray_menu)
         self.tray_icon.show()
 
         self.scheduler = SchedulerQt(self.tray_icon, self.update)
-        #self.scheduler.update_signal.connect(self.update)
         self.info = ManageWindowInfo(helpers.database_file())
         self.update()
+
+        b = BlogReader(rssfeed, helpers.database_file())
+        b.start()
 
     @Slot()
     def on_action_add_triggered(self):
@@ -84,7 +94,14 @@ class RemindorQtWindow(QMainWindow):
 
     @Slot()
     def on_action_delete_triggered(self):
-        pass
+        selected = self.get_selected()
+
+        if selected != None:
+            database = db.Database(database_file())
+            database.delete_alarm(int(selected))
+            database.close()
+
+            self.update()
 
     @Slot()
     def on_action_preferences_triggered(self):
@@ -113,7 +130,7 @@ class RemindorQtWindow(QMainWindow):
 
     @Slot()
     def on_action_clear_icon_triggered(self):
-        self.tray_icon.setIcon(QIcon(get_data_file("media", "remindor-qt-active.svg"))) #TODO: change this based on settings icon
+        self.tray_icon.setIcon(tray_icon[self.info.indicator_icon])
 
         if self.dbus_service != None:
             logger.debug("emmiting dbus active signal")
@@ -171,26 +188,21 @@ class RemindorQtWindow(QMainWindow):
             self.info.update(None)
 
         if self.info.show_news and self.info.new_news == 1:
-            pass
-        #    self.news.set_label(_("New News"))
+            self.news_action.setText(_("New News"))
         else:
-            pass
-        #    self.news.set_label(_("News"))
+            self.news_action.setText(_("News"))
 
         if self.info.hide_indicator:
-            pass
-        #    if self.indicator.get_status() != AppIndicator3.IndicatorStatus.PASSIVE:
-        #        self.indicator.set_status(AppIndicator3.IndicatorStatus.PASSIVE)
-        #        logger.debug("setting indicator status to passive: " + str(self.indicator.get_status() == AppIndicator3.IndicatorStatus.PASSIVE))
+            if self.tray_icon.isVisible():
+                self.tray_icon.hide()
         else:
-            pass
-        #    if self.indicator.get_status() != AppIndicator3.IndicatorStatus.ACTIVE:
-        #        self.indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)
-        #        logger.debug("setting indicator status to active: " + str(self.indicator.get_status() == AppIndicator3.IndicatorStatus.ACTIVE))
+            if not self.tray_icon.isVisible():
+                self.tray_icon.show()
 
-        #iicon = self.indicator.get_icon()
-        #if iicon != indicator_icons[settings.indicator_icon]:
-        #    self.indicator.set_icon(indicator_icons[settings.indicator_icon])
+        icon = self.tray_icon.icon()
+        icon_name = icon.name()
+        if icon_name != "remindor-qt-active" and icon != tray_icons[self.info.indicator_icon]:
+            self.tray_icon.setIcon(tray_icon[self.info.indicator_icon])
 
         logger.debug("update: setting up headers")
         self.reminder_tree.clear()
@@ -232,3 +244,14 @@ class RemindorQtWindow(QMainWindow):
         logger.debug("update: done setting up tree")
 
         return True
+
+    def get_selected(self):
+        selected_items = self.reminder_tree.selectedItems()
+        selected = selected_items[0]
+
+        text = selected.text(0)
+        if text == self.today.text(0) or text == self.future.text(0) or text == self.past.text(0):
+            if selected.text(4) == "": #id is "" only on the 3 parents
+                return None
+
+        return selected

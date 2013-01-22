@@ -38,18 +38,19 @@ class RTimer(QTimer):
         self.setSingleShot(single_shot)
         self.id = id
         self.slot = slot
+        self.start_now = start_now
 
-        if id == -1:
-            self.timeout.connect(slot)
+        if self.id == -1:
+            self.timeout.connect(self.slot)
         else:
             self.timeout.connect(self.handler)
 
-        if start_now:
+        if self.start_now:
             self.start()
 
     @Slot()
     def handler(self):
-        self.slot(id)
+        self.slot(self.id)
 
 
 # Owais Lone : To get quick access to icons and stuff.

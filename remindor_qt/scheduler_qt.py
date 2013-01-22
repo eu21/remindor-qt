@@ -40,8 +40,6 @@ class SchedulerQtHelper(QObject):
         self.update_signal.emit()
 
 class SchedulerQt(GenericScheduler):
-    #update_signal = Signal()
-
     def __init__(self, tray_icon, slot):
         GenericScheduler.__init__(self)
         self.tray_icon = tray_icon
@@ -53,7 +51,7 @@ class SchedulerQt(GenericScheduler):
 
     def change_icon(self):
         logger.debug("schedulerqt: change_icon")
-        self.tray_icon.setIcon(QIcon(get_data_file("media", "remindor-qt-attention.svg")))
+        self.tray_icon.setIcon(QIcon.fromTheme("remindor-qt-active"))
 
         if self.dbus_service != None:
             logger.debug("emmiting dbus attention signal")
@@ -80,7 +78,6 @@ class SchedulerQt(GenericScheduler):
 
     def update_schedule(self):
         logger.debug("schedulerqt: update_schedule")
-        #self.update_signal.emit()
         self.helper.update()
 
     def add_to_schedule(self, delay, id):

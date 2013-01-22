@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Edit Time</string>
   </property>
+  <property name="windowIcon">
+   <iconset theme="remindor-qt"/>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="margin">
     <number>0</number>
