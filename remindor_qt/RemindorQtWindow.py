@@ -35,6 +35,7 @@ from remindor_qt import helpers
 from remindor_common.constants import *
 from remindor_common.helpers import ManageWindowInfo
 from remindor_common.threads import BlogReader
+from remindor_common import database as db
 
 tray_icons = [QIcon.fromTheme("remindor-qt-active"),
               QIcon(helpers.get_data_file("media", "remindor-qt-active.svg")),
@@ -94,11 +95,11 @@ class RemindorQtWindow(QMainWindow):
 
     @Slot()
     def on_action_delete_triggered(self):
-        selected = self.get_selected()
+        (selected, is_parent) = self.get_selected()
 
-        if selected != None:
-            database = db.Database(database_file())
-            database.delete_alarm(int(selected))
+        if not is_parent:
+            database = db.Database(helpers.database_file())
+            database.delete_alarm(selected)
             database.close()
 
             self.update()
@@ -249,9 +250,10 @@ class RemindorQtWindow(QMainWindow):
         selected_items = self.reminder_tree.selectedItems()
         selected = selected_items[0]
 
+        is_parent = False
         text = selected.text(0)
         if text == self.today.text(0) or text == self.future.text(0) or text == self.past.text(0):
             if selected.text(4) == "": #id is "" only on the 3 parents
-                return None
+                is_parent = True
 
-        return selected
+        return int(selected.text(4)), is_parent
