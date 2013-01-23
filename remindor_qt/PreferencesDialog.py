@@ -24,6 +24,8 @@ logger = logging.getLogger('remindor_qt')
 from remindor_qt import helpers
 
 class PreferencesDialog(QDialog):
+    update = Signal()
+
     def __init__(self, parent = None):
         super(PreferencesDialog, self).__init__(parent)
         helpers.setup_ui(self, "PreferencesDialog.ui")

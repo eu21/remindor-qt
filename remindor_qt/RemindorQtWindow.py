@@ -52,6 +52,15 @@ class RemindorQtWindow(QMainWindow):
 
         self.reminder_tree = self.findChild(QTreeWidget, "reminder_tree")
         self.reminder_tree.setColumnWidth(0, 200)
+        edit = QAction(QIcon.fromTheme("gtk-edit"), "Edit", self)
+        edit.triggered.connect(self.on_action_edit_triggered)
+        self.reminder_tree.addAction(edit)
+        postpone = QAction(QIcon.fromTheme("go-jump"), "Postpone", self)
+        postpone.triggered.connect(self.on_action_postpone_triggered)
+        self.reminder_tree.addAction(postpone)
+        delete = QAction(QIcon.fromTheme("edit-delete"), "Delete", self)
+        delete.triggered.connect(self.on_action_delete_triggered)
+        self.reminder_tree.addAction(delete)
 
         self.news_action = self.findChild(QAction, "action_news")
 
@@ -76,6 +85,7 @@ class RemindorQtWindow(QMainWindow):
     @Slot()
     def on_action_add_triggered(self):
         dialog = ReminderDialog(self)
+        dialog.added.connect(self.add_to_schedule)
         dialog.show()
 
     @Slot()
@@ -87,16 +97,19 @@ class RemindorQtWindow(QMainWindow):
     @Slot()
     def on_action_edit_triggered(self):
         dialog = ReminderDialog(self)
+        dialog.added.connect(self.add_to_schedule)
         dialog.show()
 
     @Slot()
     def on_action_postpone_triggered(self):
-        pass
+        (selected, is_parent) = self.get_selected()
+        if not is_parent:
+            self.info.postpone(selected)
+            self.update()
 
     @Slot()
     def on_action_delete_triggered(self):
         (selected, is_parent) = self.get_selected()
-
         if not is_parent:
             database = db.Database(helpers.database_file())
             database.delete_alarm(selected)
@@ -107,6 +120,7 @@ class RemindorQtWindow(QMainWindow):
     @Slot()
     def on_action_preferences_triggered(self):
         dialog = PreferencesDialog(self)
+        dialog.update.connect(self.update)
         dialog.show()
 
     @Slot()
@@ -127,7 +141,7 @@ class RemindorQtWindow(QMainWindow):
 
     @Slot()
     def on_action_refresh_triggered(self):
-        pass
+        self.update()
 
     @Slot()
     def on_action_clear_icon_triggered(self):

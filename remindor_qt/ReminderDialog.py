@@ -28,6 +28,8 @@ logger = logging.getLogger('remindor_qt')
 from remindor_qt import helpers
 
 class ReminderDialog(QDialog):
+    added = Signal(int)
+
     def __init__(self, parent = None):
         super(ReminderDialog, self).__init__(parent)
         helpers.setup_ui(self, "ReminderDialog.ui")

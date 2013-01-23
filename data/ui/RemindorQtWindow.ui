@@ -31,6 +31,9 @@
     </property>
     <item>
      <widget class="QTreeWidget" name="reminder_tree">
+      <property name="contextMenuPolicy">
+       <enum>Qt::ActionsContextMenu</enum>
+      </property>
       <property name="indentation">
        <number>20</number>
       </property>
@@ -417,7 +420,9 @@
   </action>
   <action name="action_stop">
    <property name="icon">
-    <iconset theme="media-playback-stop"/>
+    <iconset theme="media-playback-stop">
+     <normaloff/>
+    </iconset>
    </property>
    <property name="text">
     <string>Stop Sound</string>
