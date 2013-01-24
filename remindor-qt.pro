@@ -26,3 +26,6 @@ FORMS = data/ui/AboutDialog.ui\
         data/ui/TimeDialog.ui
 
 #TRANSLATIONS = qm/en_US.ts
+
+RESOURCES += \
+    resources.qrc

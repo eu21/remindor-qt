@@ -17,6 +17,7 @@
 from PySide.QtCore import *
 from PySide.QtGui import *
 from PySide.QtSvg import *
+from PySide.phonon import Phonon
 
 from remindor_qt.helpers import RTimer, get_data_file
 from remindor_common.scheduler import GenericScheduler
@@ -56,6 +57,19 @@ class SchedulerQt(GenericScheduler):
         if self.dbus_service != None:
             logger.debug("emmiting dbus attention signal")
             self.dbus_service.emitAttention()
+
+    def play_sound_helper(self, sound_file, sound_loop, sound_loop_times):
+        self.media = Phonon.createPlayer(Phonon.MusicCategory, Phonon.MediaSource(sound_file))
+
+        if sound_loop_times > 0 and sound_loop:
+            for i in range(sound_loop_times):
+                print self.media.currentSource().fileName()
+                self.media.enqueue(Phonon.MediaSource(sound_file))
+
+        self.media.play()
+
+    def stop_sound_helper(self):
+        self.media.stop()
 
     def remove_playing_sound(self):
         logger.debug("schedulerqt: remove_playing_sound")

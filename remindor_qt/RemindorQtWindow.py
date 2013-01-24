@@ -37,10 +37,11 @@ from remindor_common.helpers import ManageWindowInfo
 from remindor_common.threads import BlogReader
 from remindor_common import database as db
 
-tray_icons = [QIcon.fromTheme("remindor-qt-active"),
-              QIcon(helpers.get_data_file("media", "remindor-qt-active.svg")),
-              QIcon(helpers.get_data_file("media", "remindor-qt-active_dark.svg")),
-              QIcon.fromTheme("remindor-qt")]
+active_icon = QIcon(helpers.get_data_file("media", "remindor-qt-active.svg"))
+app_icon = QIcon(helpers.get_data_file("media", "remindor-qt.svg"))
+tray_icons = [QIcon.fromTheme("remindor-qt-active", active_icon),
+              active_icon, QIcon(helpers.get_data_file("media", "remindor-qt-active_dark.svg")),
+              QIcon.fromTheme("remindor-qt", app_icon)]
 
 class RemindorQtWindow(QMainWindow):
     setup_schedule = True
@@ -52,26 +53,26 @@ class RemindorQtWindow(QMainWindow):
 
         self.reminder_tree = self.findChild(QTreeWidget, "reminder_tree")
         self.reminder_tree.setColumnWidth(0, 200)
-        edit = QAction(QIcon.fromTheme("gtk-edit"), "Edit", self)
+        edit = QAction(QIcon.fromTheme("gtk-edit", QIcon(":/icons/edit.png")), "Edit", self)
         edit.triggered.connect(self.on_action_edit_triggered)
         self.reminder_tree.addAction(edit)
-        postpone = QAction(QIcon.fromTheme("go-jump"), "Postpone", self)
+        postpone = QAction(QIcon.fromTheme("go-jump", QIcon(":/icons/postpone.png")), "Postpone", self)
         postpone.triggered.connect(self.on_action_postpone_triggered)
         self.reminder_tree.addAction(postpone)
-        delete = QAction(QIcon.fromTheme("edit-delete"), "Delete", self)
+        delete = QAction(QIcon.fromTheme("edit-delete", QIcon(":/icons/delete.png")), "Delete", self)
         delete.triggered.connect(self.on_action_delete_triggered)
         self.reminder_tree.addAction(delete)
 
         self.news_action = self.findChild(QAction, "action_news")
 
         self.tray_menu = QMenu()
-        self.tray_menu.addAction(QIcon.fromTheme("add"), "Add", self, SLOT("on_action_add_triggered()"))
-        self.tray_menu.addAction(QIcon.fromTheme("media-skip-forward"), "Quick Add", self, SLOT("on_action_quick_add_triggered()"))
-        self.tray_menu.addAction(QIcon.fromTheme("media-playback-stop"), "Stop Sound", self, SLOT("on_action_stop_triggered()"))
-        self.tray_menu.addAction(QIcon.fromTheme("stock_properties"), "Manage", self, SLOT("show()"))
-        self.tray_menu.addAction(QIcon.fromTheme("exit"), "Quit", self, SLOT("close()")) #TODO: change this when reimplementing x-close button
+        self.tray_menu.addAction(QIcon.fromTheme("add", QIcon(":/icons/add.png")), "Add", self, SLOT("on_action_add_triggered()"))
+        self.tray_menu.addAction(QIcon.fromTheme("media-skip-forward", QIcon(":/icons/quick.png")), "Quick Add", self, SLOT("on_action_quick_add_triggered()"))
+        self.tray_menu.addAction(QIcon.fromTheme("media-playback-stop", QIcon(":/icons/delete.png")), "Stop Sound", self, SLOT("on_action_stop_triggered()"))
+        self.tray_menu.addAction(QIcon.fromTheme("stock_properties", QIcon(":/icons/manage.png")), "Manage", self, SLOT("show()"))
+        self.tray_menu.addAction(QIcon.fromTheme("exit", QIcon(":/icons/quit.png")), "Quit", self, SLOT("close()")) #TODO: change this when reimplementing x-close button
 
-        self.tray_icon = QSystemTrayIcon(QIcon.fromTheme("remindor-qt-active"), self)
+        self.tray_icon = QSystemTrayIcon(QIcon.fromTheme("remindor-qt-active", active_icon), self)
         self.tray_icon.setContextMenu(self.tray_menu)
         self.tray_icon.show()
 
@@ -86,19 +87,19 @@ class RemindorQtWindow(QMainWindow):
     def on_action_add_triggered(self):
         dialog = ReminderDialog(self)
         dialog.added.connect(self.add_to_schedule)
-        dialog.show()
+        dialog.exec_()
 
     @Slot()
     def on_action_quick_add_triggered(self):
         dialog = QuickDialog(self)
         dialog.added.connect(self.add_to_schedule)
-        dialog.show()
+        dialog.exec_()
 
     @Slot()
     def on_action_edit_triggered(self):
         dialog = ReminderDialog(self)
         dialog.added.connect(self.add_to_schedule)
-        dialog.show()
+        dialog.exec_()
 
     @Slot()
     def on_action_postpone_triggered(self):
@@ -121,7 +122,7 @@ class RemindorQtWindow(QMainWindow):
     def on_action_preferences_triggered(self):
         dialog = PreferencesDialog(self)
         dialog.update.connect(self.update)
-        dialog.show()
+        dialog.exec_()
 
     @Slot()
     def on_action_news_triggered(self):
@@ -145,7 +146,7 @@ class RemindorQtWindow(QMainWindow):
 
     @Slot()
     def on_action_clear_icon_triggered(self):
-        self.tray_icon.setIcon(tray_icon[self.info.indicator_icon])
+        self.tray_icon.setIcon(tray_icons[self.info.indicator_icon])
 
         if self.dbus_service != None:
             logger.debug("emmiting dbus active signal")

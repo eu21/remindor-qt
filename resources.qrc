@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file alias="about.png">data/media/onebit/about.png</file>
+        <file alias="add.png">data/media/onebit/add.png</file>
+        <file alias="bug.png">data/media/onebit/bug.png</file>
+        <file alias="delete.png">data/media/onebit/delete.png</file>
+        <file alias="donate.png">data/media/onebit/donate.png</file>
+        <file alias="edit.png">data/media/onebit/edit.png</file>
+        <file alias="help.png">data/media/onebit/help.png</file>
+        <file alias="postpone.png">data/media/onebit/postpone.png</file>
+        <file alias="prefs.png">data/media/onebit/prefs.png</file>
+        <file alias="quick.png">data/media/onebit/quick.png</file>
+        <file alias="quit.png">data/media/onebit/quit.png</file>
+        <file alias="refresh.png">data/media/onebit/refresh.png</file>
+        <file alias="translate.png">data/media/onebit/translate.png</file>
+        <file alias="web.png">data/media/onebit/web.png</file>
+        <file alias="manage.png">data/media/onebit/manage.png</file>
+    </qresource>
+</RCC>

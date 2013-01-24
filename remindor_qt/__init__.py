@@ -26,6 +26,7 @@ from PySide.QtGui import *
 from remindor_qt import RemindorQtWindow
 from remindor_qt.helpers import set_up_logging, check_database, check_autostart
 from remindor_qt.remindor_qtconfig import get_version
+from remindor_qt import resources
 
 def parse_options():
     parser = optparse.OptionParser(version="%%prog %s" % get_version())
@@ -44,6 +45,11 @@ def main():
     # Run the application.
     app = QApplication([""])
     app.setWindowIcon(QIcon.fromTheme("remindor-qt"))
+    app.setApplicationName("Remindor-Qt")
+    app.setApplicationVersion(get_version())
+    app.setOrganizationDomain("http://bhdouglass.tk/indicator-remindor/")
+
     window = RemindorQtWindow.RemindorQtWindow()
     window.show()
+
     app.exec_()
