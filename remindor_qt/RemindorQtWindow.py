@@ -45,6 +45,8 @@ class RemindorQtWindow(QMainWindow):
         helpers.setup_ui(self, "RemindorQtWindow.ui", True)
         self.resize(700, 300)
 
+        self.dbus_service = None
+
         self.active_icon = QIcon(helpers.get_data_file("media", "remindor-qt-active.svg"))
         self.app_icon = QIcon(helpers.get_data_file("media", "remindor-qt.svg"))
         self.tray_icons = [QIcon.fromTheme("remindor-qt-active", self.active_icon),
