@@ -41,8 +41,8 @@ class SchedulerQtHelper(QObject):
         self.update_signal.emit()
 
 class SchedulerQt(GenericScheduler):
-    def __init__(self, tray_icon, slot):
-        GenericScheduler.__init__(self)
+    def __init__(self, tray_icon, slot, file):
+        GenericScheduler.__init__(self, file)
         self.tray_icon = tray_icon
         self.helper = SchedulerQtHelper(slot)
 

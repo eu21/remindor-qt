@@ -59,7 +59,7 @@ def get_media_file(media_file_name):
     if not os.path.exists(media_filename):
         media_filename = None
 
-    return "file:///"+media_filename
+    return "file:///" + media_filename
 
 class NullHandler(logging.Handler):
     def emit(self, record):
@@ -144,68 +144,73 @@ def setup_ui(widget, ui, mainwindow = False):
     widget.setWindowIcon(centralwidget.windowIcon())
 
 def check_autostart():
-    filename = os.getenv('HOME') + '/.config/autostart/remindor-qt.desktop'
+    if os.name != 'nt':
+        #filename = os.getenv('HOME') + '/.config/autostart/remindor-qt.desktop'
+        filename = QDesktopServices.storageLocation(QDesktopServices.HomeLocation) + '/.config/autostart/remindor-qt.desktop'
 
-    file_exists = True
-    try:
-        with open(filename) as f: pass
-        #file exists nothing to do
-    except IOError:
-        #file does not exists create it"""
-        file_exists = False
+        file_exists = True
+        try:
+            with open(filename) as f: pass
+            #file exists nothing to do
+        except IOError:
+            #file does not exists create it"""
+            file_exists = False
 
-    icon = "remindor-qt"
+        icon = "remindor-qt"
 
-    #find app path
-    app_path = ''
-    if getattr(sys, 'frozen', False):
-        app_path = sys.executable
-    elif __file__:
-        app_path = __file__
+        #find app path
+        app_path = ''
+        if getattr(sys, 'frozen', False):
+            app_path = sys.executable
+        elif __file__:
+            app_path = __file__
 
-    #find exec path
-    exec_path = 'remindor-qt'
-    if '/opt/extras.ubuntu.com' in app_path:
-        exec_path = '/opt/extras.ubuntu.com/remindor-qt/bin/remindor-qt'
+        #find exec path
+        exec_path = 'remindor-qt'
+        if '/opt/extras.ubuntu.com' in app_path:
+            exec_path = '/opt/extras.ubuntu.com/remindor-qt/bin/remindor-qt'
 
-    exec_exists = False #incase the file gets really messed up
-    if file_exists: #make paths correct
-        #code from setup.py
-        fin = file(filename, 'r')
-        fout = file(fin.name + '.new', 'w')
+        exec_exists = False #incase the file gets really messed up
+        if file_exists: #make paths correct
+            #code from setup.py
+            fin = file(filename, 'r')
+            fout = file(fin.name + '.new', 'w')
 
-        for line in fin:
-            if 'Exec=' in line:
-                line = "Exec=%s\n" % exec_path
-                exec_exists = True
-            if 'Icon=' in line:
-                line = "Icon=%s\n" % icon
-            fout.write(line)
-        fout.flush()
-        fout.close()
-        fin.close()
-        os.rename(fout.name, fin.name)
+            for line in fin:
+                if 'Exec=' in line:
+                    line = "Exec=%s\n" % exec_path
+                    exec_exists = True
+                if 'Icon=' in line:
+                    line = "Icon=%s\n" % icon
+                fout.write(line)
+            fout.flush()
+            fout.close()
+            fin.close()
+            os.rename(fout.name, fin.name)
 
-    if not file_exists or not exec_exists: #create file
-        #make directory if needed
-        directory = os.path.dirname(filename)
-        if not os.path.exists(directory):
-            os.makedirs(directory)
+        if not file_exists or not exec_exists: #create file
+            #make directory if needed
+            directory = os.path.dirname(filename)
+            if not os.path.exists(directory):
+                os.makedirs(directory)
 
-        #create autostart file
-        f = open(filename, 'w')
-        f.write('[Desktop Entry]\n')
-        f.write('Name=Indicator Remindor\n')
-        f.write('Comment=Indicator Remindor\n')
-        f.write('Categories=GNOME;Utility;\n')
-        f.write("Exec=%s\n" % exec_path)
-        f.write("Icon=%s\n" % icon)
-        f.write('Terminal=false\n')
-        f.write('Type=Application\n')
-        f.close()
+            #create autostart file
+            f = open(filename, 'w')
+            f.write('[Desktop Entry]\n')
+            f.write('Name=Indicator Remindor\n')
+            f.write('Comment=Indicator Remindor\n')
+            f.write('Categories=GNOME;Utility;\n')
+            f.write("Exec=%s\n" % exec_path)
+            f.write("Icon=%s\n" % icon)
+            f.write('Terminal=false\n')
+            f.write('Type=Application\n')
+            f.close()
+    else:
+        print 'not checking autostart, reason: on windows' #TODO: implement this
 
 def config_dir():
-    return os.getenv('HOME') + '/.config/indicator-remindor'
+    #return os.getenv('HOME') + '/.config/indicator-remindor'
+    return QDesktopServices.storageLocation(QDesktopServices.HomeLocation) + '/.config/indicator-remindor'
 
 def database_file():
     return config_dir() + '/indicator-remindor.db'

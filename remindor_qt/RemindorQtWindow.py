@@ -37,12 +37,6 @@ from remindor_common.helpers import ManageWindowInfo
 from remindor_common.threads import BlogReader
 from remindor_common import database as db
 
-active_icon = QIcon(helpers.get_data_file("media", "remindor-qt-active.svg"))
-app_icon = QIcon(helpers.get_data_file("media", "remindor-qt.svg"))
-tray_icons = [QIcon.fromTheme("remindor-qt-active", active_icon),
-              active_icon, QIcon(helpers.get_data_file("media", "remindor-qt-active_dark.svg")),
-              QIcon.fromTheme("remindor-qt", app_icon)]
-
 class RemindorQtWindow(QMainWindow):
     setup_schedule = True
 
@@ -50,6 +44,13 @@ class RemindorQtWindow(QMainWindow):
         super(RemindorQtWindow,self).__init__(parent)
         helpers.setup_ui(self, "RemindorQtWindow.ui", True)
         self.resize(700, 300)
+
+        self.active_icon = QIcon(helpers.get_data_file("media", "remindor-qt-active.svg"))
+        self.app_icon = QIcon(helpers.get_data_file("media", "remindor-qt.svg"))
+        self.tray_icons = [QIcon.fromTheme("remindor-qt-active", self.active_icon),
+                           self.active_icon,
+                           QIcon(helpers.get_data_file("media", "remindor-qt-active_dark.svg")),
+                           QIcon.fromTheme("remindor-qt", self.app_icon)]
 
         self.reminder_tree = self.findChild(QTreeWidget, "reminder_tree")
         self.reminder_tree.setColumnWidth(0, 200)
@@ -72,11 +73,11 @@ class RemindorQtWindow(QMainWindow):
         self.tray_menu.addAction(QIcon.fromTheme("stock_properties", QIcon(":/icons/manage.png")), "Manage", self, SLOT("show()"))
         self.tray_menu.addAction(QIcon.fromTheme("exit", QIcon(":/icons/quit.png")), "Quit", self, SLOT("close()")) #TODO: change this when reimplementing x-close button
 
-        self.tray_icon = QSystemTrayIcon(QIcon.fromTheme("remindor-qt-active", active_icon), self)
+        self.tray_icon = QSystemTrayIcon(QIcon.fromTheme("remindor-qt-active", self.active_icon), self)
         self.tray_icon.setContextMenu(self.tray_menu)
         self.tray_icon.show()
 
-        self.scheduler = SchedulerQt(self.tray_icon, self.update)
+        self.scheduler = SchedulerQt(self.tray_icon, self.update, helpers.database_file())
         self.info = ManageWindowInfo(helpers.database_file())
         self.update()
 
@@ -146,7 +147,7 @@ class RemindorQtWindow(QMainWindow):
 
     @Slot()
     def on_action_clear_icon_triggered(self):
-        self.tray_icon.setIcon(tray_icons[self.info.indicator_icon])
+        self.tray_icon.setIcon(self.tray_icons[self.info.indicator_icon])
 
         if self.dbus_service != None:
             logger.debug("emmiting dbus active signal")
@@ -217,8 +218,8 @@ class RemindorQtWindow(QMainWindow):
 
         icon = self.tray_icon.icon()
         icon_name = icon.name()
-        if icon_name != "remindor-qt-active" and icon != tray_icons[self.info.indicator_icon]:
-            self.tray_icon.setIcon(tray_icon[self.info.indicator_icon])
+        if icon_name != "remindor-qt-active" and icon != self.tray_icons[self.info.indicator_icon]:
+            self.tray_icon.setIcon(self.tray_icons[self.info.indicator_icon])
 
         logger.debug("update: setting up headers")
         self.reminder_tree.clear()
