@@ -14,7 +14,9 @@
    <string>Edit Time</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="remindor-qt"/>
+   <iconset theme="remindor-qt">
+    <normalon>:/icons/remindor-qt.svg</normalon>
+   </iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="margin">
@@ -141,6 +143,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

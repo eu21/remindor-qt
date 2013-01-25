@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset theme="remindor-qt">
-    <normaloff/>
+    <normalon>:/icons/remindor-qt.svg</normalon>
    </iconset>
   </property>
   <property name="toolButtonStyle">

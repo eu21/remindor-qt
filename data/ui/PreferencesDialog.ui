@@ -14,7 +14,9 @@
    <string>Preferences</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="remindor-qt"/>
+   <iconset theme="remindor-qt">
+    <normalon>:/icons/remindor-qt.svg</normalon>
+   </iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="margin">
@@ -777,7 +779,9 @@ Notifications</string>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../resources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>list</sender>

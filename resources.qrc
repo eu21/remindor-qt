@@ -15,5 +15,6 @@
         <file alias="translate.png">data/media/onebit/translate.png</file>
         <file alias="web.png">data/media/onebit/web.png</file>
         <file alias="manage.png">data/media/onebit/manage.png</file>
+        <file alias="remindor-qt.svg">data/media/remindor-qt.svg</file>
     </qresource>
 </RCC>
