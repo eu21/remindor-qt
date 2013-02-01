@@ -119,8 +119,8 @@ Sound file:</string>
          <string>Cancel</string>
         </property>
         <property name="icon">
-         <iconset theme="cancel">
-          <normaloff/>
+         <iconset theme="gtk-cancel">
+          <normalon>:/icons/delete.png</normalon>
          </iconset>
         </property>
         <property name="default">

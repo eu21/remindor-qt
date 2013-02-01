@@ -38,9 +38,7 @@
           <string>Edit</string>
          </property>
          <property name="icon">
-          <iconset theme="stock_edit">
-           <normaloff/>
-          </iconset>
+          <iconset theme="gtk-edit"/>
          </property>
          <property name="autoDefault">
           <bool>false</bool>
@@ -87,9 +85,7 @@
           <string>Insert</string>
          </property>
          <property name="icon">
-          <iconset theme="add">
-           <normaloff/>
-          </iconset>
+          <iconset theme="add"/>
          </property>
          <property name="autoDefault">
           <bool>false</bool>
@@ -105,9 +101,7 @@
           <string>Edit</string>
          </property>
          <property name="icon">
-          <iconset theme="stock_edit">
-           <normaloff/>
-          </iconset>
+          <iconset theme="gtk-edit"/>
          </property>
          <property name="autoDefault">
           <bool>false</bool>
@@ -120,9 +114,7 @@
           <string>Edit</string>
          </property>
          <property name="icon">
-          <iconset theme="stock_edit">
-           <normaloff/>
-          </iconset>
+          <iconset theme="gtk-edit"/>
          </property>
          <property name="autoDefault">
           <bool>false</bool>
@@ -401,9 +393,7 @@ setup in Preferences</string>
          <string>Cancel</string>
         </property>
         <property name="icon">
-         <iconset theme="cancel">
-          <normaloff/>
-         </iconset>
+         <iconset theme="gtk-cancel"/>
         </property>
         <property name="autoDefault">
          <bool>true</bool>

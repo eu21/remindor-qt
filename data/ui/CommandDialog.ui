@@ -155,9 +155,7 @@
          <string>Cancel</string>
         </property>
         <property name="icon">
-         <iconset theme="cancel">
-          <normaloff/>
-         </iconset>
+         <iconset theme="gtk-cancel"/>
         </property>
         <property name="default">
          <bool>true</bool>
