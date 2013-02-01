@@ -41,6 +41,8 @@ class SchedulerQtHelper(QObject):
         self.update_signal.emit()
 
 class SchedulerQt(GenericScheduler):
+    dialog = None
+
     def __init__(self, tray_icon, slot, file):
         GenericScheduler.__init__(self, file)
         self.tray_icon = tray_icon
@@ -63,7 +65,6 @@ class SchedulerQt(GenericScheduler):
 
         if sound_loop_times > 0 and sound_loop:
             for i in range(sound_loop_times):
-                print self.media.currentSource().fileName()
                 self.media.enqueue(Phonon.MediaSource(sound_file))
 
         self.media.play()
@@ -84,11 +85,11 @@ class SchedulerQt(GenericScheduler):
         self.tray_icon.showMessage(label, notes) #TODO: maybe use pynotify?
 
     def popup_dialog(self, label, notes):
-        logger.debug("schedulergtk: popup_dialog: " + label + " " + notes)
+        logger.debug("schedulerqt: popup_dialog: " + label + " " + notes)
 
-        dialog = QMessageBox(QMessageBox.Information, label, notes, QMessageBox.Close, self)
-        dialog.setIconPixmap(QPixmap(get_data_file("media", "remindor-qt.png")))
-        dialog.show()
+        self.dialog = QMessageBox(QMessageBox.Information, label, notes, QMessageBox.Close)
+        self.dialog.setIconPixmap(QPixmap(get_data_file("media", "remindor-qt.png")))
+        self.dialog.show()
 
     def update_schedule(self):
         logger.debug("schedulerqt: update_schedule")

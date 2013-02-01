@@ -42,6 +42,9 @@
            <normaloff/>
           </iconset>
          </property>
+         <property name="autoDefault">
+          <bool>false</bool>
+         </property>
         </widget>
        </item>
        <item row="1" column="0">
@@ -59,7 +62,7 @@
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QLineEdit" name="date_time"/>
+        <widget class="QLineEdit" name="date_edit"/>
        </item>
        <item row="2" column="0">
         <widget class="QLabel" name="date_label">
@@ -88,10 +91,10 @@
            <normaloff/>
           </iconset>
          </property>
+         <property name="autoDefault">
+          <bool>false</bool>
+         </property>
         </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="label_edit"/>
        </item>
        <item row="5" column="0" colspan="3">
         <widget class="QPlainTextEdit" name="notes_edit"/>
@@ -106,6 +109,9 @@
            <normaloff/>
           </iconset>
          </property>
+         <property name="autoDefault">
+          <bool>false</bool>
+         </property>
         </widget>
        </item>
        <item row="1" column="2">
@@ -117,6 +123,9 @@
           <iconset theme="stock_edit">
            <normaloff/>
           </iconset>
+         </property>
+         <property name="autoDefault">
+          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -213,6 +222,9 @@
           </property>
          </item>
         </widget>
+       </item>
+       <item row="0" column="1" colspan="2">
+        <widget class="QLineEdit" name="label_edit"/>
        </item>
       </layout>
      </widget>
@@ -365,6 +377,9 @@ setup in Preferences</string>
           <normaloff/>
          </iconset>
         </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
        </widget>
       </item>
       <item>
@@ -390,6 +405,12 @@ setup in Preferences</string>
           <normaloff/>
          </iconset>
         </property>
+        <property name="autoDefault">
+         <bool>true</bool>
+        </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
@@ -402,6 +423,9 @@ setup in Preferences</string>
           <normaloff/>
          </iconset>
         </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
        </widget>
       </item>
      </layout>
@@ -409,8 +433,97 @@ setup in Preferences</string>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>tabs</tabstop>
+  <tabstop>label_edit</tabstop>
+  <tabstop>time_edit</tabstop>
+  <tabstop>time_button</tabstop>
+  <tabstop>date_edit</tabstop>
+  <tabstop>date_button</tabstop>
+  <tabstop>command_edit</tabstop>
+  <tabstop>command_button</tabstop>
+  <tabstop>insert_combo</tabstop>
+  <tabstop>notes_button</tabstop>
+  <tabstop>notes_edit</tabstop>
+  <tabstop>add_button</tabstop>
+  <tabstop>cancel_button</tabstop>
+  <tabstop>help_button</tabstop>
+  <tabstop>popup_check</tabstop>
+  <tabstop>dialog_check</tabstop>
+  <tabstop>boxcar_check</tabstop>
+  <tabstop>sound_check</tabstop>
+  <tabstop>file_edit</tabstop>
+  <tabstop>file_button</tabstop>
+  <tabstop>length_spin</tabstop>
+  <tabstop>loop_check</tabstop>
+ </tabstops>
  <resources>
   <include location="../../resources.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>sound_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>file_edit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>199</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>80</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sound_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>file_button</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>199</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>320</x>
+     <y>80</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>loop_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>length_spin</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>199</x>
+     <y>143</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>113</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sound_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>loop_check</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>199</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>143</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
