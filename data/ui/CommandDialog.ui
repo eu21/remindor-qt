@@ -159,6 +159,9 @@
           <normaloff/>
          </iconset>
         </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
@@ -178,6 +181,14 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>insert_button</tabstop>
+  <tabstop>insert_combo</tabstop>
+  <tabstop>command_edit</tabstop>
+  <tabstop>command_button</tabstop>
+  <tabstop>cancel_button</tabstop>
+  <tabstop>ok_button</tabstop>
+ </tabstops>
  <resources>
   <include location="../../resources.qrc"/>
  </resources>

@@ -96,6 +96,9 @@
           <normaloff/>
          </iconset>
         </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
@@ -143,6 +146,15 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>time_combo</tabstop>
+  <tabstop>at_time</tabstop>
+  <tabstop>every_spin</tabstop>
+  <tabstop>from_time</tabstop>
+  <tabstop>to_time</tabstop>
+  <tabstop>ok_button</tabstop>
+  <tabstop>cancel_button</tabstop>
+ </tabstops>
  <resources>
   <include location="../../resources.qrc"/>
  </resources>

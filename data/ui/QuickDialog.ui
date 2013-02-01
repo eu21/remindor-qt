@@ -123,6 +123,9 @@ Sound file:</string>
           <normaloff/>
          </iconset>
         </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
@@ -172,6 +175,13 @@ Sound file:</string>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>label_edit</tabstop>
+  <tabstop>in_slider</tabstop>
+  <tabstop>in_spin</tabstop>
+  <tabstop>add_button</tabstop>
+  <tabstop>cancel_button</tabstop>
+ </tabstops>
  <resources>
   <include location="../../resources.qrc"/>
  </resources>

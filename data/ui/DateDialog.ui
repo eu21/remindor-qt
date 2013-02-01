@@ -197,6 +197,9 @@
           <normaloff/>
          </iconset>
         </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
@@ -285,6 +288,17 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>date_combo</tabstop>
+  <tabstop>on_combo</tabstop>
+  <tabstop>on_date</tabstop>
+  <tabstop>every_combo</tabstop>
+  <tabstop>every_spin</tabstop>
+  <tabstop>from_date</tabstop>
+  <tabstop>to_date</tabstop>
+  <tabstop>ok_button</tabstop>
+  <tabstop>cancel_button</tabstop>
+ </tabstops>
  <resources>
   <include location="../../resources.qrc"/>
  </resources>

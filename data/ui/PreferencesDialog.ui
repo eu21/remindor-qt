@@ -760,6 +760,9 @@ Notifications</string>
           <normaloff/>
          </iconset>
         </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
@@ -779,6 +782,46 @@ Notifications</string>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>list</tabstop>
+  <tabstop>label_edit</tabstop>
+  <tabstop>time_edit</tabstop>
+  <tabstop>time_button</tabstop>
+  <tabstop>date_edit</tabstop>
+  <tabstop>date_button</tabstop>
+  <tabstop>command_edit</tabstop>
+  <tabstop>command_button</tabstop>
+  <tabstop>postpone_spin</tabstop>
+  <tabstop>save_button</tabstop>
+  <tabstop>cancel_button</tabstop>
+  <tabstop>help_button</tabstop>
+  <tabstop>popup_check</tabstop>
+  <tabstop>dialog_check</tabstop>
+  <tabstop>change_icon_check</tabstop>
+  <tabstop>file_edit</tabstop>
+  <tabstop>file_button</tabstop>
+  <tabstop>length_spin</tabstop>
+  <tabstop>loop_check</tabstop>
+  <tabstop>time_loop_spin</tabstop>
+  <tabstop>quick_label_edit</tabstop>
+  <tabstop>quick_minutes_edit</tabstop>
+  <tabstop>quick_slider_check</tabstop>
+  <tabstop>quick_popup_check</tabstop>
+  <tabstop>quick_dialog_check</tabstop>
+  <tabstop>quick_sound_check</tabstop>
+  <tabstop>quick_info_check</tabstop>
+  <tabstop>today_button</tabstop>
+  <tabstop>future_button</tabstop>
+  <tabstop>past_button</tabstop>
+  <tabstop>new_check</tabstop>
+  <tabstop>icon_combo</tabstop>
+  <tabstop>hide_check</tabstop>
+  <tabstop>time_format_combo</tabstop>
+  <tabstop>date_format_combo</tabstop>
+  <tabstop>boxcar_email_button</tabstop>
+  <tabstop>boxcar_email_edit</tabstop>
+  <tabstop>boxcar_notification_check</tabstop>
+ </tabstops>
  <resources>
   <include location="../../resources.qrc"/>
  </resources>

@@ -50,6 +50,9 @@
           <normaloff/>
          </iconset>
         </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
      </layout>
@@ -106,6 +109,10 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>close_button</tabstop>
+  <tabstop>credits_button</tabstop>
+ </tabstops>
  <resources>
   <include location="../../resources.qrc"/>
  </resources>
