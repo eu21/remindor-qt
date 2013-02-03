@@ -100,9 +100,13 @@ class RemindorQtWindow(QMainWindow):
 
     @Slot()
     def on_action_edit_triggered(self):
-        dialog = ReminderDialog(self)
-        dialog.added.connect(self.add_to_schedule)
-        dialog.exec_()
+        (selected, is_parent) = self.get_selected()
+
+        if not is_parent:
+            dialog = ReminderDialog(self)
+            dialog.edit(selected)
+            dialog.added.connect(self.add_to_schedule)
+            dialog.exec_()
 
     @Slot()
     def on_action_postpone_triggered(self):
@@ -274,4 +278,7 @@ class RemindorQtWindow(QMainWindow):
             if selected.text(4) == "": #id is "" only on the 3 parents
                 is_parent = True
 
-        return int(selected.text(4)), is_parent
+        if is_parent:
+            return -1, is_parent
+        else:
+            return int(selected.text(4)), is_parent

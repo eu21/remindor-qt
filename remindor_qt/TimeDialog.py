@@ -28,6 +28,11 @@ logger = logging.getLogger('remindor_qt')
 from remindor_qt import helpers
 
 class TimeDialog(QDialog):
+    update = Signal(str)
+
     def __init__(self, parent = None):
         super(TimeDialog, self).__init__(parent)
         helpers.setup_ui(self, "TimeDialog.ui")
+
+    def set_data(self, time_s):
+        pass

@@ -26,22 +26,36 @@ import logging
 logger = logging.getLogger('remindor_qt')
 
 from remindor_qt import helpers
+from remindor_qt.CommandDialog import CommandDialog
+from remindor_qt.DateDialog import DateDialog
+from remindor_qt.TimeDialog import TimeDialog
 from remindor_qt.remindor_qtconfig import get_data_file
 
 from remindor_common.helpers import ReminderDialogInfo
+from remindor_common import datetimeutil, database as db
 
 class ReminderDialog(QDialog):
     added = Signal(int)
+    delete_id = -1
 
     def __init__(self, parent = None):
         super(ReminderDialog, self).__init__(parent)
         helpers.setup_ui(self, "ReminderDialog.ui")
+
+        self.add_button = self.findChild(QPushButton, "add_button")
+        self.save_button = self.findChild(QPushButton, "save_button")
+        self.save_button.hide()
 
         self.label_edit = self.findChild(QLineEdit, "label_edit")
         self.time_edit = self.findChild(QLineEdit, "time_edit")
         self.date_edit = self.findChild(QLineEdit, "date_edit")
         self.command_edit = self.findChild(QLineEdit, "command_edit")
         self.notes_edit = self.findChild(QPlainTextEdit, "notes_edit")
+
+        self.time_error = self.findChild(QToolButton, "time_error")
+        self.time_error.hide()
+        self.date_error = self.findChild(QToolButton, "date_error")
+        self.date_error.hide()
 
         self.popup_check = self.findChild(QCheckBox, "popup_check")
         self.dialog_check = self.findChild(QCheckBox, "dialog_check")
@@ -75,13 +89,23 @@ class ReminderDialog(QDialog):
         sound_loop = self.loop_check.isChecked()
 
         (status, id) = self.info.reminder(label, time, date, command, notes, popup, dialog,
-                                          boxcar, play, sound_file, sound_length, sound_loop)
+                                          boxcar, play, sound_file, sound_length, sound_loop,
+                                          self.delete_id)
 
         if status == self.info.ok:
             self.added.emit(id)
             self.accept()
         else:
-            print status #TODO: popup error
+            if status == self.info.file_error:
+                title = _("File does not exist")
+                message = "%s\n%s" % (_("The following file does not exist:"), sound_file)
+                QMessageBox.warning(self, title, message)
+            elif status == self.info.time_error:
+                self.time_error.show()
+                self.time_edit.setFocus()
+            elif status == self.info.date_error:
+                self.date_error.show()
+                self.date_edit.setFocus()
 
     @Slot()
     def on_cancel_button_pressed(self):
@@ -93,15 +117,56 @@ class ReminderDialog(QDialog):
 
     @Slot()
     def on_time_button_pressed(self):
-        pass
+        simple_time = datetimeutil.str_time_simplify(self.time_edit.text())
+        fixed_time = datetimeutil.fix_time_format(simple_time, self.info.time_format)
+
+        dialog = TimeDialog(self)
+        dialog.set_data(fixed_time)
+        dialog.connect('update', self.time_updated)
+        dialog.exec_()
+
+    @Slot()
+    def time_updated(self, time_s):
+        self.time_edit.setText(time_s)
+
+    @Slot()
+    def on_time_edit_textEdited(self):
+        if self.info.valid_time(self.time_edit.text()):
+            self.time_error.hide()
+        else:
+            self.time_error.show()
 
     @Slot()
     def on_date_button_pressed(self):
-        pass
+        simple_date = datetimeutil.str_date_simplify(self.date_edit.text(), self.info.date_format)
+        fixed_date = datetimeutil.fix_date_format(simple_date, self.info.date_format)
+
+        dialog = DateDialog(self)
+        dialog.set_data(fixed_date, self.info.date_format)
+        dialog.connect('update', self.date_updated)
+        dialog.exec_()
+
+    @Slot()
+    def date_updated(self, date_s):
+        self.date_edit.setText(date_s)
+
+    @Slot()
+    def on_date_edit_textEdited(self):
+        if self.info.valid_date(self.date_edit.text()):
+            self.date_error.hide()
+        else:
+            self.date_error.show()
 
     @Slot()
     def on_command_button_pressed(self):
-        pass
+        dialog = CommandDialog(self)
+        dialog.set_data(self.command_edit.text())
+        dialog.connect('update', self.command_updated)
+        dialog.exec_()
+
+    @Slot()
+    def command_updated(self, command):
+        self.command_edit.setText(command)
 
     @Slot()
     def on_notes_button_pressed(self):
@@ -126,6 +191,21 @@ class ReminderDialog(QDialog):
                 self.length_spin.setEnabled(False)
             else:
                 self.length_spin.setEnabled(True)
+
+    def edit(self, reminder):
+        self.save_button.show()
+        self.add_button.hide()
+        self.setWindowTitle("Edit Reminder")
+
+        self.database = db.Database(helpers.database_file())
+        r = self.database.alarm(reminder)
+        self.database.close()
+
+        self.set_data(r.label, datetimeutil.fix_time_format(r.time, self.info.time_format),
+            datetimeutil.fix_date_format(r.date, self.info.date_format), r.command, r.notes,
+            r.notification, r.dialog, r.boxcar, r.sound_file, r.sound_length, r.sound_loop)
+
+        self.delete_id = reminder
 
     def set_data(self, label, time, date, command, notes, popup,
                  dialog, boxcar, sound_file, length, loop):

@@ -28,6 +28,11 @@ logger = logging.getLogger('remindor_qt')
 from remindor_qt import helpers
 
 class CommandDialog(QDialog):
+    update = Signal(str)
+
     def __init__(self, parent = None):
         super(CommandDialog, self).__init__(parent)
         helpers.setup_ui(self, "CommandDialog.ui")
+
+    def set_data(self, command):
+        pass
