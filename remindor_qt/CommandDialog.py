@@ -26,13 +26,38 @@ import logging
 logger = logging.getLogger('remindor_qt')
 
 from remindor_qt import helpers
+from remindor_common.helpers import insert_values
 
 class CommandDialog(QDialog):
     update = Signal(str)
 
-    def __init__(self, parent = None):
+    def __init__(self, command = "", parent = None):
         super(CommandDialog, self).__init__(parent)
         helpers.setup_ui(self, "CommandDialog.ui")
 
-    def set_data(self, command):
-        pass
+        self.insert_combo = self.findChild(QComboBox, "insert_combo")
+        self.command_edit = self.findChild(QLineEdit, "command_edit")
+        self.command_edit.setText(command)
+
+    @Slot()
+    def on_ok_button_pressed(self):
+        self.update.emit(self.command_edit.text())
+        self.accept()
+
+    @Slot()
+    def on_cancel_button_pressed(self):
+        self.reject()
+
+    @Slot()
+    def on_insert_button_pressed(self):
+        index = self.insert_combo.currentIndex()
+        self.command_edit.insert(insert_values[index])
+
+    @Slot()
+    def on_command_button_pressed(self):
+        caption = _("Choose Command")
+        command_dir = "/usr/bin"
+        file_filter = _("All Files (*)")
+
+        (filename, selected_filter) = QFileDialog.getOpenFileName(self, caption, command_dir, file_filter)
+        self.command_edit.setText(filename)

@@ -31,7 +31,7 @@ from remindor_qt.DateDialog import DateDialog
 from remindor_qt.TimeDialog import TimeDialog
 from remindor_qt.remindor_qtconfig import get_data_file
 
-from remindor_common.helpers import ReminderDialogInfo
+from remindor_common.helpers import ReminderDialogInfo, insert_values
 from remindor_common import datetimeutil, database as db
 
 class ReminderDialog(QDialog):
@@ -122,7 +122,7 @@ class ReminderDialog(QDialog):
 
         dialog = TimeDialog(self)
         dialog.set_data(fixed_time)
-        dialog.connect('update', self.time_updated)
+        dialog.update.connect(self.time_updated)
         dialog.exec_()
 
     @Slot()
@@ -143,7 +143,7 @@ class ReminderDialog(QDialog):
 
         dialog = DateDialog(self)
         dialog.set_data(fixed_date, self.info.date_format)
-        dialog.connect('update', self.date_updated)
+        dialog.update.connect(self.date_updated)
         dialog.exec_()
 
     @Slot()
@@ -159,9 +159,8 @@ class ReminderDialog(QDialog):
 
     @Slot()
     def on_command_button_pressed(self):
-        dialog = CommandDialog(self)
-        dialog.set_data(self.command_edit.text())
-        dialog.connect('update', self.command_updated)
+        dialog = CommandDialog(self.command_edit.text(), self)
+        dialog.update.connect(self.command_updated)
         dialog.exec_()
 
     @Slot()
@@ -171,13 +170,13 @@ class ReminderDialog(QDialog):
     @Slot()
     def on_notes_button_pressed(self):
         index = self.insert_combo.currentIndex()
-        self.notes_edit.insertPlainText(self.info.insert_values[index])
+        self.notes_edit.insertPlainText(insert_values[index])
 
     @Slot()
     def on_file_button_pressed(self):
         caption = _("Choose Sound")
         sound_dir = get_data_file('media', 'sounds')
-        file_filter = _("Sounds (*.mp3 *.ogg *.wav);;MP3 (*.mp3);;Ogg (*.ogg);;WAVE (*.wav)");
+        file_filter = _("Sounds (*.mp3 *.ogg *.wav);;MP3 (*.mp3);;Ogg (*.ogg);;WAVE (*.wav)")
 
         (filename, selected_filter) = QFileDialog.getOpenFileName(self, caption, sound_dir, file_filter)
         self.file_edit.setText(filename)

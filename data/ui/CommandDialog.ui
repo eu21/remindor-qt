@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>298</width>
+    <width>380</width>
     <height>93</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>350</width>
+    <height>0</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Edit Command</string>
@@ -128,6 +134,9 @@
      <property name="text">
       <string>...</string>
      </property>
+     <property name="icon">
+      <iconset theme="fileopen"/>
+     </property>
     </widget>
    </item>
    <item row="2" column="0" colspan="3">
@@ -155,7 +164,9 @@
          <string>Cancel</string>
         </property>
         <property name="icon">
-         <iconset theme="gtk-cancel"/>
+         <iconset theme="gtk-cancel">
+          <normaloff/>
+         </iconset>
         </property>
         <property name="default">
          <bool>true</bool>
