@@ -197,8 +197,8 @@ def check_autostart():
             #create autostart file
             f = open(filename, 'w')
             f.write('[Desktop Entry]\n')
-            f.write('Name=Indicator Remindor\n')
-            f.write('Comment=Indicator Remindor\n')
+            f.write('Name=Remindor-Qt\n')
+            f.write('Comment=Remindor-Qt\n')
             f.write('Categories=GNOME;Utility;\n')
             f.write("Exec=%s\n" % exec_path)
             f.write("Icon=%s\n" % icon)
