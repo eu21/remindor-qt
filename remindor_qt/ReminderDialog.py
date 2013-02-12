@@ -120,8 +120,7 @@ class ReminderDialog(QDialog):
         simple_time = datetimeutil.str_time_simplify(self.time_edit.text())
         fixed_time = datetimeutil.fix_time_format(simple_time, self.info.time_format)
 
-        dialog = TimeDialog(self)
-        dialog.set_data(fixed_time)
+        dialog = TimeDialog(fixed_time, self)
         dialog.update.connect(self.time_updated)
         dialog.exec_()
 

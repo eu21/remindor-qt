@@ -26,13 +26,118 @@ import logging
 logger = logging.getLogger('remindor_qt')
 
 from remindor_qt import helpers
+from remindor_common.helpers import TimeDialogInfo
 
 class TimeDialog(QDialog):
     update = Signal(str)
 
-    def __init__(self, parent = None):
+    def __init__(self, time_s = "", parent = None):
         super(TimeDialog, self).__init__(parent)
         helpers.setup_ui(self, "TimeDialog.ui")
+        self.info = TimeDialogInfo(time_s, helpers.database_file())
 
-    def set_data(self, time_s):
-        pass
+        self.error_label = self.findChild(QLabel, "error_label")
+        self.error_label.hide()
+
+        self.at_label = self.findChild(QLabel, "at_label")
+        self.at_time = self.findChild(QTimeEdit, "at_time")
+        self.at_time.setDisplayFormat(self.info.qt_time_format)
+        self.at_time.setTime(QTime.fromString(self.info.once_s, self.info.qt_time_format))
+
+        self.every_label = self.findChild(QLabel, "every_label")
+        self.every_spin = self.findChild(QSpinBox, "every_spin")
+        self.mh_label = self.findChild(QLabel, "mh_label")
+        self.from_label = self.findChild(QLabel, "from_label")
+        self.from_time = self.findChild(QTimeEdit, "from_time")
+        self.from_time.setDisplayFormat(self.info.qt_time_format)
+        self.from_time.setTime(QTime.fromString(self.info.from_s, self.info.qt_time_format))
+        self.from_check = self.findChild(QCheckBox, "from_check")
+        self.to_label = self.findChild(QLabel, "to_label")
+        self.to_time = self.findChild(QTimeEdit, "to_time")
+        self.to_time.setDisplayFormat(self.info.qt_time_format)
+        self.to_time.setTime(QTime.fromString(self.info.to_s, self.info.qt_time_format))
+
+        self.time_combo = self.findChild(QComboBox, "time_combo")
+        self.time_combo.setCurrentIndex(self.info.active)
+
+        #setup window
+        self.on_time_combo_currentIndexChanged()
+        self.validate_from_to()
+
+    @Slot()
+    def on_from_time_timeChanged(self):
+        self.validate_from_to()
+
+    @Slot()
+    def on_to_time_timeChanged(self):
+        self.validate_from_to()
+
+    def validate_from_to(self):
+        if self.time_combo.currentIndex() != self.info.once and self.from_check.isChecked():
+            from_s = self.from_time.time().toString(self.info.qt_time_format)
+            to_s = self.to_time.time().toString(self.info.qt_time_format)
+
+            error = self.info.validate_from_to(from_s, to_s)
+            if not error:
+                self.error_label.show()
+            else:
+                self.error_label.hide()
+
+            return error
+
+        return True
+
+    @Slot()
+    def on_cancel_button_pressed(self):
+        self.reject()
+
+    @Slot()
+    def on_ok_button_pressed(self):
+        index = self.time_combo.currentIndex()
+        once_s = self.at_time.time().toString(self.info.qt_time_format)
+        every = self.every_spin.value()
+
+        from_s = ""
+        to_s = ""
+        if self.from_check.isChecked():
+            from_s = self.from_time.time().toString(self.info.qt_time_format)
+            to_s = self.to_time.time().toString(self.info.qt_time_format)
+
+        if self.info.validate_from_to(from_s, to_s):
+            self.update.emit(self.info.build_time(index, once_s, every, from_s, to_s))
+            self.accept()
+
+    @Slot()
+    def on_time_combo_currentIndexChanged(self):
+        index = self.time_combo.currentIndex()
+
+        if index == self.info.once:
+            self.at_label.show()
+            self.at_time.show()
+            self.every_label.hide()
+            self.every_spin.hide()
+            self.mh_label.hide()
+            self.from_label.hide()
+            self.from_time.hide()
+            self.from_check.hide()
+            self.to_label.hide()
+            self.to_time.hide()
+        else:
+            self.at_label.hide()
+            self.at_time.hide()
+            self.every_label.show()
+            self.every_spin.show()
+            self.mh_label.show()
+            self.from_label.show()
+            self.from_time.show()
+            self.from_check.show()
+            self.to_label.show()
+            self.to_time.show()
+
+            if index == self.info.minutes:
+                self.mh_label.setText(_("Minute(s)"))
+            elif index == self.info.hours:
+                self.mh_label.setText(_("Hour(s)"))
+
+        self.resize(1, 1)
+        self.adjustSize()
