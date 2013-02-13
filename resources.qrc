@@ -16,5 +16,12 @@
         <file alias="web.png">data/media/onebit/web.png</file>
         <file alias="manage.png">data/media/onebit/manage.png</file>
         <file alias="remindor-qt.svg">data/media/remindor-qt.svg</file>
+        <file alias="open.png">data/media/onebit/open.png</file>
+        <file alias="save.png">data/media/onebit/save.png</file>
+        <file alias="ok.png">data/media/onebit/ok.png</file>
+        <file alias="users.png">data/media/onebit/users.png</file>
+    </qresource>
+    <qresource prefix="/services">
+        <file alias="boxcar.png">data/media/boxcar.png</file>
     </qresource>
 </RCC>

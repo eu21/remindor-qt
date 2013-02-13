@@ -135,7 +135,7 @@ Sound file:</string>
         </property>
         <property name="icon">
          <iconset theme="add">
-          <normaloff/>
+          <normalon>:/icons/add.png</normalon>
          </iconset>
         </property>
        </widget>

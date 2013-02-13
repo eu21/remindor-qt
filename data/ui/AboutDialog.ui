@@ -35,7 +35,7 @@
         </property>
         <property name="icon">
          <iconset theme="user-info">
-          <normaloff/>
+          <normalon>:/icons/users.png</normalon>
          </iconset>
         </property>
        </widget>
@@ -47,7 +47,7 @@
         </property>
         <property name="icon">
          <iconset theme="stock_close">
-          <normaloff/>
+          <normalon>:/icons/delete.png</normalon>
          </iconset>
         </property>
         <property name="default">

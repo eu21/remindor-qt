@@ -42,7 +42,7 @@
          </property>
          <property name="icon">
           <iconset theme="add">
-           <normaloff/>
+           <normalon>:/icons/add.png</normalon>
           </iconset>
          </property>
          <property name="autoDefault">
@@ -60,7 +60,7 @@
          </property>
          <property name="icon">
           <iconset theme="gtk-edit">
-           <normaloff/>
+           <normalon>:/icons/edit.png</normalon>
           </iconset>
          </property>
          <property name="autoDefault">
@@ -75,7 +75,7 @@
          </property>
          <property name="icon">
           <iconset theme="gtk-edit">
-           <normaloff/>
+           <normalon>:/icons/edit.png</normalon>
           </iconset>
          </property>
          <property name="autoDefault">
@@ -183,7 +183,7 @@
          </property>
          <property name="icon">
           <iconset theme="gtk-edit">
-           <normaloff/>
+           <normalon>:/icons/edit.png</normalon>
           </iconset>
          </property>
          <property name="autoDefault">
@@ -381,7 +381,7 @@ setup in Preferences</string>
          </property>
          <property name="icon">
           <iconset theme="fileopen">
-           <normaloff/>
+           <normalon>:/icons/open.png</normalon>
           </iconset>
          </property>
         </widget>
@@ -403,7 +403,7 @@ setup in Preferences</string>
         </property>
         <property name="icon">
          <iconset theme="help">
-          <normaloff/>
+          <normalon>:/icons/help.png</normalon>
          </iconset>
         </property>
         <property name="autoDefault">
@@ -431,7 +431,7 @@ setup in Preferences</string>
         </property>
         <property name="icon">
          <iconset theme="gtk-cancel">
-          <normaloff/>
+          <normalon>:/icons/delete.png</normalon>
          </iconset>
         </property>
         <property name="autoDefault">
@@ -449,7 +449,7 @@ setup in Preferences</string>
         </property>
         <property name="icon">
          <iconset theme="add">
-          <normaloff/>
+          <normalon>:/icons/add.png</normalon>
          </iconset>
         </property>
         <property name="autoDefault">
@@ -463,7 +463,9 @@ setup in Preferences</string>
          <string>Save</string>
         </property>
         <property name="icon">
-         <iconset theme="filesave"/>
+         <iconset theme="filesave">
+          <normalon>:/icons/save.png</normalon>
+         </iconset>
         </property>
        </widget>
       </item>

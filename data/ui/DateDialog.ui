@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>251</width>
-    <height>258</height>
+    <height>281</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -121,7 +121,7 @@
         </property>
         <property name="icon">
          <iconset theme="gtk-cancel">
-          <normaloff/>
+          <normalon>:/icons/delete.png</normalon>
          </iconset>
         </property>
         <property name="default">
@@ -136,7 +136,7 @@
         </property>
         <property name="icon">
          <iconset theme="dialog-ok">
-          <normaloff/>
+          <normalon>:/icons/ok.png</normalon>
          </iconset>
         </property>
        </widget>

@@ -129,6 +129,11 @@
             <property name="text">
              <string>Edit</string>
             </property>
+            <property name="icon">
+             <iconset theme="gtk-edit">
+              <normalon>:/icons/edit.png</normalon>
+             </iconset>
+            </property>
            </widget>
           </item>
           <item row="3" column="1">
@@ -141,6 +146,11 @@
            <widget class="QPushButton" name="command_button">
             <property name="text">
              <string>Edit</string>
+            </property>
+            <property name="icon">
+             <iconset theme="gtk-edit">
+              <normalon>:/icons/edit.png</normalon>
+             </iconset>
             </property>
            </widget>
           </item>
@@ -156,6 +166,11 @@ Postpone</string>
            <widget class="QPushButton" name="time_button">
             <property name="text">
              <string>Edit</string>
+            </property>
+            <property name="icon">
+             <iconset theme="gtk-edit">
+              <normalon>:/icons/edit.png</normalon>
+             </iconset>
             </property>
            </widget>
           </item>
@@ -286,6 +301,11 @@ Postpone</string>
            <widget class="QToolButton" name="file_button">
             <property name="text">
              <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset theme="fileopen">
+              <normalon>:/icons/open.png</normalon>
+             </iconset>
             </property>
            </widget>
           </item>
@@ -710,6 +730,10 @@ Notifications</string>
             <property name="text">
              <string>Boxcar Email</string>
             </property>
+            <property name="icon">
+             <iconset resource="../../resources.qrc">
+              <normaloff>:/services/boxcar.png</normaloff>:/services/boxcar.png</iconset>
+            </property>
            </widget>
           </item>
          </layout>
@@ -732,7 +756,7 @@ Notifications</string>
         </property>
         <property name="icon">
          <iconset theme="help">
-          <normaloff/>
+          <normalon>:/icons/help.png</normalon>
          </iconset>
         </property>
        </widget>
@@ -756,7 +780,9 @@ Notifications</string>
          <string>Cancel</string>
         </property>
         <property name="icon">
-         <iconset theme="gtk-cancel"/>
+         <iconset theme="gtk-cancel">
+          <normalon>:/icons/delete.png</normalon>
+         </iconset>
         </property>
         <property name="default">
          <bool>true</bool>
@@ -770,7 +796,7 @@ Notifications</string>
         </property>
         <property name="icon">
          <iconset theme="stock_save">
-          <normaloff/>
+          <normalon>:/icons/save.png</normalon>
          </iconset>
         </property>
        </widget>

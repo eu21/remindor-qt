@@ -65,7 +65,8 @@
         </property>
         <property name="icon">
          <iconset theme="gtk-cancel">
-          <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
+          <normalon>:/icons/delete.png</normalon>
+         </iconset>
         </property>
         <property name="default">
          <bool>true</bool>
@@ -79,7 +80,8 @@
         </property>
         <property name="icon">
          <iconset theme="dialog-ok">
-          <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
+          <normalon>:/icons/ok.png</normalon>
+         </iconset>
         </property>
         <property name="autoDefault">
          <bool>false</bool>

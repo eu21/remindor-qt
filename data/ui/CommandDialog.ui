@@ -124,7 +124,7 @@
      </property>
      <property name="icon">
       <iconset theme="add">
-       <normaloff/>
+       <normalon>:/icons/add.png</normalon>
       </iconset>
      </property>
     </widget>
@@ -135,7 +135,9 @@
       <string>...</string>
      </property>
      <property name="icon">
-      <iconset theme="fileopen"/>
+      <iconset theme="fileopen">
+       <normalon>:/icons/open.png</normalon>
+      </iconset>
      </property>
     </widget>
    </item>
@@ -165,7 +167,7 @@
         </property>
         <property name="icon">
          <iconset theme="gtk-cancel">
-          <normaloff/>
+          <normalon>:/icons/delete.png</normalon>
          </iconset>
         </property>
         <property name="default">
@@ -180,7 +182,7 @@
         </property>
         <property name="icon">
          <iconset theme="dialog-ok">
-          <normaloff/>
+          <normalon>:/icons/ok.png</normalon>
          </iconset>
         </property>
        </widget>

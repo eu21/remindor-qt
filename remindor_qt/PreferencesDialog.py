@@ -29,3 +29,7 @@ class PreferencesDialog(QDialog):
     def __init__(self, parent = None):
         super(PreferencesDialog, self).__init__(parent)
         helpers.setup_ui(self, "PreferencesDialog.ui")
+
+    @Slot()
+    def on_cancel_button_pressed(self):
+        self.reject()
