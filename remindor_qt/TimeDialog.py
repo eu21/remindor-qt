@@ -36,28 +36,31 @@ class TimeDialog(QDialog):
         helpers.setup_ui(self, "TimeDialog.ui")
         self.info = TimeDialogInfo(time_s, helpers.database_file())
 
+        self.time_combo = self.findChild(QComboBox, "time_combo")
+
         self.error_label = self.findChild(QLabel, "error_label")
         self.error_label.hide()
 
         self.at_label = self.findChild(QLabel, "at_label")
         self.at_time = self.findChild(QTimeEdit, "at_time")
-        self.at_time.setDisplayFormat(self.info.qt_time_format)
-        self.at_time.setTime(QTime.fromString(self.info.once_s, self.info.qt_time_format))
 
         self.every_label = self.findChild(QLabel, "every_label")
         self.every_spin = self.findChild(QSpinBox, "every_spin")
         self.mh_label = self.findChild(QLabel, "mh_label")
         self.from_label = self.findChild(QLabel, "from_label")
         self.from_time = self.findChild(QTimeEdit, "from_time")
-        self.from_time.setDisplayFormat(self.info.qt_time_format)
-        self.from_time.setTime(QTime.fromString(self.info.from_s, self.info.qt_time_format))
         self.from_check = self.findChild(QCheckBox, "from_check")
         self.to_label = self.findChild(QLabel, "to_label")
         self.to_time = self.findChild(QTimeEdit, "to_time")
+
+        self.at_time.setDisplayFormat(self.info.qt_time_format)
+        self.at_time.setTime(QTime.fromString(self.info.once_s, self.info.qt_time_format))
+        self.from_time.setDisplayFormat(self.info.qt_time_format)
+        self.from_time.setTime(QTime.fromString(self.info.from_s, self.info.qt_time_format))
+        self.from_check.setChecked(self.info.check)
         self.to_time.setDisplayFormat(self.info.qt_time_format)
         self.to_time.setTime(QTime.fromString(self.info.to_s, self.info.qt_time_format))
 
-        self.time_combo = self.findChild(QComboBox, "time_combo")
         self.time_combo.setCurrentIndex(self.info.active)
 
         #setup window
@@ -103,7 +106,7 @@ class TimeDialog(QDialog):
             from_s = self.from_time.time().toString(self.info.qt_time_format)
             to_s = self.to_time.time().toString(self.info.qt_time_format)
 
-        if self.info.validate_from_to(from_s, to_s):
+        if self.validate_from_to():
             self.update.emit(self.info.build_time(index, once_s, every, from_s, to_s))
             self.accept()
 
@@ -122,6 +125,7 @@ class TimeDialog(QDialog):
             self.from_check.hide()
             self.to_label.hide()
             self.to_time.hide()
+            self.error_label.hide()
         else:
             self.at_label.hide()
             self.at_time.hide()
@@ -133,6 +137,8 @@ class TimeDialog(QDialog):
             self.from_check.show()
             self.to_label.show()
             self.to_time.show()
+
+            self.validate_from_to()
 
             if index == self.info.minutes:
                 self.mh_label.setText(_("Minute(s)"))

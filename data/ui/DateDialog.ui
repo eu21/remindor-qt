@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>227</width>
+    <width>251</width>
     <height>258</height>
    </rect>
   </property>
@@ -22,21 +22,222 @@
    <property name="margin">
     <number>0</number>
    </property>
-   <item row="3" column="0">
+   <item row="3" column="0" colspan="2">
     <widget class="QLabel" name="every_label">
      <property name="text">
       <string>Every</string>
      </property>
     </widget>
    </item>
-   <item row="6" column="0">
+   <item row="5" column="1">
+    <widget class="QCheckBox" name="from_check">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QLabel" name="on_label">
+     <property name="text">
+      <string>On</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2" colspan="2">
+    <widget class="QComboBox" name="every_combo">
+     <item>
+      <property name="text">
+       <string>Monday</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Tuesday</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Wednesday</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Thursday</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Friday</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Saturday</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Sunday</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Weekday</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Weekend</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="8" column="0" colspan="4">
+    <widget class="QWidget" name="button_widget" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <item>
+       <spacer name="horizontalspacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="cancel_button">
+        <property name="text">
+         <string>Cancel</string>
+        </property>
+        <property name="icon">
+         <iconset theme="gtk-cancel">
+          <normaloff/>
+         </iconset>
+        </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="ok_button">
+        <property name="text">
+         <string>Ok</string>
+        </property>
+        <property name="icon">
+         <iconset theme="dialog-ok">
+          <normaloff/>
+         </iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="4" column="3">
+    <widget class="QLabel" name="days_label">
+     <property name="text">
+      <string>Day(s)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2" colspan="2">
+    <widget class="QComboBox" name="date_combo">
+     <item>
+      <property name="text">
+       <string>Once</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Every day</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Every X days</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Every Xth of the Month</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Every &lt;day&gt;</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Every other day</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Next X days</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QDateEdit" name="on_date"/>
+   </item>
+   <item row="5" column="2">
+    <widget class="QDateEdit" name="from_date"/>
+   </item>
+   <item row="6" column="2">
+    <widget class="QDateEdit" name="to_date"/>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="QLabel" name="every_label2">
+     <property name="text">
+      <string>Every</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="2">
     <widget class="QLabel" name="to_label">
      <property name="text">
       <string>To</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="1" colspan="2">
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="date_label">
+     <property name="text">
+      <string>Date</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="from_label">
+     <property name="text">
+      <string>From</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2">
+    <widget class="QSpinBox" name="every_spin">
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>600</number>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2" colspan="2">
     <widget class="QComboBox" name="on_combo">
      <item>
       <property name="text">
@@ -95,194 +296,15 @@
      </item>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="on_label">
+   <item row="7" column="0" colspan="4">
+    <widget class="QLabel" name="error_label">
      <property name="text">
-      <string>On</string>
+      <string>From must be before To</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="QSpinBox" name="every_spin">
-     <property name="minimum">
-      <number>1</number>
-     </property>
-     <property name="maximum">
-      <number>600</number>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="from_label">
-     <property name="text">
-      <string>From</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1" colspan="2">
-    <widget class="QComboBox" name="every_combo">
-     <item>
-      <property name="text">
-       <string>Monday</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Tuesday</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Wednesday</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Thursday</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Friday</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Saturday</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Sunday</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Weekday</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Weekend</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="7" column="0" colspan="3">
-    <widget class="QWidget" name="button_widget" native="true">
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="margin">
-       <number>0</number>
-      </property>
-      <item>
-       <spacer name="horizontalspacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="cancel_button">
-        <property name="text">
-         <string>Cancel</string>
-        </property>
-        <property name="icon">
-         <iconset theme="gtk-cancel"/>
-        </property>
-        <property name="default">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="ok_button">
-        <property name="text">
-         <string>Ok</string>
-        </property>
-        <property name="icon">
-         <iconset theme="dialog-ok">
-          <normaloff/>
-         </iconset>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="every_label2">
-     <property name="text">
-      <string>Every</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="2">
-    <widget class="QLabel" name="days_label">
-     <property name="text">
-      <string>Day(s)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="date_label">
-     <property name="text">
-      <string>Date</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1" colspan="2">
-    <widget class="QComboBox" name="date_combo">
-     <item>
-      <property name="text">
-       <string>Once</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Every day</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Every X days</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Every Xth of the Month</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Every &lt;day&gt;</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Every other day</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Next X days</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QDateEdit" name="on_date"/>
-   </item>
-   <item row="5" column="1">
-    <widget class="QDateEdit" name="from_date"/>
-   </item>
-   <item row="6" column="1">
-    <widget class="QDateEdit" name="to_date"/>
    </item>
   </layout>
  </widget>
@@ -300,5 +322,38 @@
  <resources>
   <include location="../../resources.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>from_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>from_date</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>54</x>
+     <y>178</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>119</x>
+     <y>178</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>from_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>to_date</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>52</x>
+     <y>178</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>119</x>
+     <y>211</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
