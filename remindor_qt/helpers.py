@@ -77,24 +77,39 @@ def set_up_logging(opts):
     null_handler = NullHandler()
     root.addHandler(null_handler)
 
-    formatter = logging.Formatter("%(levelname)s:%(name)s: %(funcName)s() '%(message)s'")
+    formatter = logging.Formatter("%(asctime)s %(levelname)s:%(name)s: %(funcName)s() '%(message)s'")
 
     logger = logging.getLogger('remindor_qt')
-    logger_sh = logging.StreamHandler()
-    logger_sh.setFormatter(formatter)
-    logger.addHandler(logger_sh)
+    lib_logger = logging.getLogger('remindor_common')
 
-    lib_logger = logging.getLogger('remindor_qt_lib')
-    lib_logger_sh = logging.StreamHandler()
-    lib_logger_sh.setFormatter(formatter)
-    lib_logger.addHandler(lib_logger_sh)
+    log = log_file()
+    #if opts.add or opts.quick or opts.manage or opts.prefs or opts.stop:
+        #log = config_dir() + "/indicator-remindor_console.log"
+    #else:
+    if os.path.isfile(log_file()):
+        os.remove(log_file()) #delete old log file
+
+    logger_fh = logging.FileHandler(log)
+    logger_fh.setFormatter(formatter)
+    logger.addHandler(logger_fh)
+    logger.setLevel(logging.DEBUG)
+
+    lib_logger_fh = logging.FileHandler(log)
+    lib_logger_fh.setFormatter(formatter)
+    lib_logger.addHandler(lib_logger_fh)
+    lib_logger.setLevel(logging.DEBUG)
 
     # Set the logging level to show debug messages.
     if opts.verbose:
-        logger.setLevel(logging.DEBUG)
-        logger.debug('logging enabled')
+        logger_sh = logging.StreamHandler()
+        logger_sh.setFormatter(formatter)
+        logger.addHandler(logger_sh)
+        logger.debug('verbose mode')
     if opts.verbose > 1:
-        lib_logger.setLevel(logging.DEBUG)
+        lib_logger_sh = logging.StreamHandler()
+        lib_logger_sh.setFormatter(formatter)
+        lib_logger.addHandler(lib_logger_sh)
+        lib_logger.debug('extra verbose mode')
 
 def get_help_uri(page = None):
     # help_uri from source tree - default language
