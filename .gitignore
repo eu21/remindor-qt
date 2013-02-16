@@ -1,5 +1,11 @@
+#dolphon settings
 .directory
+
+#qtcreator settings
 *.pro.user
+
+#symlink to remindor_common
+remindor_common
 
 *.py[cod]
 
@@ -13,7 +19,7 @@ dist
 build
 eggs
 parts
-bin
+#bin
 var
 sdist
 develop-eggs
