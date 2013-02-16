@@ -19,6 +19,8 @@ from PySide.QtGui import *
 from PySide.QtSvg import *
 from PySide.phonon import Phonon
 
+import pynotify
+
 from remindor_qt.helpers import RTimer, get_data_file
 from remindor_common.scheduler import GenericScheduler
 
@@ -47,6 +49,7 @@ class SchedulerQt(GenericScheduler):
         GenericScheduler.__init__(self, file)
         self.tray_icon = tray_icon
         self.helper = SchedulerQtHelper(slot)
+        pynotify.init("remindor-qt")
 
     def remove_reminder(self, reminder):
         logger.debug("schedulerqt: remove_reminder")
@@ -82,7 +85,9 @@ class SchedulerQt(GenericScheduler):
 
     def popup_notification(self, label, notes):
         logger.debug("schedulerqt: popup_notification: " + label + " " + notes)
-        self.tray_icon.showMessage(label, notes) #TODO: maybe use pynotify?
+        #self.tray_icon.showMessage(label, notes)
+        n = pynotify.Notification(label, notes, "remindor-qt")
+        n.show()
 
     def popup_dialog(self, label, notes):
         logger.debug("schedulerqt: popup_dialog: " + label + " " + notes)
