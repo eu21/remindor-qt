@@ -24,23 +24,18 @@ from PySide.QtCore import *
 from PySide.QtGui import *
 
 from remindor_qt import RemindorQtWindow
-from remindor_qt.helpers import set_up_logging, check_database, check_autostart
+from remindor_qt.helpers import check_database, check_autostart, log_file, config_dir
 from remindor_qt.remindor_qtconfig import get_version
 from remindor_qt import resources
 
-def parse_options():
-    parser = optparse.OptionParser(version="%%prog %s" % get_version())
-    parser.add_option(
-        "-v", "--verbose", action="count", dest="verbose",
-        help=_("Show debug messages (-vv debugs remindor_common also)"))
-    (options, args) = parser.parse_args()
-
-    set_up_logging(options)
+from remindor_common.helpers import parse_options, set_up_logging
 
 def main():
     check_autostart()
     check_database()
-    parse_options()
+
+    (options, parser) = parse_options(get_version())
+    set_up_logging("remindor_qt", log_file(), config_dir(), options)
 
     #Run the application.
     app = QApplication([""])

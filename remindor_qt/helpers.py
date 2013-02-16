@@ -67,11 +67,11 @@ def get_html_file(html_file_name):
 
     return "file:///" + html_filename
 
-class NullHandler(logging.Handler):
+'''class NullHandler(logging.Handler):
     def emit(self, record):
-        pass
+        pass'''
 
-def set_up_logging(opts):
+'''def set_up_logging(opts):
     # add a handler to prevent basicConfig
     root = logging.getLogger()
     null_handler = NullHandler()
@@ -109,7 +109,7 @@ def set_up_logging(opts):
         lib_logger_sh = logging.StreamHandler()
         lib_logger_sh.setFormatter(formatter)
         lib_logger.addHandler(lib_logger_sh)
-        lib_logger.debug('extra verbose mode')
+        lib_logger.debug('extra verbose mode')'''
 
 def get_help_uri(page = None):
     # help_uri from source tree - default language
