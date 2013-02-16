@@ -205,7 +205,7 @@
  <connections>
   <connection>
    <sender>from_check</sender>
-   <signal>clicked(bool)</signal>
+   <signal>toggled(bool)</signal>
    <receiver>from_time</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>

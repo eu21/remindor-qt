@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>500</width>
+    <width>486</width>
     <height>327</height>
    </rect>
   </property>
@@ -18,11 +18,72 @@
     <normalon>:/icons/remindor-qt.svg</normalon>
    </iconset>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QGridLayout" name="gridLayout_2">
    <property name="margin">
     <number>0</number>
    </property>
-   <item>
+   <item row="1" column="0">
+    <widget class="QWidget" name="button_widget" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="help_button">
+        <property name="text">
+         <string>Help</string>
+        </property>
+        <property name="icon">
+         <iconset theme="help">
+          <normalon>:/icons/help.png</normalon>
+         </iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalspacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="cancel_button">
+        <property name="text">
+         <string>Cancel</string>
+        </property>
+        <property name="icon">
+         <iconset theme="gtk-cancel">
+          <normalon>:/icons/delete.png</normalon>
+         </iconset>
+        </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="save_button">
+        <property name="text">
+         <string>Save</string>
+        </property>
+        <property name="icon">
+         <iconset theme="stock_save">
+          <normalon>:/icons/save.png</normalon>
+         </iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="0">
     <widget class="QWidget" name="preferences_widget" native="true">
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <property name="margin">
@@ -83,27 +144,13 @@
         </property>
         <widget class="QWidget" name="standard_page">
          <layout class="QGridLayout" name="gridLayout">
-          <item row="0" column="1" colspan="2">
+          <item row="0" column="2" colspan="2">
            <widget class="QLineEdit" name="label_edit"/>
           </item>
           <item row="2" column="0">
            <widget class="QLabel" name="date_label">
             <property name="text">
              <string>Default Date</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="command_label">
-            <property name="text">
-             <string>Default Command</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_label">
-            <property name="text">
-             <string>Default Label</string>
             </property>
            </widget>
           </item>
@@ -114,77 +161,7 @@
             </property>
            </widget>
           </item>
-          <item row="5" column="1" colspan="2">
-           <widget class="QSpinBox" name="postpone_spin">
-            <property name="minimum">
-             <number>1</number>
-            </property>
-            <property name="maximum">
-             <number>600</number>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="2">
-           <widget class="QPushButton" name="date_button">
-            <property name="text">
-             <string>Edit</string>
-            </property>
-            <property name="icon">
-             <iconset theme="gtk-edit">
-              <normalon>:/icons/edit.png</normalon>
-             </iconset>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QLineEdit" name="command_edit"/>
-          </item>
-          <item row="2" column="1">
-           <widget class="QLineEdit" name="date_edit"/>
-          </item>
-          <item row="3" column="2">
-           <widget class="QPushButton" name="command_button">
-            <property name="text">
-             <string>Edit</string>
-            </property>
-            <property name="icon">
-             <iconset theme="gtk-edit">
-              <normalon>:/icons/edit.png</normalon>
-             </iconset>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="postpone_label">
-            <property name="text">
-             <string>Minutes to
-Postpone</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <widget class="QPushButton" name="time_button">
-            <property name="text">
-             <string>Edit</string>
-            </property>
-            <property name="icon">
-             <iconset theme="gtk-edit">
-              <normalon>:/icons/edit.png</normalon>
-             </iconset>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLineEdit" name="time_edit"/>
-          </item>
-          <item row="4" column="0" colspan="3">
-           <widget class="Line" name="line">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="1">
+          <item row="6" column="2">
            <spacer name="verticalspacer">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -197,33 +174,162 @@ Postpone</string>
             </property>
            </spacer>
           </item>
+          <item row="5" column="2" colspan="2">
+           <widget class="QSpinBox" name="postpone_spin">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>600</number>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="3">
+           <widget class="QPushButton" name="date_button">
+            <property name="text">
+             <string>Edit</string>
+            </property>
+            <property name="icon">
+             <iconset theme="gtk-edit">
+              <normalon>:/icons/edit.png</normalon>
+             </iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2">
+           <widget class="QLineEdit" name="command_edit"/>
+          </item>
+          <item row="2" column="2">
+           <widget class="QLineEdit" name="date_edit"/>
+          </item>
+          <item row="3" column="3">
+           <widget class="QPushButton" name="command_button">
+            <property name="text">
+             <string>Edit</string>
+            </property>
+            <property name="icon">
+             <iconset theme="gtk-edit">
+              <normalon>:/icons/edit.png</normalon>
+             </iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QPushButton" name="time_button">
+            <property name="text">
+             <string>Edit</string>
+            </property>
+            <property name="icon">
+             <iconset theme="gtk-edit">
+              <normalon>:/icons/edit.png</normalon>
+             </iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLineEdit" name="time_edit"/>
+          </item>
+          <item row="4" column="0" colspan="4">
+           <widget class="Line" name="line">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QToolButton" name="time_error">
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset theme="error">
+              <normalon>:/icons/delete.png</normalon>
+             </iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QToolButton" name="date_error">
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset theme="error">
+              <normalon>:/icons/delete.png</normalon>
+             </iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QLabel" name="label_label">
+            <property name="text">
+             <string>Default Label</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0" colspan="2">
+           <widget class="QLabel" name="postpone_label">
+            <property name="text">
+             <string>Minutes to Postpone</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="2">
+           <widget class="QLabel" name="command_label">
+            <property name="text">
+             <string>Default Command</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
         <widget class="QWidget" name="notifications_page">
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <item>
+         <layout class="QGridLayout" name="gridLayout_8">
+          <item row="0" column="1">
            <widget class="QCheckBox" name="popup_check">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="change_icon_label">
+            <property name="text">
+             <string>Change Tray
+Icon on Reminder</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QCheckBox" name="change_icon_check">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QCheckBox" name="dialog_check">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="popup_label">
             <property name="text">
              <string>Popup</string>
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QCheckBox" name="dialog_check">
+          <item row="1" column="0">
+           <widget class="QLabel" name="dialog_label">
             <property name="text">
              <string>Dialog</string>
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QCheckBox" name="change_icon_check">
-            <property name="text">
-             <string>Change Indicator Icon on Reminder</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="verticalspacer2">
+          <item row="3" column="1">
+           <spacer name="verticalSpacer">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -399,9 +505,6 @@ sound settings</string>
           <item row="0" column="1">
            <widget class="QLineEdit" name="quick_label_edit"/>
           </item>
-          <item row="1" column="1">
-           <widget class="QLineEdit" name="quick_minutes_edit"/>
-          </item>
           <item row="3" column="0" colspan="2">
            <widget class="Line" name="line2">
             <property name="orientation">
@@ -451,10 +554,67 @@ sound settings</string>
             </property>
            </widget>
           </item>
+          <item row="1" column="1">
+           <widget class="QSpinBox" name="quick_minutes_spin">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>120</number>
+            </property>
+            <property name="value">
+             <number>30</number>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
         <widget class="QWidget" name="interface_page">
          <layout class="QGridLayout" name="gridLayout_5">
+          <item row="6" column="1">
+           <widget class="QCheckBox" name="hide_check">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QComboBox" name="icon_combo">
+            <item>
+             <property name="text">
+              <string>System Theme</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Light Icon</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Dark Icon</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>App Icon</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="7" column="0">
+           <spacer name="verticalspacer5">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
           <item row="1" column="0">
            <widget class="QLabel" name="future_label">
             <property name="text">
@@ -484,13 +644,6 @@ Notifications</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="0" colspan="2">
-           <widget class="Line" name="line4">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
           <item row="5" column="0">
            <widget class="QLabel" name="icon_label">
             <property name="text">
@@ -505,28 +658,11 @@ Notifications</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="1">
-           <widget class="QCheckBox" name="new_check">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="0">
-           <spacer name="verticalspacer5">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
           <item row="0" column="1">
            <widget class="QPushButton" name="today_button">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string>Color</string>
             </property>
@@ -546,32 +682,15 @@ Notifications</string>
             </property>
            </widget>
           </item>
-          <item row="5" column="1">
-           <widget class="QComboBox" name="icon_combo">
-            <item>
-             <property name="text">
-              <string>System Theme</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Light Icon</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Dark Icon</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>App Icon</string>
-             </property>
-            </item>
+          <item row="4" column="0" colspan="2">
+           <widget class="Line" name="line4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
            </widget>
           </item>
-          <item row="6" column="1">
-           <widget class="QCheckBox" name="hide_check">
+          <item row="3" column="1">
+           <widget class="QCheckBox" name="new_check">
             <property name="text">
              <string/>
             </property>
@@ -727,6 +846,9 @@ Notifications</string>
           </item>
           <item row="0" column="0">
            <widget class="QCommandLinkButton" name="boxcar_email_button">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string>Boxcar Email</string>
             </property>
@@ -738,67 +860,6 @@ Notifications</string>
           </item>
          </layout>
         </widget>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QWidget" name="button_widget" native="true">
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="margin">
-       <number>0</number>
-      </property>
-      <item>
-       <widget class="QPushButton" name="help_button">
-        <property name="text">
-         <string>Help</string>
-        </property>
-        <property name="icon">
-         <iconset theme="help">
-          <normalon>:/icons/help.png</normalon>
-         </iconset>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalspacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="cancel_button">
-        <property name="text">
-         <string>Cancel</string>
-        </property>
-        <property name="icon">
-         <iconset theme="gtk-cancel">
-          <normalon>:/icons/delete.png</normalon>
-         </iconset>
-        </property>
-        <property name="default">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="save_button">
-        <property name="text">
-         <string>Save</string>
-        </property>
-        <property name="icon">
-         <iconset theme="stock_save">
-          <normalon>:/icons/save.png</normalon>
-         </iconset>
-        </property>
        </widget>
       </item>
      </layout>
@@ -828,7 +889,6 @@ Notifications</string>
   <tabstop>loop_check</tabstop>
   <tabstop>time_loop_spin</tabstop>
   <tabstop>quick_label_edit</tabstop>
-  <tabstop>quick_minutes_edit</tabstop>
   <tabstop>quick_slider_check</tabstop>
   <tabstop>quick_popup_check</tabstop>
   <tabstop>quick_dialog_check</tabstop>
@@ -863,6 +923,38 @@ Notifications</string>
     <hint type="destinationlabel">
      <x>296</x>
      <y>146</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>time_error</sender>
+   <signal>pressed()</signal>
+   <receiver>time_edit</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>281</x>
+     <y>54</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>342</x>
+     <y>55</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>date_error</sender>
+   <signal>pressed()</signal>
+   <receiver>date_edit</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>281</x>
+     <y>87</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>342</x>
+     <y>88</y>
     </hint>
    </hints>
   </connection>

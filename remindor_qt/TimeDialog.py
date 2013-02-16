@@ -57,9 +57,9 @@ class TimeDialog(QDialog):
         self.at_time.setTime(QTime.fromString(self.info.once_s, self.info.qt_time_format))
         self.from_time.setDisplayFormat(self.info.qt_time_format)
         self.from_time.setTime(QTime.fromString(self.info.from_s, self.info.qt_time_format))
-        self.from_check.setChecked(self.info.check)
         self.to_time.setDisplayFormat(self.info.qt_time_format)
         self.to_time.setTime(QTime.fromString(self.info.to_s, self.info.qt_time_format))
+        self.from_check.setChecked(self.info.check)
 
         self.time_combo.setCurrentIndex(self.info.active)
 
