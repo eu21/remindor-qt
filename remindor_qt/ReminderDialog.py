@@ -31,7 +31,7 @@ from remindor_qt.DateDialog import DateDialog
 from remindor_qt.TimeDialog import TimeDialog
 from remindor_qt.remindor_qtconfig import get_data_file
 
-from remindor_common.helpers import ReminderDialogInfo, insert_values
+from remindor_common.helpers import ReminderDialogInfo, insert_values, valid_date, valid_time
 from remindor_common import datetimeutil, database as db
 
 class ReminderDialog(QDialog):
@@ -130,7 +130,7 @@ class ReminderDialog(QDialog):
 
     @Slot()
     def on_time_edit_textEdited(self):
-        if self.info.valid_time(self.time_edit.text()):
+        if valid_time(self.time_edit.text()):
             self.time_error.hide()
         else:
             self.time_error.show()
@@ -150,7 +150,7 @@ class ReminderDialog(QDialog):
 
     @Slot()
     def on_date_edit_textEdited(self):
-        if self.info.valid_date(self.date_edit.text()):
+        if valid_date(self.date_edit.text(), self.info.date_format):
             self.date_error.hide()
         else:
             self.date_error.show()

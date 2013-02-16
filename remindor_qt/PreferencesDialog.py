@@ -21,12 +21,17 @@ from PySide.QtUiTools import *
 import logging
 logger = logging.getLogger('remindor_qt')
 
+import gettext
+from gettext import gettext as _
+gettext.textdomain('remindor-qt')
+
 from remindor_qt import helpers
+from remindor_qt.remindor_qtconfig import get_data_file
 from remindor_qt.CommandDialog import CommandDialog
 from remindor_qt.DateDialog import DateDialog
 from remindor_qt.TimeDialog import TimeDialog
 
-from remindor_common.helpers import rgb_to_hex, PreferencesDialogInfo
+from remindor_common.helpers import rgb_to_hex, PreferencesDialogInfo, valid_date, valid_time
 from remindor_common import datetimeutil
 
 class PreferencesDialog(QDialog):
@@ -38,6 +43,9 @@ class PreferencesDialog(QDialog):
         self.info = PreferencesDialogInfo(helpers.database_file())
         self.settings = self.info.settings
         self.boxcar_info = self.info.services.service("boxcar")
+
+        self.stack_widget = self.findChild(QStackedWidget, "stack")
+        self.list_widget = self.findChild(QListWidget, "list")
 
         self.label_edit = self.findChild(QLineEdit, "label_edit")
         self.label_edit.setText(self.settings.label)
@@ -119,6 +127,7 @@ class PreferencesDialog(QDialog):
         self.icon_combo.setCurrentIndex(self.settings.indicator_icon)
         self.hide_check = self.findChild(QCheckBox, "hide_check")
         self.hide_check.setChecked(self.settings.hide_indicator)
+        self.hide_start = self.settings.hide_indicator
 
         self.time_format_combo = self.findChild(QComboBox, "time_format_combo")
         self.time_format_combo.setCurrentIndex(self.settings.time_format)
@@ -149,7 +158,7 @@ class PreferencesDialog(QDialog):
 
     @Slot()
     def on_time_edit_textEdited(self):
-        if self.info.valid_time(self.time_edit.text()):
+        if valid_time(self.time_edit.text()):
             self.time_error.hide()
         else:
             self.time_error.show()
@@ -169,7 +178,7 @@ class PreferencesDialog(QDialog):
 
     @Slot()
     def on_date_edit_textEdited(self):
-        if self.info.valid_date(self.date_edit.text()):
+        if valid_date(self.date_edit.text(), self.settings.date_format):
             self.date_error.hide()
         else:
             self.date_error.show()
@@ -186,7 +195,12 @@ class PreferencesDialog(QDialog):
 
     @Slot()
     def on_file_button_pressed(self):
-        pass
+        caption = _("Choose Sound")
+        sound_dir = get_data_file('media', 'sounds')
+        file_filter = _("Sounds (*.mp3 *.ogg *.wav);;MP3 (*.mp3);;Ogg (*.ogg);;WAVE (*.wav)")
+
+        (filename, selected_filter) = QFileDialog.getOpenFileName(self, caption, sound_dir, file_filter)
+        self.file_edit.setText(filename)
 
     @Slot()
     def on_boxcar_email_button_pressed(self):
@@ -237,4 +251,60 @@ class PreferencesDialog(QDialog):
 
     @Slot()
     def on_save_button_pressed(self):
-        pass
+        self.settings.label = self.label_edit.text()
+        self.settings.time = self.time_edit.text()
+        self.settings.date = self.date_edit.text()
+        self.settings.command = self.command_edit.text()
+        self.settings.postpone = self.postpone_spin.value()
+
+        self.settings.notification = self.popup_check.isChecked()
+        self.settings.dialog = self.dialog_check.isChecked()
+        self.settings.indicator_icon = self.change_icon_check.isChecked()
+
+        self.settings.sound_file = self.file_edit.text()
+        self.settings.sound_length = self.length_spin.value()
+        self.settings.sound_loop = self.loop_check.isChecked()
+        self.settings.sound_loop_times = self.time_loop_spin.value()
+
+        self.settings.quick_label = self.quick_label_edit.text()
+        self.settings.quick_minutes = self.quick_minutes_spin.value()
+        self.settings.quick_slider = self.quick_slider_check.isChecked()
+        self.settings.quick_popup = self.quick_popup_check.isChecked()
+        self.settings.quick_dialog = self.quick_dialog_check.isChecked()
+        self.settings.quick_sound = self.quick_sound_check.isChecked()
+        self.settings.quick_info = self.quick_info_check.isChecked()
+
+        self.settings.today_color = self.today_color
+        self.settings.future_color = self.future_color
+        self.settings.past_color = self.past_color
+        self.settings.show_news = self.new_check.isChecked()
+        self.settings.indicator_icon = self.icon_combo.currentIndex()
+        self.settings.hide_indicator = self.hide_check.isChecked()
+
+        self.settings.time_format = self.time_format_combo.currentIndex()
+        self.settings.date_format = self.date_format_combo.currentIndex()
+
+        self.boxcar_info.email = self.boxcar_email_edit.text()
+        self.boxcar_info.notify = self.boxcar_notification_check.isChecked()
+
+        ok = True
+        if self.settings.hide_indicator and not self.hide_start:
+            message = _("You have chosen to hide the indicator.\nOnly use this option if you know what you are doing!\n\nYou can run the command \"remindor-qt -p\"\nfrom the command line to open the preferences dialog\nto change this option.\n\nWould you like to continue?")
+            ans = QMessageBox.question(self, _("Important!"), message, QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            if ans == QMessageBox.No:
+                ok = False
+
+        if ok:
+            value = self.info.preferences(self.settings, self.boxcar_info)
+            if value == self.info.time_error:
+                self.time_error.show()
+                self.stack_widget.setCurrentIndex(0)
+                self.list_widget.setCurrentRow(0)
+                self.time_edit.setFocus()
+            elif value == self.info.date_error:
+                self.date_error.show()
+                self.stack_widget.setCurrentIndex(0)
+                self.list_widget.setCurrentRow(0)
+                self.date_edit.setFocus()
+            elif value == self.info.ok:
+                self.accept()
