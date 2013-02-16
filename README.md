@@ -3,6 +3,7 @@ Remindor-Qt
 
 The Qt based cousin to [Indicator Remindor](http://bhdouglass.tk/indicator-remindor.php)
 
+*Needs [remindor-common](https://github.com/bhdouglass/remindor-common) to function*
 
 License
 =======
