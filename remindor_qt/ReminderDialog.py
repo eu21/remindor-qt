@@ -113,7 +113,7 @@ class ReminderDialog(QDialog):
 
     @Slot()
     def on_help_button_pressed(self):
-        helpers.show_uri(self, "ghelp:%s" % helpers.get_help_uri('add'))
+        helpers.show_html_help("add")
 
     @Slot()
     def on_time_button_pressed(self):

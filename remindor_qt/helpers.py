@@ -14,7 +14,6 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
-"""Helpers for an Ubuntu application."""
 from PySide.QtCore import *
 from PySide.QtGui import *
 from PySide.QtUiTools import *
@@ -61,6 +60,13 @@ def get_media_file(media_file_name):
 
     return "file:///" + media_filename
 
+def get_html_file(html_file_name):
+    html_filename = get_data_file('html', '%s.html' % (html_file_name,))
+    if not os.path.exists(html_filename):
+        html_filename = None
+
+    return "file:///" + html_filename
+
 class NullHandler(logging.Handler):
     def emit(self, record):
         pass
@@ -90,7 +96,7 @@ def set_up_logging(opts):
     if opts.verbose > 1:
         lib_logger.setLevel(logging.DEBUG)
 
-def get_help_uri(page=None):
+def get_help_uri(page = None):
     # help_uri from source tree - default language
     here = os.path.dirname(__file__)
     help_uri = os.path.abspath(os.path.join(here, '..', 'help', 'C'))
@@ -105,10 +111,11 @@ def get_help_uri(page=None):
 
     return help_uri
 
-def show_uri(parent, link):
-    from PySide.QtGui import QDesktopServices
-    from PySide.QtCore import QUrl
+def show_uri(link):
     QDesktopServices.openUrl(QUrl(link, QUrl.TolerantMode))
+
+def show_html_help(page = None):
+    show_uri(get_html_file(page))
 
 def alias(alternative_function_name):
     '''see http://www.drdobbs.com/web-development/184406073#l9'''

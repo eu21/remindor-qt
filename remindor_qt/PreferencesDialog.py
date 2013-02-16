@@ -141,7 +141,7 @@ class PreferencesDialog(QDialog):
 
     @Slot()
     def on_help_button_pressed(self):
-        helpers.show_uri(self, "ghelp:%s" % helpers.get_help_uri('preferences'))
+        helpers.show_html_help("preferences")
 
     @Slot()
     def on_time_button_pressed(self):
@@ -204,7 +204,7 @@ class PreferencesDialog(QDialog):
 
     @Slot()
     def on_boxcar_email_button_pressed(self):
-        helpers.show_uri(self, "ghelp:%s" % helpers.get_help_uri('services'))
+        helpers.show_html_help("services")
 
     @Slot()
     def on_today_button_pressed(self):

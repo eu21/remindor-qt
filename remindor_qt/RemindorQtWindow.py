@@ -137,7 +137,7 @@ class RemindorQtWindow(QMainWindow):
 
     @Slot()
     def on_action_help_triggered(self):
-        helpers.show_uri(self, "ghelp:%s" % helpers.get_help_uri())
+        helpers.show_html_help("index")
 
     @Slot()
     def on_action_close_triggered(self):
