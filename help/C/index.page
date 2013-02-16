@@ -4,8 +4,8 @@
 
 <info>
   <!-- This shows in the title bar so does not show [icon] -->
-  <title type="text">Indicator Remindor</title>
-  <desc><app>Indicator Remindor</app></desc>
+  <title type="text">Remindor-Qt</title>
+  <desc><app>Remindor-Qt</app></desc>
   <credit type="author">
     <name>Brian Douglass</name>
     <email>bhdouglass@gmail.com</email>
@@ -20,10 +20,10 @@
 <!-- This shows on the page in title font -->
 <!-- the icon only shows when installed -->
 <media type="image" mime="image/png" src="figures/icon.png">[icon]</media>
-<app>Indicator Remindor</app>
+<app>Remindor-Qt</app>
 </title>
 
-<p>Indicator Remindor is an indicator app that allows you to schedule reminders.
+<p>Remindor-Qt is an system tray app that allows you to schedule reminders.
 A reminder can be configured to show a notification, play a sound, and/or run a command.
 Reminders can be scheduled on one day or they can be set to repeat every day, every monday,
 every 30 days, etc. They can also be set to repeat minutely or hourly.</p>

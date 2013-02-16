@@ -228,7 +228,15 @@ def check_autostart():
             f.write('Type=Application\n')
             f.close()
     else:
-        print 'not checking autostart, reason: on windows' #TODO: implement this
+        settings = QSettings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings.NativeFormat)
+
+        exec_file = ""
+        if getattr(sys, 'frozen', False):
+            sys.executable
+        else:
+            exec_file = "python " + os.path.abspath("bin/remindor-qt")
+
+        settings.setValue("remindor-qt", exec_file)
 
 def config_dir():
     #return os.getenv('HOME') + '/.config/indicator-remindor'

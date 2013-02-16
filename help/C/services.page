@@ -16,7 +16,7 @@
 <title>Services</title>
 <p><link href="http://boxcar.io/">Boxcar</link> is an app for iOS and Mac (coming soon to
 Windows and Andriod) that allows you to receive instant push notifications from various
-apps.  Indicator Remindor can send notifications to your Boxcar enabled devices if you set
+apps.  Remindor-Qt can send notifications to your Boxcar enabled devices if you set
 it up your Boxcar email in <link xref="preferences">preferences</link>.
 </p>
 

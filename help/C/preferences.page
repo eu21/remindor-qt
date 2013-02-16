@@ -32,8 +32,8 @@
     <list>
         <item><p>Popup: Whether or not to pop up a notification</p></item>
         <item><p>Dialog: Whether or not to pop up a dialog window</p></item>
-        <item><p>Change Indicator Icon on Reminder: Whether or not to change the indicator
-            icon when an alarm runs (similar to the message menu's behavior for new messages)</p></item>
+        <item><p>Change Tray Icon on Reminder: Whether or not to change the tray
+            icon when an alarm runs</p></item>
     </list>
 </section>
 
@@ -67,7 +67,7 @@
         <item><p>Future Color: Color for "Future Reminders" background</p></item>
         <item><p>Past Color: Color for "Past Reminders" background</p></item>
         <item><p>Show News Notification: Changes news button on manage window to "New News!" when a new post is in the <link href="http://indicator-remindor.tumblr.com/">blog</link></p></item>
-        <item><p>Hide Indicator: Hides the indicator (Only use this option if you know what you are doing!  Use the command "indicator-remindor -p" to open the preferences)</p></item>
+        <item><p>Hide Tray Icon: Hides the tray icon (Only use this option if you know what you are doing!  Use the command "remindor-qt -p" to open the preferences)</p></item>
     </list>
 </section>
 

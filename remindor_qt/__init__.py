@@ -49,7 +49,7 @@ def main():
     app.setApplicationVersion(get_version())
     app.setOrganizationDomain("http://bhdouglass.tk/indicator-remindor/")
 
-    window = RemindorQtWindow.RemindorQtWindow()
-    window.show()
+    window = RemindorQtWindow.RemindorQtWindow() #TODO: make window quit = hide window, also make tray icon left-click show window
+    #window.show()
 
     app.exec_()
