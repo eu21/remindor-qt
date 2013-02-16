@@ -42,14 +42,15 @@ def main():
     check_database()
     parse_options()
 
-    # Run the application.
+    #Run the application.
     app = QApplication([""])
     app.setWindowIcon(QIcon.fromTheme("remindor-qt"))
     app.setApplicationName("Remindor-Qt")
     app.setApplicationVersion(get_version())
     app.setOrganizationDomain("http://bhdouglass.tk/indicator-remindor/")
+    app.setQuitOnLastWindowClosed(False)
 
-    window = RemindorQtWindow.RemindorQtWindow() #TODO: make window quit = hide window, also make tray icon left-click show window
+    window = RemindorQtWindow.RemindorQtWindow()
     #window.show()
 
     app.exec_()

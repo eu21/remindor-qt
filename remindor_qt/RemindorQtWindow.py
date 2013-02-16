@@ -14,6 +14,8 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
+import sys
+
 import gettext
 from gettext import gettext as _
 gettext.textdomain('remindor-qt')
@@ -39,6 +41,7 @@ from remindor_common import database as db
 
 class RemindorQtWindow(QMainWindow):
     setup_schedule = True
+    ok_to_close = False
 
     def __init__(self, parent = None):
         super(RemindorQtWindow,self).__init__(parent)
@@ -73,11 +76,12 @@ class RemindorQtWindow(QMainWindow):
         self.tray_menu.addAction(QIcon.fromTheme("media-skip-forward", QIcon(":/icons/quick.png")), "Quick Add", self, SLOT("on_action_quick_add_triggered()"))
         self.tray_menu.addAction(QIcon.fromTheme("media-playback-stop", QIcon(":/icons/delete.png")), "Stop Sound", self, SLOT("on_action_stop_triggered()"))
         self.tray_menu.addAction(QIcon.fromTheme("stock_properties", QIcon(":/icons/manage.png")), "Manage", self, SLOT("show()"))
-        self.tray_menu.addAction(QIcon.fromTheme("exit", QIcon(":/icons/quit.png")), "Quit", self, SLOT("close()")) #TODO: change this when reimplementing x-close button
+        self.tray_menu.addAction(QIcon.fromTheme("exit", QIcon(":/icons/quit.png")), "Quit", self, SLOT("on_action_quit_triggered()")) #TODO: change this when reimplementing x-close button
 
         self.tray_icon = QSystemTrayIcon(QIcon.fromTheme("remindor-qt-active", self.active_icon), self)
         self.tray_icon.setContextMenu(self.tray_menu)
         self.tray_icon.show()
+        self.tray_icon.activated.connect(self.tray_activated)
 
         self.scheduler = SchedulerQt(self.tray_icon, self.update, helpers.database_file())
         self.info = ManageWindowInfo(helpers.database_file())
@@ -85,6 +89,22 @@ class RemindorQtWindow(QMainWindow):
 
         b = BlogReader(rssfeed, helpers.database_file())
         b.start()
+
+    @Slot()
+    def tray_activated(self, reason):
+        if reason == QSystemTrayIcon.Trigger:
+            self.show()
+        elif reason == QSystemTrayIcon.MiddleClick:
+            self.on_action_add_triggered()
+
+    @Slot()
+    def closeEvent(self, event):
+        if self.ok_to_close:
+            sys.exit(0)
+            event.accept()
+        else:
+            event.ignore()
+            self.hide()
 
     @Slot()
     def on_action_add_triggered(self):
@@ -145,6 +165,7 @@ class RemindorQtWindow(QMainWindow):
 
     @Slot()
     def on_action_quit_triggered(self):
+        self.ok_to_close = True
         self.close()
 
     @Slot()
