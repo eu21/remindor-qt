@@ -100,7 +100,11 @@ class ReminderDialog(QDialog):
         else:
             if status == self.info.file_error:
                 title = _("File does not exist")
-                message = "%s\n%s" % (_("The following file does not exist:"), sound_file)
+                message = ""
+                if sound_file != "":
+                    message = "%s\n\n%s" % (_("The following file does not exist.\nPlease choose another sound file."), sound_file)
+                else:
+                    message = _("Please choose a sound file.")
                 QMessageBox.warning(self, title, message)
             elif status == self.info.time_error:
                 self.time_error.show()
