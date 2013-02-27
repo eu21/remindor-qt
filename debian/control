@@ -13,16 +13,17 @@ Architecture: all
 Depends: ${misc:Depends},
  ${python:Depends},
  python-pyside.qtcore,
+ python-pyside.qtgui,
+ python-pyside.qtuitools,
+ python-pyside.phonon,
+ python-notify,
  python-dbus,
  python-requests,
  python-feedparser,
- python-dateutil,
- gir1.2-gstreamer-0.10,
- yelp,
- appmenu-qt,
- sni-qt
+ python-dateutil
+Recommends: sni-qt
 Description: Schedule reminders easily from an indicator
- Remindor-Qt is an indicator app that allows you to schedule reminders.
+ Remindor-Qt is an system tray app that allows you to schedule reminders.
  A reminder can be configured to show a notification, play a sound,
  and/or run a command.  Reminders can be scheduled on one day or they can
  be set to repeat every day, every monday, every 30 days, etc.  They can

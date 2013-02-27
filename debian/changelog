@@ -1,5 +1,5 @@
-remindor-qt (0.1) precise; urgency=low
+remindor-qt (13.02-0ubuntu1~quantal) quantal; urgency=low
 
-  * Initial release.
+  * New release.
 
- -- Brian Douglass <brian@sol>  Sat, 19 Jan 2013 12:10:21 -0500
+ -- Brian Douglass <bhdouglass@gmail.com>  Wed, 27 Feb 2013 07:45:22 -0500

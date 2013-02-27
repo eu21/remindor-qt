@@ -16,7 +16,6 @@
 
 from PySide.QtCore import *
 from PySide.QtGui import *
-from PySide.QtSvg import *
 from PySide.phonon import Phonon
 
 from remindor_qt.helpers import RTimer, get_data_file

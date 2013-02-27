@@ -60,6 +60,8 @@ class ReminderDialog(QDialog):
         self.popup_check = self.findChild(QCheckBox, "popup_check")
         self.dialog_check = self.findChild(QCheckBox, "dialog_check")
         self.boxcar_check = self.findChild(QCheckBox, "boxcar_check")
+        self.boxcar_label = self.findChild(QLabel, "boxcar_label")
+        self.boxcar_label.hide()
 
         self.sound_check = self.findChild(QCheckBox, "sound_check")
         self.file_edit = self.findChild(QLineEdit, "file_edit")
@@ -206,21 +208,26 @@ class ReminderDialog(QDialog):
 
     def set_data(self, label, time, date, command, notes, popup,
                  dialog, boxcar, sound_file, length, loop):
-        self.label_edit.setText(label);
-        self.time_edit.setText(time);
-        self.date_edit.setText(date);
-        self.command_edit.setText(command);
-        self.notes_edit.setPlainText(notes);
+        self.label_edit.setText(label)
+        self.time_edit.setText(time)
+        self.date_edit.setText(date)
+        self.command_edit.setText(command)
+        self.notes_edit.setPlainText(notes)
 
-        self.popup_check.setChecked(popup);
-        self.dialog_check.setChecked(dialog);
-        self.boxcar_check.setChecked(boxcar);
+        self.popup_check.setChecked(popup)
+        self.dialog_check.setChecked(dialog)
+        self.boxcar_check.setChecked(boxcar)
+
+        if not self.info.boxcar_ok:
+            self.boxcar_check.setDisabled(True)
+            self.boxcar_label.show()
 
         if sound_file is not None and not sound_file == "":
-            self.sound_check.setChecked(True);
+            self.sound_check.setChecked(True)
         else:
-            self.sound_check.setChecked(False);
+            self.sound_check.setChecked(True) #to trigger disabling of elements
+            self.sound_check.setChecked(False)
 
-        self.file_edit.setText(sound_file);
-        self.length_spin.setValue(length);
-        self.loop_check.setChecked(loop);
+        self.file_edit.setText(sound_file)
+        self.length_spin.setValue(length)
+        self.loop_check.setChecked(loop)

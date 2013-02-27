@@ -87,13 +87,13 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
 
 DistUtilsExtra.auto.setup(
     name='remindor-qt',
-    version='0.1',
+    version='13.02',
     license='GPL-3',
     author='Brian Douglass',
     author_email='bhdouglass@gmail.com',
     description='Schedule reminders easily from a tray icon',
     url='https://launchpad.net/indicator-remindor',
-    long_description='Remindor-Qt is an tray app that allows you to schedule reminders.  A reminder can be configured to show a notification, play a sound, and/or run a command.  Reminders can be scheduled on one day or they can be set to repeat every day, every monday, every 30 days, etc.  They can also be set to repeat minutely or hourly.',
+    long_description='Remindor-Qt is an system tray app that allows you to schedule reminders.  A reminder can be configured to show a notification, play a sound, and/or run a command.  Reminders can be scheduled on one day or they can be set to repeat every day, every monday, every 30 days, etc.  They can also be set to repeat minutely or hourly.',
     cmdclass={'install': InstallAndUpdateDataDirectory},
     data_files=[
         ('/usr/share/icons/hicolor/16x16/apps/', ['data/media/hicolor/16x16/apps/remindor-qt.png']),

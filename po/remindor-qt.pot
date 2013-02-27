@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-19 12:10-0500\n"
+"POT-Creation-Date: 2013-02-27 11:12-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,193 +17,96 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: ../remindor_qt/ReminderDialog.py:100
+msgid "File does not exist"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:101
+msgid "The following file does not exist:"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:175
+#: ../remindor_qt/PreferencesDialog.py:198
+msgid "Choose Sound"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:177
+#: ../remindor_qt/PreferencesDialog.py:200
+msgid "Sounds (*.mp3 *.ogg *.wav);;MP3 (*.mp3);;Ogg (*.ogg);;WAVE (*.wav)"
+msgstr ""
+
 #: ../remindor-qt.desktop.in.h:1
-msgid "Remindor Qt"
+msgid "Remindor-Qt"
 msgstr ""
 
 #: ../remindor-qt.desktop.in.h:2
-msgid "RemindorQt application"
+msgid "Remindor-Qt application"
 msgstr ""
 
-#: ../remindor_common/datetimeutil.py:821
-#: ../remindor_common/datetimeutil.py:876
-msgid "christmas"
+#: ../remindor_qt/TimeDialog.py:144
+msgid "Minute(s)"
 msgstr ""
 
-#: ../remindor_common/datetimeutil.py:822
-#: ../remindor_common/datetimeutil.py:877
-msgid "today"
+#: ../remindor_qt/TimeDialog.py:146
+msgid "Hour(s)"
 msgstr ""
 
-#: ../remindor_common/datetimeutil.py:823
-#: ../remindor_common/datetimeutil.py:878
-msgid "yesterday"
+#: ../remindor_qt/CommandDialog.py:58
+msgid "Choose Command"
 msgstr ""
 
-#: ../remindor_common/datetimeutil.py:824
-#: ../remindor_common/datetimeutil.py:879
-msgid "tomorrow"
+#: ../remindor_qt/CommandDialog.py:60
+msgid "All Files (*)"
 msgstr ""
 
-#: ../remindor_common/datetimeutil.py:825
-#: ../remindor_common/datetimeutil.py:881
-msgid "next"
+#: ../remindor_qt/PreferencesDialog.py:292
+msgid ""
+"You have chosen to hide the indicator.\n"
+"Only use this option if you know what you are doing!\n"
+"\n"
+"You can run the command \"remindor-qt -p\"\n"
+"from the command line to open the preferences dialog\n"
+"to change this option.\n"
+"\n"
+"Would you like to continue?"
 msgstr ""
 
-#: ../remindor_common/datetimeutil.py:826
-#: ../remindor_common/datetimeutil.py:882
-msgid "every day"
+#: ../remindor_qt/PreferencesDialog.py:293
+msgid "Important!"
 msgstr ""
 
-#: ../remindor_common/datetimeutil.py:827
-#: ../remindor_common/datetimeutil.py:883
-msgid "every weekday"
+#: ../remindor_qt/RemindorQtWindow.py:235
+msgid "New News"
 msgstr ""
 
-#: ../remindor_common/datetimeutil.py:828
-#: ../remindor_common/datetimeutil.py:884
-msgid "every weekend"
+#: ../remindor_qt/RemindorQtWindow.py:237
+msgid "News"
 msgstr ""
 
-#: ../remindor_common/datetimeutil.py:829
-#: ../remindor_common/datetimeutil.py:885
-msgid "every other"
+#: ../remindor_qt/RemindorQtWindow.py:254
+msgid "Today's Reminders"
 msgstr ""
 
-#: ../remindor_common/datetimeutil.py:830
-#: ../remindor_common/datetimeutil.py:859
-#: ../remindor_common/datetimeutil.py:886
-#: ../remindor_common/datetimeutil.py:923
-msgid "every"
+#: ../remindor_qt/RemindorQtWindow.py:261
+msgid "Future Reminders"
 msgstr ""
 
-#: ../remindor_common/datetimeutil.py:831
-#: ../remindor_common/datetimeutil.py:887
-msgid "day"
+#: ../remindor_qt/RemindorQtWindow.py:268
+msgid "Past Reminders"
 msgstr ""
 
-#: ../remindor_common/datetimeutil.py:832
-#: ../remindor_common/datetimeutil.py:888
-msgid "days"
+#: ../remindor_qt/DateDialog.py:135 ../remindor_qt/DateDialog.py:142
+msgid "Every"
 msgstr ""
 
-#: ../remindor_common/datetimeutil.py:834
-#: ../remindor_common/datetimeutil.py:890
-msgid "monday"
+#: ../remindor_qt/DateDialog.py:139 ../remindor_qt/DateDialog.py:156
+msgid "Day(s)"
 msgstr ""
 
-#: ../remindor_common/datetimeutil.py:835
-#: ../remindor_common/datetimeutil.py:891
-msgid "tuesday"
+#: ../remindor_qt/DateDialog.py:146
+msgid "of the month"
 msgstr ""
 
-#: ../remindor_common/datetimeutil.py:836
-#: ../remindor_common/datetimeutil.py:892
-msgid "wednesday"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:837
-#: ../remindor_common/datetimeutil.py:893
-msgid "thursday"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:838
-#: ../remindor_common/datetimeutil.py:894
-msgid "friday"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:839
-#: ../remindor_common/datetimeutil.py:895
-msgid "saturday"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:840
-#: ../remindor_common/datetimeutil.py:896
-msgid "sunday"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:853
-#: ../remindor_common/datetimeutil.py:917
-msgid "now"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:854
-#: ../remindor_common/datetimeutil.py:918
-msgid "noon"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:855
-#: ../remindor_common/datetimeutil.py:919
-msgid "midday"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:856
-#: ../remindor_common/datetimeutil.py:920
-msgid "midnight"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:857
-#: ../remindor_common/datetimeutil.py:921
-msgid "every minute"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:858
-#: ../remindor_common/datetimeutil.py:922
-msgid "every hour"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:860
-#: ../remindor_common/datetimeutil.py:924
-msgid "minutes"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:861
-#: ../remindor_common/datetimeutil.py:925
-msgid "hours"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:862
-#: ../remindor_common/datetimeutil.py:926
-msgid "minute"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:863
-#: ../remindor_common/datetimeutil.py:927
-msgid "hour"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:880
-msgid "tom"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:898
-msgid "mon"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:899
-msgid "tues"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:900
-msgid "wed"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:901
-msgid "thurs"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:902
-msgid "fri"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:903
-msgid "sat"
-msgstr ""
-
-#: ../remindor_common/datetimeutil.py:904
-msgid "sun"
-msgstr ""
-
-#: ../remindor_qt/__init__.py:35
-msgid "Show debug messages (-vv debugs remindor_common also)"
+#: ../remindor_qt/DateDialog.py:152
+msgid "Next"
 msgstr ""
