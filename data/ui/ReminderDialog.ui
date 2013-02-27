@@ -332,7 +332,7 @@ setup in Preferences</string>
        <item row="3" column="1">
         <widget class="QCheckBox" name="loop_check">
          <property name="text">
-          <string/>
+          <string>(will loop 5 times)</string>
          </property>
         </widget>
        </item>

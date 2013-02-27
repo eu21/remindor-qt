@@ -235,3 +235,4 @@ class ReminderDialog(QDialog):
         self.file_edit.setText(sound_file)
         self.length_spin.setValue(length)
         self.loop_check.setChecked(loop)
+        self.loop_check.setText(_("(Will loop %s times)") % self.info.sound_loop_times)
