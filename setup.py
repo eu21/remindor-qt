@@ -15,8 +15,6 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
-###################### DO NOT TOUCH THIS (HEAD TO THE SECOND PART) ######################
-
 import os
 import sys
 
@@ -50,40 +48,14 @@ def update_config(values = {}):
         sys.exit(1)
     return oldvalues
 
-
-'''def update_desktop_file(datadir):
-
-    try:
-        fin = file('remindor-qt.desktop.in', 'r')
-        fout = file(fin.name + '.new', 'w')
-
-        for line in fin:
-            if 'Icon=' in line:
-                line = "Icon=%s\n" % (datadir + 'media/remindor-qt.svg')
-            fout.write(line)
-        fout.flush()
-        fout.close()
-        fin.close()
-        os.rename(fout.name, fin.name)
-    except (OSError, IOError), e:
-        print ("ERROR: Can't find remindor-qt.desktop.in")
-        sys.exit(1)'''
-
-
 class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
     def run(self):
         values = {'__remindor_qt_data_directory__': "'%s'" % (self.prefix + '/share/remindor-qt/'),
                   '__version__': "'%s'" % self.distribution.get_version()}
         previous_values = update_config(values)
-        #update_desktop_file(self.prefix + '/share/remindor-qt/')
         DistUtilsExtra.auto.install_auto.run(self)
         update_config(previous_values)
 
-
-
-##################################################################################
-###################### YOU SHOULD MODIFY ONLY WHAT IS BELOW ######################
-##################################################################################
 
 DistUtilsExtra.auto.setup(
     name='remindor-qt',
@@ -92,7 +64,7 @@ DistUtilsExtra.auto.setup(
     author='Brian Douglass',
     author_email='bhdouglass@gmail.com',
     description='Schedule reminders easily from a tray icon',
-    url='https://launchpad.net/indicator-remindor',
+    url='http://bhdouglass.tk/remindor-qt/',
     long_description='Remindor-Qt is an system tray app that allows you to schedule reminders.  A reminder can be configured to show a notification, play a sound, and/or run a command.  Reminders can be scheduled on one day or they can be set to repeat every day, every monday, every 30 days, etc.  They can also be set to repeat minutely or hourly.',
     cmdclass={'install': InstallAndUpdateDataDirectory},
     data_files=[
