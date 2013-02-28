@@ -223,6 +223,7 @@ class ReminderDialog(QDialog):
         self.boxcar_check.setChecked(boxcar)
 
         if not self.info.boxcar_ok:
+            self.boxcar_check.setChecked(False)
             self.boxcar_check.setDisabled(True)
             self.boxcar_label.show()
 

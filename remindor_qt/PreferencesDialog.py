@@ -285,7 +285,7 @@ class PreferencesDialog(QDialog):
         self.settings.date_format = self.date_format_combo.currentIndex()
 
         self.boxcar_info.email = self.boxcar_email_edit.text()
-        self.boxcar_info.notify = self.boxcar_notification_check.isChecked()
+        self.boxcar_info.default_notify = self.boxcar_notification_check.isChecked()
 
         ok = True
         if self.settings.hide_indicator and not self.hide_start:
