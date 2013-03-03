@@ -20,7 +20,8 @@ Depends: ${misc:Depends},
  python-dbus,
  python-requests,
  python-feedparser,
- python-dateutil
+ python-dateutil,
+ remindor-common
 Recommends: sni-qt
 Description: Schedule reminders easily from an indicator
  Remindor-Qt is an system tray app that allows you to schedule reminders.
