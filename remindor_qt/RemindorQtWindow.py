@@ -142,9 +142,7 @@ class RemindorQtWindow(QMainWindow):
     def on_action_delete_triggered(self):
         (selected, is_parent) = self.get_selected()
         if not is_parent:
-            database = db.Database(helpers.database_file())
-            database.delete_alarm(selected)
-            database.close()
+            self.info.delete(selected)
 
             self.update()
 
