@@ -20,6 +20,10 @@ from PySide.QtGui import *
 from remindor_qt import helpers
 from remindor_qt.remindor_qtconfig import get_version
 
+import gettext
+from gettext import gettext as _
+gettext.textdomain('remindor-qt')
+
 class AboutDialog(QDialog):
     def __init__(self, parent = None):
         super(AboutDialog, self).__init__(parent)
@@ -34,4 +38,4 @@ class AboutDialog(QDialog):
 
     @Slot()
     def on_credits_button_pressed(self):
-        QMessageBox.information(self, "Credits", "Author: Brian Douglass", QMessageBox.Close)
+        QMessageBox.information(self, _("Credits"), "Author: Brian Douglass", QMessageBox.Close)

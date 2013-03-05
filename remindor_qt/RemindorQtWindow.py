@@ -132,7 +132,10 @@ class RemindorQtWindow(QMainWindow):
     def on_action_postpone_triggered(self):
         (selected, is_parent) = self.get_selected()
         if not is_parent:
-            self.info.postpone(selected)
+            if self.info.postpone(selected):
+                message = _("Sorry, you cannot postpone a repeating time.")
+                QMessageBox.information(self, _("Postpone"), message, QMessageBox.Ok)
+
             self.update()
 
     @Slot()
