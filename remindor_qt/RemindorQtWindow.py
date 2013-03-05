@@ -49,6 +49,7 @@ class RemindorQtWindow(QMainWindow):
         self.resize(700, 300)
 
         self.dbus_service = None
+        self.info = ManageWindowInfo(helpers.database_file())
 
         self.active_icon = QIcon(helpers.get_data_file("media", "remindor-qt-active.svg"))
         self.app_icon = QIcon(helpers.get_data_file("media", "remindor-qt.svg"))
@@ -78,13 +79,12 @@ class RemindorQtWindow(QMainWindow):
         self.tray_menu.addAction(QIcon.fromTheme("stock_properties", QIcon(":/icons/manage.png")), "Manage", self, SLOT("show()"))
         self.tray_menu.addAction(QIcon.fromTheme("exit", QIcon(":/icons/quit.png")), "Quit", self, SLOT("on_action_quit_triggered()")) #TODO: change this when reimplementing x-close button
 
-        self.tray_icon = QSystemTrayIcon(QIcon.fromTheme("remindor-qt-active", self.active_icon), self)
+        self.tray_icon = QSystemTrayIcon(self.tray_icons[self.info.indicator_icon], self)
         self.tray_icon.setContextMenu(self.tray_menu)
         self.tray_icon.show()
         self.tray_icon.activated.connect(self.tray_activated)
 
         self.scheduler = SchedulerQt(self.tray_icon, self.update, helpers.database_file())
-        self.info = ManageWindowInfo(helpers.database_file())
         self.update()
 
         b = BlogReader(rssfeed, helpers.database_file())
@@ -245,7 +245,7 @@ class RemindorQtWindow(QMainWindow):
 
         icon = self.tray_icon.icon()
         icon_name = icon.name()
-        if icon_name != "remindor-qt-active" and icon != self.tray_icons[self.info.indicator_icon]:
+        if icon_name != "remindor-qt-active":
             self.tray_icon.setIcon(self.tray_icons[self.info.indicator_icon])
 
         logger.debug("update: setting up headers")
