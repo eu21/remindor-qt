@@ -154,7 +154,8 @@ class RemindorQtWindow(QMainWindow):
 
     @Slot()
     def on_action_news_triggered(self):
-        helpers.show_uri(self, blogsite)
+        self.news_action.setText(_("News"))
+        helpers.show_uri(blogsite)
 
     @Slot()
     def on_action_help_triggered(self):
@@ -183,27 +184,27 @@ class RemindorQtWindow(QMainWindow):
 
     @Slot()
     def on_action_bugs_triggered(self):
-        helpers.show_uri(self, bugsite)
+        helpers.show_uri(bugsite)
 
     @Slot()
     def on_action_request_triggered(self):
-        helpers.show_uri(self, featuresite)
+        helpers.show_uri(featuresite)
 
     @Slot()
     def on_action_translate_triggered(self):
-        helpers.show_uri(self, translatesite)
+        helpers.show_uri(translatesite)
 
     @Slot()
     def on_action_donate_triggered(self):
-        helpers.show_uri(self, donatestie)
+        helpers.show_uri(donatestie)
 
     @Slot()
     def on_action_ask_triggered(self):
-        helpers.show_uri(self, questionsite)
+        helpers.show_uri(questionsite)
 
     @Slot()
     def on_action_website_triggered(self):
-        helpers.show_uri(self, website)
+        helpers.show_uri(website)
 
     @Slot()
     def on_action_about_triggered(self):
@@ -232,7 +233,7 @@ class RemindorQtWindow(QMainWindow):
         else:
             self.info.update(None)
 
-        if self.info.show_news and self.info.new_news == 1:
+        if self.info.show_news == 1 and self.info.new_news == 1:
             self.news_action.setText(_("New News"))
         else:
             self.news_action.setText(_("News"))
