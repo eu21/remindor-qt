@@ -59,7 +59,7 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
 
 DistUtilsExtra.auto.setup(
     name='remindor-qt',
-    version='13.02',
+    version='13.03',
     license='GPL-3',
     author='Brian Douglass',
     author_email='bhdouglass@gmail.com',
