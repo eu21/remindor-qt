@@ -43,12 +43,12 @@ class RemindorQtWindow(QMainWindow):
     setup_schedule = True
     ok_to_close = False
 
-    def __init__(self, parent = None):
+    def __init__(self, dbus_service = None, parent = None):
         super(RemindorQtWindow,self).__init__(parent)
+        self.dbus_service = dbus_service
         helpers.setup_ui(self, "RemindorQtWindow.ui", True)
         self.resize(700, 300)
 
-        self.dbus_service = None
         self.info = ManageWindowInfo(helpers.database_file())
 
         self.active_icon = QIcon(helpers.get_data_file("media", "remindor-qt-active.svg"))
@@ -85,7 +85,14 @@ class RemindorQtWindow(QMainWindow):
         self.tray_icon.activated.connect(self.tray_activated)
 
         self.scheduler = SchedulerQt(self.tray_icon, self.update, helpers.database_file())
+        if not self.dbus_service == None:
+            self.scheduler.add_dbus_service(self.dbus_service)
+
         self.update()
+
+        self.updater = QTimer(self)
+        self.updater.setInterval(1000 * 60 * 60 * 6) #update everything every 1/4 day
+        self.updater.timeout.connect(self.update_schedule)
 
         b = BlogReader(rssfeed, helpers.database_file())
         b.start()
@@ -172,7 +179,7 @@ class RemindorQtWindow(QMainWindow):
 
     @Slot()
     def on_action_refresh_triggered(self):
-        self.update()
+        self.update_schedule()
 
     @Slot()
     def on_action_clear_icon_triggered(self):
@@ -291,6 +298,15 @@ class RemindorQtWindow(QMainWindow):
 
         return True
 
+    @Slot()
+    def update_schedule(self):
+        self.setup_schedule = True
+        self.scheduler.clear_schedule()
+
+        logger.debug("updating the whole schedule")
+        self.update()
+        return True
+
     def get_selected(self):
         selected_items = self.reminder_tree.selectedItems()
         selected = selected_items[0]
@@ -305,3 +321,21 @@ class RemindorQtWindow(QMainWindow):
             return -1, is_parent
         else:
             return int(selected.text(4)), is_parent
+
+    def dbus_receiver(self, command):
+        logger.debug("received " + command + " signal from dbus")
+
+        if command == "update":
+            self.update_schedule()
+        elif command == "stop":
+            logger.debug("dbus: stopping sound...")
+            self.on_action_stop_triggered()
+        elif command == "manage":
+            self.show()
+        elif command == "close":
+            self.ok_to_close = True
+            self.close()
+        elif command == "attention" or command == "active":
+            pass #don't do anything, we probably sent this signal
+        else:
+            logger.debug("unrecognized dbus command: " + command)
