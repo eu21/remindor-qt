@@ -92,7 +92,7 @@ class ReminderDialog(QDialog):
 
         (status, id) = self.info.reminder(label, time, date, command, notes, popup, dialog,
                                           boxcar, play, sound_file, sound_length, sound_loop,
-                                          self.delete_id)
+                                          self.delete_id, True)
 
         if status == self.info.ok:
             self.added.emit(id)
@@ -112,6 +112,18 @@ class ReminderDialog(QDialog):
             elif status == self.info.date_error:
                 self.date_error.show()
                 self.date_edit.setFocus()
+            elif status == self.info.boxcar_warn:
+                title = "Boxcar"
+                message = _("The label and notes for this reminder are empty, would you still like to use a Boxcar notification?")
+                ans = QMessageBox.question(self, title, message, QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+                if ans == QMessageBox.Yes:
+                    (status, id) = self.info.reminder(label, time, date, command, notes,
+                                                      popup, dialog, boxcar, play,
+                                                      sound_file, sound_length, sound_loop,
+                                                      self.delete_id)
+                    #already checked the status (boxcar is the last check)
+                    self.added.emit(id)
+                    self.accept()
 
     @Slot()
     def on_cancel_button_pressed(self):
