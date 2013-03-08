@@ -66,6 +66,8 @@ class DateDialog(QDialog):
 
         self.date_combo.setCurrentIndex(self.info.active)
         self.every_combo.setCurrentIndex(self.info.every_active)
+        self.every_spin.setValue(self.info.every_spin)
+
         self.on_date_combo_currentIndexChanged()
 
     @Slot()

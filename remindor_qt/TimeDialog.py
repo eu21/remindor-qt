@@ -62,6 +62,7 @@ class TimeDialog(QDialog):
         self.from_check.setChecked(self.info.check)
 
         self.time_combo.setCurrentIndex(self.info.active)
+        self.every_spin.setValue(self.info.every)
 
         #setup window
         self.on_time_combo_currentIndexChanged()
