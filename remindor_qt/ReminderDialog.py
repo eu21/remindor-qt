@@ -112,9 +112,9 @@ class ReminderDialog(QDialog):
             elif status == self.info.date_error:
                 self.date_error.show()
                 self.date_edit.setFocus()
-            elif status == self.info.boxcar_warn:
+            elif status == self.info.notify_warn:
                 title = "Boxcar"
-                message = _("The label and notes for this reminder are empty, would you still like to use a Boxcar notification?")
+                message = _("The label and notes for this reminder are empty,\nwould you still like to use a notification?")
                 ans = QMessageBox.question(self, title, message, QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
                 if ans == QMessageBox.Yes:
                     (status, id) = self.info.reminder(label, time, date, command, notes,
