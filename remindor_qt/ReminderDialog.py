@@ -93,6 +93,8 @@ class ReminderDialog(QDialog):
                       self.info.notes, self.info.popup, self.info.dialog, self.info.boxcar,
                       self.info.sound_file, self.info.sound_length, self.info.sound_loop)
 
+        self.translate()
+
     def translate(self):
         self.setWindowTitle(tr.add_reminder)
 

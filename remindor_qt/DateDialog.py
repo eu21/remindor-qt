@@ -18,15 +18,12 @@ from PySide.QtCore import *
 from PySide.QtGui import *
 from PySide.QtUiTools import *
 
-import gettext
-from gettext import gettext as _
-gettext.textdomain('remindor-qt')
-
 import logging
 logger = logging.getLogger('remindor_qt')
 
 from remindor_qt import helpers
 from remindor_common.helpers import DateDialogInfo
+from remindor_common import translations as tr
 
 class DateDialog(QDialog):
     update = Signal(str)
@@ -36,6 +33,10 @@ class DateDialog(QDialog):
         helpers.setup_ui(self, "DateDialog.ui")
         self.info = DateDialogInfo(date_s, helpers.database_file())
 
+        self.cancel_button = self.findChild(QPushButton, "cancel_button")
+        self.ok_button = self.findChild(QPushButton, "ok_button")
+
+        self.date_label = self.findChild(QLabel, "date_label")
         self.date_combo = self.findChild(QComboBox, "date_combo")
 
         self.on_label = self.findChild(QLabel, "on_label")
@@ -69,6 +70,29 @@ class DateDialog(QDialog):
         self.every_spin.setValue(self.info.every_spin)
 
         self.on_date_combo_currentIndexChanged()
+
+        self.translate()
+
+    def translate(self):
+        self.date_label.setText(tr.date)
+        self.on_label.setText(tr.on)
+        self.every_label.setText(tr.every)
+        self.every_label2.setText(tr.every)
+        self.from_label.setText(tr.from_item)
+        self.to_label.setText(tr.to_item)
+        self.error_label.setText(tr.from_before_to)
+
+        self.date_combo.clear()
+        self.date_combo.addItems(tr.date_types)
+
+        self.on_combo.clear()
+        self.on_combo.addItems(tr.dates)
+
+        self.every_combo.clear()
+        self.every_combo.addItems(tr.weekdays)
+
+        self.cancel_button.setText(tr.cancel)
+        self.ok_button.setText(tr.ok)
 
     @Slot()
     def on_from_date_dateChanged(self):
@@ -134,28 +158,28 @@ class DateDialog(QDialog):
             self.on_on_combo_currentIndexChanged()
         elif index == self.info.every_days:
             self.every_label2.show()
-            self.every_label2.setText(_("Every"))
+            self.every_label2.setText(tr.every)
             self.every_spin.show()
             self.every_spin.setMaximum(600)
             self.days_label.show()
-            self.days_label.setText(_("Day(s)"))
+            self.days_label.setText(tr.days)
         elif index == self.info.every_month:
             self.every_label2.show()
-            self.every_label2.setText(_("Every"))
+            self.every_label2.setText(tr.every)
             self.every_spin.show()
             self.every_spin.setMaximum(12)
             self.days_label.show()
-            self.days_label.setText(_("of the month"))
+            self.days_label.setText(tr.of_the_month)
         elif index == self.info.every:
             self.every_label.show()
             self.every_combo.show()
         elif index == self.info.next_days:
             self.every_label2.show()
-            self.every_label2.setText(_("Next"))
+            self.every_label2.setText(tr.next)
             self.every_spin.show()
             self.every_spin.setMaximum(600)
             self.days_label.show()
-            self.days_label.setText(_("Day(s)"))
+            self.days_label.setText(tr.days)
 
         if not (index == self.info.once):
             self.from_label.show()
