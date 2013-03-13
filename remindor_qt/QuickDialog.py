@@ -45,9 +45,13 @@ class QuickDialog(QDialog):
 
         self.in_slider = self.findChild(QSlider, "in_slider")
         self.in_slider.setValue(self.info.minutes)
-
         self.in_spin = self.findChild(QSpinBox, "in_spin")
         self.in_spin.setValue(self.info.minutes)
+
+        self.unit_combo = self.findChild(QComboBox, "unit_combo")
+        self.unit_combo.setCurrentIndex(self.info.unit)
+        self.unit_combo2 = self.findChild(QComboBox, "unit_combo2")
+        self.unit_combo2.setCurrentIndex(self.info.unit)
 
         self.info_label = self.findChild(QLabel, "info_label")
         self.info_label.setText(self.info.info)
@@ -57,12 +61,14 @@ class QuickDialog(QDialog):
         if self.info.show_slider:
             self.in_spin.hide()
             self.findChild(QLabel, "in_label2").hide()
-            self.findChild(QLabel, "minutes_label2").hide()
+            #self.findChild(QLabel, "minutes_label2").hide()
+            self.unit_combo.hide()
         else:
             self.in_slider.hide()
             self.value_label.hide()
             self.findChild(QLabel, "in_label").hide()
-            self.findChild(QLabel, "minutes_label2").hide()
+            #self.findChild(QLabel, "minutes_label2").hide()
+            self.unit_combo2.hide()
 
     @Slot()
     def on_cancel_button_pressed(self):
@@ -71,6 +77,7 @@ class QuickDialog(QDialog):
     @Slot()
     def on_add_button_pressed(self):
         #in_slider and in_spin are connected, so they always have the same value
-        id = self.info.reminder(self.label_edit.text(), self.in_slider.value())
+        #also unit_combo and unit_combo2 are connected
+        id = self.info.reminder(self.label_edit.text(), self.in_slider.value(), self.unit_combo.currentIndex())
         self.added.emit(id)
         self.accept()

@@ -83,6 +83,8 @@ class PreferencesDialog(QDialog):
         self.quick_label_edit.setText(self.settings.quick_label)
         self.quick_minutes_spin = self.findChild(QSpinBox, "quick_minutes_spin")
         self.quick_minutes_spin.setValue(self.settings.quick_minutes)
+        self.quick_unit_combo = self.findChild(QComboBox, "quick_unit_combo")
+        self.quick_unit_combo.setCurrentIndex(self.settings.quick_unit)
         self.quick_slider_check = self.findChild(QCheckBox, "quick_slider_check")
         self.quick_slider_check.setChecked(self.settings.quick_slider)
         self.quick_popup_check = self.findChild(QCheckBox, "quick_popup_check")
@@ -268,6 +270,7 @@ class PreferencesDialog(QDialog):
 
         self.settings.quick_label = self.quick_label_edit.text()
         self.settings.quick_minutes = self.quick_minutes_spin.value()
+        self.settings.quick_unit = self.quick_unit_combo.currentIndex()
         self.settings.quick_slider = self.quick_slider_check.isChecked()
         self.settings.quick_popup = self.quick_popup_check.isChecked()
         self.settings.quick_dialog = self.quick_dialog_check.isChecked()

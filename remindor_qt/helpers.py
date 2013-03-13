@@ -19,6 +19,7 @@ from PySide.QtGui import *
 from PySide.QtUiTools import *
 
 import logging
+logger = logging.getLogger('remindor_qt')
 import os
 import sys
 
@@ -33,19 +34,24 @@ gettext.textdomain('remindor-qt')
 class RTimer(QTimer):
     def __init__(self, interval, slot, id = -1, single_shot = True, start_now = True, parent = None):
         super(RTimer, self).__init__(parent)
-        self.setInterval(interval * 1000)
-        self.setSingleShot(single_shot)
-        self.id = id
-        self.slot = slot
-        self.start_now = start_now
 
-        if self.id == -1:
-            self.timeout.connect(self.slot)
-        else:
-            self.timeout.connect(self.handler)
+        try:
+            self.setInterval(interval * 1000)
+            self.setSingleShot(single_shot)
+            self.id = id
+            self.slot = slot
+            self.start_now = start_now
 
-        if self.start_now:
-            self.start()
+            if self.id == -1:
+                self.timeout.connect(self.slot)
+            else:
+                self.timeout.connect(self.handler)
+
+            if self.start_now:
+                self.start()
+
+        except:
+            logger.warning("Exception caught trying to setup RTimer: " + str(sys.exc_info()[0]))
 
     @Slot()
     def handler(self):

@@ -451,7 +451,14 @@ Icon on Reminder</string>
         </widget>
         <widget class="QWidget" name="quick_page">
          <layout class="QGridLayout" name="gridLayout_4">
-          <item row="6" column="0">
+          <item row="6" column="1">
+           <widget class="QCheckBox" name="quick_dialog_check">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0">
            <widget class="QLabel" name="quick_sound_label">
             <property name="text">
              <string>Use standard reminder
@@ -459,7 +466,7 @@ sound settings</string>
             </property>
            </widget>
           </item>
-          <item row="8" column="0">
+          <item row="9" column="0">
            <widget class="QLabel" name="quick_info_label">
             <property name="text">
              <string>Show info on dialog</string>
@@ -473,7 +480,7 @@ sound settings</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="0">
+          <item row="5" column="0">
            <widget class="QLabel" name="quick_popup_label">
             <property name="text">
              <string>Popup Notification</string>
@@ -487,14 +494,14 @@ sound settings</string>
             </property>
            </widget>
           </item>
-          <item row="5" column="0">
+          <item row="6" column="0">
            <widget class="QLabel" name="quick_dialog_label">
             <property name="text">
              <string>Dialog Notification</string>
             </property>
            </widget>
           </item>
-          <item row="9" column="0">
+          <item row="10" column="0">
            <spacer name="verticalspacer4">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -507,7 +514,7 @@ sound settings</string>
             </property>
            </spacer>
           </item>
-          <item row="2" column="0">
+          <item row="3" column="0">
            <widget class="QLabel" name="quick_slider">
             <property name="text">
              <string>Use Slider</string>
@@ -517,49 +524,42 @@ sound settings</string>
           <item row="0" column="1">
            <widget class="QLineEdit" name="quick_label_edit"/>
           </item>
-          <item row="3" column="0" colspan="2">
+          <item row="4" column="0" colspan="2">
            <widget class="Line" name="line2">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
            </widget>
           </item>
-          <item row="7" column="0" colspan="2">
+          <item row="8" column="0" colspan="2">
            <widget class="Line" name="line3">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
+          <item row="3" column="1">
            <widget class="QCheckBox" name="quick_slider_check">
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
-          <item row="4" column="1">
+          <item row="5" column="1">
            <widget class="QCheckBox" name="quick_popup_check">
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
-          <item row="5" column="1">
-           <widget class="QCheckBox" name="quick_dialog_check">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="1">
+          <item row="7" column="1">
            <widget class="QCheckBox" name="quick_sound_check">
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
-          <item row="8" column="1">
+          <item row="9" column="1">
            <widget class="QCheckBox" name="quick_info_check">
             <property name="text">
              <string/>
@@ -577,6 +577,32 @@ sound settings</string>
             <property name="value">
              <number>30</number>
             </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="quick_unit_label">
+            <property name="text">
+             <string>Default Quick Unit</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QComboBox" name="quick_unit_combo">
+            <item>
+             <property name="text">
+              <string>minute(s)</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>hour(s)</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>day(s)</string>
+             </property>
+            </item>
            </widget>
           </item>
          </layout>
