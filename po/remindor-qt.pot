@@ -1,15 +1,6 @@
-# Copyright (C) 2012 Brian Douglass bhdouglass@gmail.com
-# This program is free software: you can redistribute it and/or modify it
-# under the terms of the GNU General Public License version 3, as published
-# by the Free Software Foundation.
-#
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranties of
-# MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
-# PURPOSE.  See the GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program.  If not, see <http://www.gnu.org/licenses/>.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -17,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-27 11:12-0500\n"
+"POT-Creation-Date: 2013-03-13 13:39-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,22 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../remindor_qt/ReminderDialog.py:100
-msgid "File does not exist"
-msgstr ""
-
-#: ../remindor_qt/ReminderDialog.py:101
-msgid "The following file does not exist:"
-msgstr ""
-
-#: ../remindor_qt/ReminderDialog.py:175
-#: ../remindor_qt/PreferencesDialog.py:198
-msgid "Choose Sound"
-msgstr ""
-
-#: ../remindor_qt/ReminderDialog.py:177
-#: ../remindor_qt/PreferencesDialog.py:200
-msgid "Sounds (*.mp3 *.ogg *.wav);;MP3 (*.mp3);;Ogg (*.ogg);;WAVE (*.wav)"
+#: ../remindor_qt/AboutDialog.py:41
+msgid "Credits"
 msgstr ""
 
 #: ../remindor-qt.desktop.in.h:1
@@ -52,20 +29,36 @@ msgstr ""
 msgid "Remindor-Qt application"
 msgstr ""
 
-#: ../remindor_qt/TimeDialog.py:144
+#: ../remindor_qt/TimeDialog.py:145
 msgid "Minute(s)"
 msgstr ""
 
-#: ../remindor_qt/TimeDialog.py:146
+#: ../remindor_qt/TimeDialog.py:147
 msgid "Hour(s)"
 msgstr ""
 
-#: ../remindor_qt/CommandDialog.py:58
-msgid "Choose Command"
+#: ../remindor_qt/DateDialog.py:137 ../remindor_qt/DateDialog.py:144
+msgid "Every"
 msgstr ""
 
-#: ../remindor_qt/CommandDialog.py:60
-msgid "All Files (*)"
+#: ../remindor_qt/DateDialog.py:141 ../remindor_qt/DateDialog.py:158
+msgid "Day(s)"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:148
+msgid "of the month"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:154
+msgid "Next"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:198
+msgid "Choose Sound"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:200
+msgid "Sounds (*.mp3 *.ogg *.wav);;MP3 (*.mp3);;Ogg (*.ogg);;WAVE (*.wav)"
 msgstr ""
 
 #: ../remindor_qt/PreferencesDialog.py:292
@@ -84,38 +77,39 @@ msgstr ""
 msgid "Important!"
 msgstr ""
 
-#: ../remindor_qt/RemindorQtWindow.py:235
-msgid "New News"
+#: ../remindor_qt/RemindorQtWindow.py:143
+msgid "Sorry, you cannot postpone a repeating time."
 msgstr ""
 
-#: ../remindor_qt/RemindorQtWindow.py:237
+#: ../remindor_qt/RemindorQtWindow.py:144
+msgid "Postpone"
+msgstr ""
+
+#: ../remindor_qt/RemindorQtWindow.py:164
+#: ../remindor_qt/RemindorQtWindow.py:246
 msgid "News"
 msgstr ""
 
-#: ../remindor_qt/RemindorQtWindow.py:254
+#: ../remindor_qt/RemindorQtWindow.py:244
+msgid "New News"
+msgstr ""
+
+#: ../remindor_qt/RemindorQtWindow.py:263
 msgid "Today's Reminders"
 msgstr ""
 
-#: ../remindor_qt/RemindorQtWindow.py:261
+#: ../remindor_qt/RemindorQtWindow.py:270
 msgid "Future Reminders"
 msgstr ""
 
-#: ../remindor_qt/RemindorQtWindow.py:268
+#: ../remindor_qt/RemindorQtWindow.py:277
 msgid "Past Reminders"
 msgstr ""
 
-#: ../remindor_qt/DateDialog.py:135 ../remindor_qt/DateDialog.py:142
-msgid "Every"
+#: ../remindor_qt/CommandDialog.py:58
+msgid "Choose Command"
 msgstr ""
 
-#: ../remindor_qt/DateDialog.py:139 ../remindor_qt/DateDialog.py:156
-msgid "Day(s)"
-msgstr ""
-
-#: ../remindor_qt/DateDialog.py:146
-msgid "of the month"
-msgstr ""
-
-#: ../remindor_qt/DateDialog.py:152
-msgid "Next"
+#: ../remindor_qt/CommandDialog.py:60
+msgid "All Files (*)"
 msgstr ""

@@ -17,10 +17,6 @@ Depends: ${misc:Depends},
  python-pyside.qtuitools,
  python-pyside.phonon,
  python-notify,
- python-dbus,
- python-requests,
- python-feedparser,
- python-dateutil,
  remindor-common
 Recommends: sni-qt
 Description: Schedule reminders easily from an indicator

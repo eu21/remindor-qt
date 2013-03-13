@@ -18,10 +18,6 @@ from PySide.QtCore import *
 from PySide.QtGui import *
 from PySide.QtUiTools import *
 
-import gettext
-from gettext import gettext as _
-gettext.textdomain('remindor-qt')
-
 import logging
 logger = logging.getLogger('remindor_qt')
 
@@ -33,6 +29,7 @@ from remindor_qt.remindor_qtconfig import get_data_file
 
 from remindor_common.helpers import ReminderDialogInfo, insert_values, valid_date, valid_time
 from remindor_common import datetimeutil, database as db
+from remindor_common import translations as tr
 
 class ReminderDialog(QDialog):
     added = Signal(int)
@@ -42,15 +39,30 @@ class ReminderDialog(QDialog):
         super(ReminderDialog, self).__init__(parent)
         helpers.setup_ui(self, "ReminderDialog.ui")
 
+        self.help_button = self.findChild(QPushButton, "help_button")
+        self.cancel_button = self.findChild(QPushButton, "cancel_button")
         self.add_button = self.findChild(QPushButton, "add_button")
         self.save_button = self.findChild(QPushButton, "save_button")
         self.save_button.hide()
+
+        self.tabs = self.findChild(QTabWidget, "tabs")
+
+        self.label_label = self.findChild(QLabel, "label_label")
+        self.time_label = self.findChild(QLabel, "time_label")
+        self.date_label = self.findChild(QLabel, "date_label")
+        self.command_label = self.findChild(QLabel, "command_label")
+        self.notes_label = self.findChild(QLabel, "notes_label")
 
         self.label_edit = self.findChild(QLineEdit, "label_edit")
         self.time_edit = self.findChild(QLineEdit, "time_edit")
         self.date_edit = self.findChild(QLineEdit, "date_edit")
         self.command_edit = self.findChild(QLineEdit, "command_edit")
         self.notes_edit = self.findChild(QPlainTextEdit, "notes_edit")
+
+        self.time_button = self.findChild(QPushButton, "time_button")
+        self.date_button = self.findChild(QPushButton, "date_button")
+        self.command_button = self.findChild(QPushButton, "command_button")
+        self.notes_button = self.findChild(QPushButton, "notes_button")
 
         self.time_error = self.findChild(QToolButton, "time_error")
         self.time_error.hide()
@@ -63,6 +75,12 @@ class ReminderDialog(QDialog):
         self.boxcar_label = self.findChild(QLabel, "boxcar_label")
         self.boxcar_label.hide()
 
+        self.sound_label = self.findChild(QLabel, "sound_label")
+        self.file_label = self.findChild(QLabel, "file_label")
+        self.length_label = self.findChild(QLabel, "length_label")
+        self.loop_label = self.findChild(QLabel, "loop_label")
+        self.length_label2 = self.findChild(QLabel, "length_label2")
+
         self.sound_check = self.findChild(QCheckBox, "sound_check")
         self.file_edit = self.findChild(QLineEdit, "file_edit")
         self.length_spin = self.findChild(QSpinBox, "length_spin")
@@ -74,6 +92,41 @@ class ReminderDialog(QDialog):
         self.set_data(self.info.label, self.info.time, self.info.date, self.info.command,
                       self.info.notes, self.info.popup, self.info.dialog, self.info.boxcar,
                       self.info.sound_file, self.info.sound_length, self.info.sound_loop)
+
+    def translate(self):
+        self.setWindowTitle(tr.add_reminder)
+
+        self.help_button.setText(tr.help)
+        self.cancel_button.setText(tr.cancel)
+        self.add_button.setText(tr.add)
+        self.save_button.setText(tr.save)
+
+        self.insert_combo.clear()
+        self.insert_combo.addItems(tr.inserts)
+
+        self.tabs.setTabText(0, tr.reminder)
+        self.label_label.setText(tr.label)
+        self.time_label.setText(tr.time)
+        self.date_label.setText(tr.date)
+        self.command_label.setText(tr.command)
+        self.notes_label.setText(tr.notes)
+
+        self.time_button.setText(tr.edit)
+        self.date_button.setText(tr.edit)
+        self.command_button.setText(tr.edit)
+        self.help_button.setText(tr.insert)
+
+        self.tabs.setTabText(0, tr.notification)
+        self.popup_check.setText(tr.popup)
+        self.dialog_check.setText(tr.dialog)
+        #self.boxcar_check #doesn't need translated
+
+        self.tabs.setTabText(0, tr.sound)
+        self.sound_label.setText(tr.play_sound)
+        self.file_label.setText(tr.sound_file)
+        self.length_label.setText(tr.play_length)
+        self.loop_label.setText(tr.loop)
+        self.length_label2.setText(tr.play_length2)
 
     @Slot()
     def on_add_button_pressed(self):
@@ -99,12 +152,12 @@ class ReminderDialog(QDialog):
             self.accept()
         else:
             if status == self.info.file_error:
-                title = _("File does not exist")
+                title = tr.file_not_exist_title
                 message = ""
                 if sound_file != "":
-                    message = "%s\n\n%s" % (_("The following file does not exist.\nPlease choose another sound file."), sound_file)
+                    message = "%s\n\n%s" % (tr.file_not_exist_message, sound_file)
                 else:
-                    message = _("Please choose a sound file.")
+                    message = tr.file_not_exist_choose
                 QMessageBox.warning(self, title, message)
             elif status == self.info.time_error:
                 self.time_error.show()
@@ -113,8 +166,8 @@ class ReminderDialog(QDialog):
                 self.date_error.show()
                 self.date_edit.setFocus()
             elif status == self.info.notify_warn:
-                title = "Boxcar"
-                message = _("The label and notes for this reminder are empty,\nwould you still like to use a notification?")
+                title = tr.empty_notify_title
+                message = tr.empty_notify_message
                 ans = QMessageBox.question(self, title, message, QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
                 if ans == QMessageBox.Yes:
                     (status, id) = self.info.reminder(label, time, date, command, notes,
@@ -190,9 +243,9 @@ class ReminderDialog(QDialog):
 
     @Slot()
     def on_file_button_pressed(self):
-        caption = _("Choose Sound")
+        caption = tr.choose_sound_title
         sound_dir = get_data_file('media', 'sounds')
-        file_filter = _("Sounds (*.mp3 *.ogg *.wav);;MP3 (*.mp3);;Ogg (*.ogg);;WAVE (*.wav)")
+        file_filter = tr.choose_sound_filter
 
         (filename, selected_filter) = QFileDialog.getOpenFileName(self, caption, sound_dir, file_filter)
         self.file_edit.setText(filename)
@@ -210,7 +263,7 @@ class ReminderDialog(QDialog):
     def edit(self, reminder):
         self.save_button.show()
         self.add_button.hide()
-        self.setWindowTitle("Edit Reminder")
+        self.setWindowTitle(tr.edit_reminder)
 
         self.database = db.Database(helpers.database_file())
         r = self.database.alarm(reminder)
@@ -248,4 +301,4 @@ class ReminderDialog(QDialog):
         self.file_edit.setText(sound_file)
         self.length_spin.setValue(length)
         self.loop_check.setChecked(loop)
-        self.loop_check.setText(_("(Will loop %s times)") % self.info.sound_loop_times)
+        self.loop_check.setText(tr.loop_times % self.info.sound_loop_times)
