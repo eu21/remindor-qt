@@ -1,6 +1,6 @@
 [Desktop Entry]
-_Name=Remindor-Qt
-_Comment=Remindor-Qt
+Name=Remindor-Qt
+Comment=Remindor-Qt
 Categories=GNOME;Utility;
 Exec=remindor-qt
 Icon=remindor-qt
