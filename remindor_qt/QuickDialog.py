@@ -37,14 +37,17 @@ class QuickDialog(QDialog):
 
         self.info = QuickDialogInfo(helpers.database_file())
 
+        self.label_label = self.findChild(QLabel, "label_label")
         self.label_edit = self.findChild(QLineEdit, "label_edit")
         self.label_edit.setText(self.info.label)
 
         self.value_label = self.findChild(QLabel, "value_label")
         self.value_label.setNum(self.info.minutes)
 
+        self.in_label = self.findChild(QLabel, "in_label")
         self.in_slider = self.findChild(QSlider, "in_slider")
         self.in_slider.setValue(self.info.minutes)
+        self.in_label2 = self.findChild(QLabel, "in_label2")
         self.in_spin = self.findChild(QSpinBox, "in_spin")
         self.in_spin.setValue(self.info.minutes)
 
@@ -69,6 +72,25 @@ class QuickDialog(QDialog):
             self.findChild(QLabel, "in_label").hide()
             #self.findChild(QLabel, "minutes_label2").hide()
             self.unit_combo2.hide()
+
+        self.translate()
+
+    def translate(self):
+        self.setWindowTitle(_("Add Quick Reminder"))
+        self.label_label.setText(_("Label"))
+        self.in_label.setText(_("In"))
+        self.in_label2.setText(_("In"))
+
+        units = [
+            _("minute(s)"),
+            _("hour(s)"),
+            _("days(s)")
+        ]
+
+        self.unit_combo.clear()
+        self.unit_combo.addItems(units)
+        self.unit_combo2.clear()
+        self.unit_combo2.addItems(units)
 
     @Slot()
     def on_cancel_button_pressed(self):

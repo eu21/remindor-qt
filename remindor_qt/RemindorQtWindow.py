@@ -49,6 +49,29 @@ class RemindorQtWindow(QMainWindow):
         helpers.setup_ui(self, "RemindorQtWindow.ui", True)
         self.resize(700, 300)
 
+        self.action_add = self.findChild(QAction, "action_add")
+        self.action_quick_add = self.findChild(QAction, "action_quick_add")
+        self.action_edit = self.findChild(QAction, "action_edit")
+        self.action_postpone = self.findChild(QAction, "action_postpone")
+        self.action_delete = self.findChild(QAction, "action_delete")
+        self.action_preferences = self.findChild(QAction, "action_preferences")
+        self.action_news = self.findChild(QAction, "action_news")
+        self.action_help = self.findChild(QAction, "action_help")
+        self.action_close = self.findChild(QAction, "action_close")
+        self.action_quit = self.findChild(QAction, "action_quit")
+        self.action_refresh = self.findChild(QAction, "action_refresh")
+        self.action_clear_icon = self.findChild(QAction, "action_clear_icon")
+        self.action_bugs = self.findChild(QAction, "action_bugs")
+        self.action_request = self.findChild(QAction, "action_request")
+        self.action_translate = self.findChild(QAction, "action_translate")
+        self.action_donate = self.findChild(QAction, "action_donate")
+        self.action_ask = self.findChild(QAction, "action_ask")
+        self.action_website = self.findChild(QAction, "action_website")
+        self.action_about = self.findChild(QAction, "action_about")
+        self.action_stop = self.findChild(QAction, "action_stop")
+
+        self.translate()
+
         self.info = ManageWindowInfo(helpers.database_file())
 
         self.active_icon = QIcon(helpers.get_data_file("media", "remindor-qt-active.svg"))
@@ -60,24 +83,24 @@ class RemindorQtWindow(QMainWindow):
 
         self.reminder_tree = self.findChild(QTreeWidget, "reminder_tree")
         self.reminder_tree.setColumnWidth(0, 200)
-        edit = QAction(QIcon.fromTheme("gtk-edit", QIcon(":/icons/edit.png")), "Edit", self)
+        edit = QAction(QIcon.fromTheme("gtk-edit", QIcon(":/icons/edit.png")), _("Edit"), self)
         edit.triggered.connect(self.on_action_edit_triggered)
         self.reminder_tree.addAction(edit)
-        postpone = QAction(QIcon.fromTheme("go-jump", QIcon(":/icons/postpone.png")), "Postpone", self)
+        postpone = QAction(QIcon.fromTheme("go-jump", QIcon(":/icons/postpone.png")), _("Postpone"), self)
         postpone.triggered.connect(self.on_action_postpone_triggered)
         self.reminder_tree.addAction(postpone)
-        delete = QAction(QIcon.fromTheme("edit-delete", QIcon(":/icons/delete.png")), "Delete", self)
+        delete = QAction(QIcon.fromTheme("edit-delete", QIcon(":/icons/delete.png")), _("Delete"), self)
         delete.triggered.connect(self.on_action_delete_triggered)
         self.reminder_tree.addAction(delete)
 
         self.news_action = self.findChild(QAction, "action_news")
 
         self.tray_menu = QMenu()
-        self.tray_menu.addAction(QIcon.fromTheme("add", QIcon(":/icons/add.png")), "Add", self, SLOT("on_action_add_triggered()"))
-        self.tray_menu.addAction(QIcon.fromTheme("media-skip-forward", QIcon(":/icons/quick.png")), "Quick Add", self, SLOT("on_action_quick_add_triggered()"))
-        self.tray_menu.addAction(QIcon.fromTheme("media-playback-stop", QIcon(":/icons/delete.png")), "Stop Sound", self, SLOT("on_action_stop_triggered()"))
-        self.tray_menu.addAction(QIcon.fromTheme("stock_properties", QIcon(":/icons/manage.png")), "Manage", self, SLOT("show()"))
-        self.tray_menu.addAction(QIcon.fromTheme("exit", QIcon(":/icons/quit.png")), "Quit", self, SLOT("on_action_quit_triggered()")) #TODO: change this when reimplementing x-close button
+        self.tray_menu.addAction(QIcon.fromTheme("add", QIcon(":/icons/add.png")), _("Add"), self, SLOT("on_action_add_triggered()"))
+        self.tray_menu.addAction(QIcon.fromTheme("media-skip-forward", QIcon(":/icons/quick.png")), _("Quick Add"), self, SLOT("on_action_quick_add_triggered()"))
+        self.tray_menu.addAction(QIcon.fromTheme("media-playback-stop", QIcon(":/icons/delete.png")), _("Stop Sound"), self, SLOT("on_action_stop_triggered()"))
+        self.tray_menu.addAction(QIcon.fromTheme("stock_properties", QIcon(":/icons/manage.png")), _("Manage"), self, SLOT("show()"))
+        self.tray_menu.addAction(QIcon.fromTheme("exit", QIcon(":/icons/quit.png")), _("Quit"), self, SLOT("on_action_quit_triggered()")) #TODO: change this when reimplementing x-close button
 
         self.tray_icon = QSystemTrayIcon(self.tray_icons[self.info.indicator_icon], self)
         self.tray_icon.setContextMenu(self.tray_menu)
@@ -96,6 +119,30 @@ class RemindorQtWindow(QMainWindow):
 
         b = BlogReader(rssfeed, helpers.database_file())
         b.start()
+
+    def translate(self):
+        self.setWindowTitle("Mange Reminders")
+
+        self.action_add.setText(_("Add"))
+        self.action_quick_add.setText(_("Quick Add"))
+        self.action_edit.setText(_("Edit"))
+        self.action_postpone.setText(_("Postpone"))
+        self.action_delete.setText(_("Delete"))
+        self.action_preferences.setText(_("Preferences"))
+        self.action_news.setText(_("News"))
+        self.action_help.setText(_("Help"))
+        self.action_close.setText(_("Close"))
+        self.action_quit.setText(_("Quit"))
+        self.action_refresh.setText(_("Refresh"))
+        self.action_clear_icon.setText(_("Clear Icon"))
+        self.action_bugs.setText(_("Submit Bugs"))
+        self.action_request.setText(_("Request Feature"))
+        self.action_translate.setText(_("Help Translate"))
+        self.action_donate.setText(_("Donate"))
+        self.action_ask.setText(_("Ask a Question"))
+        self.action_website.setText(_("Website"))
+        self.action_about.setText(_("About"))
+        self.action_stop.setText(_("Stop Sound"))
 
     @Slot()
     def tray_activated(self, reason):
