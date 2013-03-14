@@ -22,7 +22,7 @@ from remindor_qt.remindor_qtconfig import get_version
 
 import gettext
 from gettext import gettext as _
-gettext.textdomain('remindor-qt')
+gettext.textdomain('remindor-common')
 
 class AboutDialog(QDialog):
     def __init__(self, parent = None):

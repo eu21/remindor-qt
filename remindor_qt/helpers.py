@@ -29,7 +29,7 @@ from remindor_common import database as db
 
 import gettext
 from gettext import gettext as _
-gettext.textdomain('remindor-qt')
+gettext.textdomain('remindor-common')
 
 class RTimer(QTimer):
     def __init__(self, interval, slot, id = -1, single_shot = True, start_now = True, parent = None):

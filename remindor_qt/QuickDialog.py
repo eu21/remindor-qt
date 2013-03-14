@@ -19,7 +19,7 @@ from PySide.QtGui import *
 
 import gettext
 from gettext import gettext as _
-gettext.textdomain('remindor-qt')
+gettext.textdomain('remindor-common')
 
 import logging
 logger = logging.getLogger('remindor_qt')

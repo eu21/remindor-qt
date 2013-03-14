@@ -19,7 +19,7 @@ import sys
 
 import gettext
 from gettext import gettext as _
-gettext.textdomain('remindor-qt')
+gettext.textdomain('remindor-common')
 
 from PySide.QtCore import *
 from PySide.QtGui import *

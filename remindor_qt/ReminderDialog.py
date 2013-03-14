@@ -23,7 +23,7 @@ logger = logging.getLogger('remindor_qt')
 
 import gettext
 from gettext import gettext as _
-gettext.textdomain('remindor-qt')
+gettext.textdomain('remindor-common')
 
 from remindor_qt import helpers
 from remindor_qt.CommandDialog import CommandDialog

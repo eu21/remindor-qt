@@ -36,7 +36,7 @@ import os
 
 import gettext
 from gettext import gettext as _
-gettext.textdomain('remindor-qt')
+gettext.textdomain('remindor-common')
 
 class project_path_not_found(Exception):
     """Raised when we can't find the project directory."""
