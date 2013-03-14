@@ -77,6 +77,7 @@ class DateDialog(QDialog):
         self.translate()
 
     def translate(self):
+        self.setWindowTitle(_("Edit Date"))
         self.date_label.setText(_("Date"))
         self.on_label.setText(_("On"))
         self.every_label.setText(_("Every"))

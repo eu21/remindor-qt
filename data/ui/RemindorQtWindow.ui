@@ -347,7 +347,7 @@
     </iconset>
    </property>
    <property name="text">
-    <string>Request Feature</string>
+    <string>Request a Feature</string>
    </property>
    <property name="toolTip">
     <string>Request a Feature</string>
