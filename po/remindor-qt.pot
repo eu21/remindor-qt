@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-13 16:50-0400\n"
+"POT-Creation-Date: 2013-03-14 13:28-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,324 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: ../remindor_qt/DateDialog.py:80 ../remindor_qt/ReminderDialog.py:110
+#: ../remindor_qt/ReminderDialog.py:134 ../remindor_qt/CommandDialog.py:55
+msgid "Date"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:81
+msgid "On"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:82 ../remindor_qt/DateDialog.py:83
+#: ../remindor_qt/DateDialog.py:200 ../remindor_qt/DateDialog.py:207
+#: ../remindor_qt/TimeDialog.py:91
+msgid "Every"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:84 ../remindor_qt/TimeDialog.py:92
+msgid "From"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:85 ../remindor_qt/TimeDialog.py:93
+msgid "To"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:86 ../remindor_qt/TimeDialog.py:94
+msgid "From must be before To"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:89 ../remindor_qt/TimeDialog.py:82
+msgid "Once"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:90
+msgid "Every Day"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:91
+msgid "Every X Days"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:92
+msgid "Every Xth of the Month"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:93
+msgid "Every <day>"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:94
+msgid "Every Other Day"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:95
+msgid "Next X Days"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:102
+msgid "Other"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:103
+msgid "Today"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:104
+msgid "Tomorrow"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:105 ../remindor_qt/DateDialog.py:119
+msgid "Monday"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:106 ../remindor_qt/DateDialog.py:120
+msgid "Tuesday"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:107 ../remindor_qt/DateDialog.py:121
+msgid "Wednesday"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:108 ../remindor_qt/DateDialog.py:122
+msgid "Thursday"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:109 ../remindor_qt/DateDialog.py:123
+msgid "Friday"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:110 ../remindor_qt/DateDialog.py:124
+msgid "Saturday"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:111 ../remindor_qt/DateDialog.py:125
+msgid "Sunday"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:112
+msgid "Christmas"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:126
+msgid "Weekday"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:127
+msgid "Weekend"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:133 ../remindor_qt/ReminderDialog.py:105
+#: ../remindor_qt/CommandDialog.py:76 ../remindor_qt/TimeDialog.py:96
+#: ../remindor_qt/PreferencesDialog.py:270
+msgid "Cancel"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:134 ../remindor_qt/CommandDialog.py:77
+#: ../remindor_qt/TimeDialog.py:97
+msgid "Ok"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:204
+msgid "Day(s)"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:211
+msgid "of the month"
+msgstr ""
+
+#: ../remindor_qt/DateDialog.py:217
+msgid "Next"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:102
+msgid "Add Reminder"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:104
+#: ../remindor_qt/PreferencesDialog.py:269
+#: ../remindor_qt/RemindorQtWindow.py:133
+msgid "Help"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:106 ../remindor_qt/RemindorQtWindow.py:99
+#: ../remindor_qt/RemindorQtWindow.py:126
+msgid "Add"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:107
+#: ../remindor_qt/PreferencesDialog.py:271
+msgid "Save"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:111 ../remindor_qt/CommandDialog.py:56
+msgid "Month"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:112 ../remindor_qt/CommandDialog.py:57
+msgid "Month Name"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:113 ../remindor_qt/CommandDialog.py:58
+msgid "Day"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:114 ../remindor_qt/CommandDialog.py:59
+msgid "Day Name"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:115 ../remindor_qt/CommandDialog.py:60
+msgid "Day of Year"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:116 ../remindor_qt/CommandDialog.py:61
+msgid "Year"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:117 ../remindor_qt/ReminderDialog.py:133
+#: ../remindor_qt/CommandDialog.py:62 ../remindor_qt/TimeDialog.py:79
+msgid "Time"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:118 ../remindor_qt/CommandDialog.py:63
+msgid "Hour (24)"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:119 ../remindor_qt/CommandDialog.py:64
+msgid "Hour (12)"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:120 ../remindor_qt/CommandDialog.py:65
+msgid "Minutes"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:121 ../remindor_qt/CommandDialog.py:66
+msgid "Seconds"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:122 ../remindor_qt/CommandDialog.py:67
+msgid "Microseconds"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:123 ../remindor_qt/CommandDialog.py:68
+msgid "Sound File/Path"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:124 ../remindor_qt/ReminderDialog.py:150
+#: ../remindor_qt/CommandDialog.py:69
+msgid "Sound File"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:125 ../remindor_qt/ReminderDialog.py:135
+#: ../remindor_qt/CommandDialog.py:75
+msgid "Command"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:131
+msgid "Reminder"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:132 ../remindor_qt/QuickDialog.py:80
+msgid "Label"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:136
+msgid "Notes:"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:138 ../remindor_qt/ReminderDialog.py:139
+#: ../remindor_qt/ReminderDialog.py:140
+#: ../remindor_qt/PreferencesDialog.py:214
+#: ../remindor_qt/PreferencesDialog.py:215
+#: ../remindor_qt/PreferencesDialog.py:216
+#: ../remindor_qt/RemindorQtWindow.py:86
+#: ../remindor_qt/RemindorQtWindow.py:128
+msgid "Edit"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:141 ../remindor_qt/CommandDialog.py:52
+msgid "Insert"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:143
+msgid "Notification"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:144
+#: ../remindor_qt/PreferencesDialog.py:218
+msgid "Popup"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:145
+msgid "Dialog Box"
+msgstr ""
+
+#. self.boxcar_check #doesn't need translated
+#: ../remindor_qt/ReminderDialog.py:148
+#: ../remindor_qt/PreferencesDialog.py:198
+msgid "Sound"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:149
+msgid "Play Sound"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:151
+msgid "Play Length"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:152
+msgid "Loop"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:153
+#: ../remindor_qt/PreferencesDialog.py:224
+msgid "s (0 for end)"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:179
+msgid "File does not exist"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:182
+msgid ""
+"The following file does not exist.\n"
+"Please choose another sound file."
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:184
+msgid "Please choose a sound file."
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:193
+msgid "Empty Notifications"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:194
+msgid ""
+"The label and notes for this reminder are empty,\n"
+"would you still like to use a notification?"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:270
+#: ../remindor_qt/PreferencesDialog.py:329
+msgid "Choose Sound"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:272
+#: ../remindor_qt/PreferencesDialog.py:331
+msgid "Sounds (*.mp3 *.ogg *.wav);;MP3 (*.mp3);;Ogg (*.ogg);;WAVE (*.wav)"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:290
+msgid "Edit Reminder"
+msgstr ""
+
+#: ../remindor_qt/ReminderDialog.py:328
+#, python-format
+msgid "(Will loop %s times)"
+msgstr ""
 
 #: ../remindor-qt.desktop.in.h:1
 msgid "Remindor-Qt"
@@ -25,31 +343,230 @@ msgstr ""
 msgid "Remindor-Qt application"
 msgstr ""
 
-#: ../remindor_qt/CommandDialog.py:58
+#: ../remindor_qt/CommandDialog.py:51
+msgid "Edit Command"
+msgstr ""
+
+#: ../remindor_qt/CommandDialog.py:95
 msgid "Choose Command"
 msgstr ""
 
-#: ../remindor_qt/CommandDialog.py:60
+#: ../remindor_qt/CommandDialog.py:97
 msgid "All Files (*)"
 msgstr ""
 
-#: ../remindor_qt/TimeDialog.py:145
+#: ../remindor_qt/TimeDialog.py:78
+msgid "Edit Time"
+msgstr ""
+
+#: ../remindor_qt/TimeDialog.py:83
+msgid "Every X Minutes"
+msgstr ""
+
+#: ../remindor_qt/TimeDialog.py:84
+msgid "Every X Hours"
+msgstr ""
+
+#: ../remindor_qt/TimeDialog.py:90
+msgid "At"
+msgstr ""
+
+#: ../remindor_qt/TimeDialog.py:173
 msgid "Minute(s)"
 msgstr ""
 
-#: ../remindor_qt/TimeDialog.py:147
+#: ../remindor_qt/TimeDialog.py:175
 msgid "Hour(s)"
 msgstr ""
 
-#: ../remindor_qt/PreferencesDialog.py:198
-msgid "Choose Sound"
+#: ../remindor_qt/QuickDialog.py:79
+msgid "Add Quick Reminder"
+msgstr ""
+
+#: ../remindor_qt/QuickDialog.py:81 ../remindor_qt/QuickDialog.py:82
+msgid "In"
+msgstr ""
+
+#: ../remindor_qt/QuickDialog.py:85 ../remindor_qt/PreferencesDialog.py:238
+msgid "minute(s)"
+msgstr ""
+
+#: ../remindor_qt/QuickDialog.py:86 ../remindor_qt/PreferencesDialog.py:239
+msgid "hour(s)"
+msgstr ""
+
+#: ../remindor_qt/QuickDialog.py:87 ../remindor_qt/PreferencesDialog.py:240
+msgid "days(s)"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:193
+#: ../remindor_qt/RemindorQtWindow.py:131
+msgid "Preferences"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:196
+msgid "Standard Reminders"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:197
+msgid "Notifications"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:199
+msgid "Quick Reminders"
 msgstr ""
 
 #: ../remindor_qt/PreferencesDialog.py:200
-msgid "Sounds (*.mp3 *.ogg *.wav);;MP3 (*.mp3);;Ogg (*.ogg);;WAVE (*.wav)"
+msgid "Interface"
 msgstr ""
 
-#: ../remindor_qt/PreferencesDialog.py:292
+#: ../remindor_qt/PreferencesDialog.py:201
+msgid "Format"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:202
+msgid "Services"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:208
+msgid "Default Label"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:209
+msgid "Default Time"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:210
+msgid "Default Date"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:211
+msgid "Default Command"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:212
+msgid "Minutes to Postpone"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:219
+msgid "Dialog"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:220
+msgid ""
+"Change Tray\n"
+"Icon on Reminder"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:222
+msgid "Default Sound File"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:223
+msgid "Default Play Length"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:225
+msgid "Loop Sound"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:226
+msgid "Times to Loop"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:228
+msgid "Default Quick Label"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:229
+msgid "Default Quick Minutes"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:230
+msgid "Default Quick Unit"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:231
+msgid "Use Slider"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:232
+msgid "Popup Notification"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:233
+msgid "Dialog Notification"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:234
+msgid ""
+"Use standard reminder\n"
+"sound settings"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:235
+msgid "Show info on dialog"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:246
+msgid "Today's Color"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:247
+msgid "Future Color"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:248
+msgid "Past Color"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:249
+msgid ""
+"Show News\n"
+"Notifications"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:250
+msgid "Tray Icon"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:251
+msgid "Hide Tray Icon"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:254
+msgid "System Theme"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:255
+msgid "Light Icon"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:256
+msgid "Dark Icon"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:257
+msgid "App Icon"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:263
+msgid "Time Format"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:264
+msgid "Date Format"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:266
+msgid "Boxcar Email"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:267
+msgid "Boxcar Notification"
+msgstr ""
+
+#: ../remindor_qt/PreferencesDialog.py:424
 msgid ""
 "You have chosen to hide the indicator.\n"
 "Only use this option if you know what you are doing!\n"
@@ -61,39 +578,118 @@ msgid ""
 "Would you like to continue?"
 msgstr ""
 
-#: ../remindor_qt/PreferencesDialog.py:293
+#: ../remindor_qt/PreferencesDialog.py:425
 msgid "Important!"
 msgstr ""
 
-#: ../remindor_qt/RemindorQtWindow.py:143
-msgid "Sorry, you cannot postpone a repeating time."
-msgstr ""
-
-#: ../remindor_qt/RemindorQtWindow.py:144
+#: ../remindor_qt/RemindorQtWindow.py:89
+#: ../remindor_qt/RemindorQtWindow.py:129
+#: ../remindor_qt/RemindorQtWindow.py:191
 msgid "Postpone"
 msgstr ""
 
-#: ../remindor_qt/RemindorQtWindow.py:164
-#: ../remindor_qt/RemindorQtWindow.py:246
+#: ../remindor_qt/RemindorQtWindow.py:92
+#: ../remindor_qt/RemindorQtWindow.py:130
+msgid "Delete"
+msgstr ""
+
+#: ../remindor_qt/RemindorQtWindow.py:100
+#: ../remindor_qt/RemindorQtWindow.py:127
+msgid "Quick Add"
+msgstr ""
+
+#: ../remindor_qt/RemindorQtWindow.py:101
+#: ../remindor_qt/RemindorQtWindow.py:145
+msgid "Stop Sound"
+msgstr ""
+
+#: ../remindor_qt/RemindorQtWindow.py:102
+msgid "Manage"
+msgstr ""
+
+#: ../remindor_qt/RemindorQtWindow.py:103
+#: ../remindor_qt/RemindorQtWindow.py:135
+msgid "Quit"
+msgstr ""
+
+#: ../remindor_qt/RemindorQtWindow.py:132
+#: ../remindor_qt/RemindorQtWindow.py:211
+#: ../remindor_qt/RemindorQtWindow.py:293
 msgid "News"
 msgstr ""
 
-#: ../remindor_qt/RemindorQtWindow.py:244
+#: ../remindor_qt/RemindorQtWindow.py:134 ../remindor_qt/AboutDialog.py:45
+msgid "Close"
+msgstr ""
+
+#: ../remindor_qt/RemindorQtWindow.py:136
+msgid "Refresh"
+msgstr ""
+
+#: ../remindor_qt/RemindorQtWindow.py:137
+msgid "Clear Icon"
+msgstr ""
+
+#: ../remindor_qt/RemindorQtWindow.py:138
+msgid "Submit Bugs"
+msgstr ""
+
+#: ../remindor_qt/RemindorQtWindow.py:139
+msgid "Request Feature"
+msgstr ""
+
+#: ../remindor_qt/RemindorQtWindow.py:140
+msgid "Help Translate"
+msgstr ""
+
+#: ../remindor_qt/RemindorQtWindow.py:141
+msgid "Donate"
+msgstr ""
+
+#: ../remindor_qt/RemindorQtWindow.py:142
+msgid "Ask a Question"
+msgstr ""
+
+#: ../remindor_qt/RemindorQtWindow.py:143
+msgid "Website"
+msgstr ""
+
+#: ../remindor_qt/RemindorQtWindow.py:144
+msgid "About"
+msgstr ""
+
+#: ../remindor_qt/RemindorQtWindow.py:190
+msgid "Sorry, you cannot postpone a repeating time."
+msgstr ""
+
+#: ../remindor_qt/RemindorQtWindow.py:291
 msgid "New News"
 msgstr ""
 
-#: ../remindor_qt/RemindorQtWindow.py:263
+#: ../remindor_qt/RemindorQtWindow.py:310
 msgid "Today's Reminders"
 msgstr ""
 
-#: ../remindor_qt/RemindorQtWindow.py:270
+#: ../remindor_qt/RemindorQtWindow.py:317
 msgid "Future Reminders"
 msgstr ""
 
-#: ../remindor_qt/RemindorQtWindow.py:277
+#: ../remindor_qt/RemindorQtWindow.py:324
 msgid "Past Reminders"
 msgstr ""
 
-#: ../remindor_qt/AboutDialog.py:41
+#: ../remindor_qt/AboutDialog.py:42
+msgid "About Remindor-Qt"
+msgstr ""
+
+#: ../remindor_qt/AboutDialog.py:43
+msgid "License: GPL-3"
+msgstr ""
+
+#: ../remindor_qt/AboutDialog.py:44 ../remindor_qt/AboutDialog.py:53
 msgid "Credits"
+msgstr ""
+
+#: ../remindor_qt/AboutDialog.py:53
+msgid "Author: Brian Douglass"
 msgstr ""

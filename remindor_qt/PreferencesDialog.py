@@ -47,6 +47,12 @@ class PreferencesDialog(QDialog):
         self.stack_widget = self.findChild(QStackedWidget, "stack")
         self.list_widget = self.findChild(QListWidget, "list")
 
+        self.label_label = self.findChild(QLabel, "label_label")
+        self.time_label = self.findChild(QLabel, "time_label")
+        self.date_label = self.findChild(QLabel, "date_label")
+        self.command_label = self.findChild(QLabel, "command_label")
+        self.postpone_label = self.findChild(QLabel, "postpone_label")
+
         self.label_edit = self.findChild(QLineEdit, "label_edit")
         self.label_edit.setText(self.settings.label)
         self.time_edit = self.findChild(QLineEdit, "time_edit")
@@ -58,10 +64,18 @@ class PreferencesDialog(QDialog):
         self.postpone_spin = self.findChild(QSpinBox, "postpone_spin")
         self.postpone_spin.setValue(int(self.settings.postpone))
 
+        self.time_button = self.findChild(QPushButton, "time_button")
+        self.date_button = self.findChild(QPushButton, "date_button")
+        self.command_button = self.findChild(QPushButton, "command_button")
+
         self.time_error = self.findChild(QToolButton, "time_error")
         self.time_error.hide()
         self.date_error = self.findChild(QToolButton, "date_error")
         self.date_error.hide()
+
+        self.popup_label = self.findChild(QLabel, "popup_label")
+        self.dialog_label = self.findChild(QLabel, "dialog_label")
+        self.change_icon_label = self.findChild(QLabel, "change_icon_label")
 
         self.popup_check = self.findChild(QCheckBox, "popup_check")
         self.popup_check.setChecked(self.settings.notification)
@@ -69,6 +83,12 @@ class PreferencesDialog(QDialog):
         self.dialog_check.setChecked(self.settings.dialog)
         self.change_icon_check = self.findChild(QCheckBox, "change_icon_check")
         self.change_icon_check.setChecked(self.settings.indicator_icon)
+
+        self.file_label = self.findChild(QLabel, "sound_label")
+        self.length_label = self.findChild(QLabel, "length_label")
+        self.length_label2 = self.findChild(QLabel, "length_label2")
+        self.loop_label = self.findChild(QLabel, "loop_label")
+        self.time_loop_label = self.findChild(QLabel, "time_loop_label")
 
         self.file_edit = self.findChild(QLineEdit, "file_edit")
         self.file_edit.setText(self.settings.sound_file)
@@ -78,6 +98,15 @@ class PreferencesDialog(QDialog):
         self.loop_check.setChecked(self.settings.sound_loop)
         self.time_loop_spin = self.findChild(QSpinBox, "time_loop_spin")
         self.time_loop_spin.setValue(self.settings.sound_loop_times)
+
+        self.quick_label_label = self.findChild(QLabel, "quick_label_label")
+        self.quick_minutes_label = self.findChild(QLabel, "quick_minutes_label")
+        self.quick_unit_label = self.findChild(QLabel, "quick_unit_label")
+        self.quick_slider_label = self.findChild(QLabel, "quick_slider_label")
+        self.quick_popup_label = self.findChild(QLabel, "quick_popup_label")
+        self.quick_dialog_label = self.findChild(QLabel, "quick_dialog_label")
+        self.quick_sound_label = self.findChild(QLabel, "quick_sound_label")
+        self.quick_info_label = self.findChild(QLabel, "quick_info_label")
 
         self.quick_label_edit = self.findChild(QLineEdit, "quick_label_edit")
         self.quick_label_edit.setText(self.settings.quick_label)
@@ -95,6 +124,13 @@ class PreferencesDialog(QDialog):
         self.quick_sound_check.setChecked(self.settings.quick_sound)
         self.quick_info_check = self.findChild(QCheckBox, "quick_info_check")
         self.quick_info_check.setChecked(self.settings.quick_info)
+
+        self.today_label = self.findChild(QLabel, "today_label")
+        self.future_label = self.findChild(QLabel, "future_label")
+        self.past_label = self.findChild(QLabel, "past_label")
+        self.new_label = self.findChild(QLabel, "new_label")
+        self.icon_label = self.findChild(QLabel, "icon_label")
+        self.hide_label = self.findChild(QLabel, "hide_label")
 
         self.today_color = self.settings.today_color
         self.today_color_rgb = self.info.today_color_rgb
@@ -131,15 +167,108 @@ class PreferencesDialog(QDialog):
         self.hide_check.setChecked(self.settings.hide_indicator)
         self.hide_start = self.settings.hide_indicator
 
+        self.time_format_label = self.findChild(QLabel, "time_format_label")
+        self.date_format_label = self.findChild(QLabel, "date_format_label")
+
         self.time_format_combo = self.findChild(QComboBox, "time_format_combo")
         self.time_format_combo.setCurrentIndex(self.settings.time_format)
         self.date_format_combo = self.findChild(QComboBox, "date_format_combo")
         self.date_format_combo.setCurrentIndex(self.settings.date_format)
 
+        self.boxcar_email_button = self.findChild(QCommandLinkButton, "boxcar_email_button")
+        self.boxcar_notification_label = self.findChild(QLabel, "boxcar_notification_label")
+
         self.boxcar_email_edit = self.findChild(QLineEdit, "boxcar_email_edit")
         self.boxcar_email_edit.setText(self.boxcar_info.email)
         self.boxcar_notification_check = self.findChild(QCheckBox, "boxcar_notification_check")
         self.boxcar_notification_check.setChecked(self.boxcar_info.default_notify)
+
+        self.help_button = self.findChild(QPushButton, "help_button")
+        self.cancel_button = self.findChild(QPushButton, "cancel_button")
+        self.save_button = self.findChild(QPushButton, "save_button")
+
+        self.translate()
+
+    def translate(self):
+        self.setWindowTitle(_("Preferences"))
+
+        tabs = [
+            _("Standard Reminders"),
+            _("Notifications"),
+            _("Sound"),
+            _("Quick Reminders"),
+            _("Interface"),
+            _("Format"),
+            _("Services")
+        ]
+
+        self.list_widget.clear()
+        self.list_widget.addItems(tabs)
+
+        self.label_label.setText(_("Default Label"))
+        self.time_label.setText(_("Default Time"))
+        self.date_label.setText(_("Default Date"))
+        self.command_label.setText(_("Default Command"))
+        self.postpone_label.setText(_("Minutes to Postpone"))
+
+        self.time_button.setText(_("Edit"))
+        self.date_button.setText(_("Edit"))
+        self.command_button.setText(_("Edit"))
+
+        self.popup_label.setText(_("Popup"))
+        self.dialog_label.setText(_("Dialog"))
+        self.change_icon_label.setText(_("Change Tray\nIcon on Reminder"))
+
+        self.file_label.setText(_("Default Sound File"))
+        self.length_label.setText(_("Default Play Length"))
+        self.length_label2.setText(_("s (0 for end)"))
+        self.loop_label.setText(_("Loop Sound"))
+        self.time_loop_label.setText(_("Times to Loop"))
+
+        self.quick_label_label.setText(_("Default Quick Label"))
+        self.quick_minutes_label.setText(_("Default Quick Minutes"))
+        self.quick_unit_label.setText(_("Default Quick Unit"))
+        self.quick_slider_label.setText(_("Use Slider"))
+        self.quick_popup_label.setText(_("Popup Notification"))
+        self.quick_dialog_label.setText(_("Dialog Notification"))
+        self.quick_sound_label.setText(_("Use standard reminder\nsound settings"))
+        self.quick_info_label.setText(_("Show info on dialog"))
+
+        units = [
+            _("minute(s)"),
+            _("hour(s)"),
+            _("days(s)")
+        ]
+
+        self.quick_unit_combo.clear()
+        self.quick_unit_combo.addItems(units)
+
+        self.today_label.setText(_("Today's Color"))
+        self.future_label.setText(_("Future Color"))
+        self.past_label.setText(_("Past Color"))
+        self.new_label.setText(_("Show News\nNotifications"))
+        self.icon_label.setText(_("Tray Icon"))
+        self.hide_label.setText(_("Hide Tray Icon"))
+
+        icons = [
+            _("System Theme"),
+            _("Light Icon"),
+            _("Dark Icon"),
+            _("App Icon")
+        ]
+
+        self.icon_combo.clear()
+        self.icon_combo.addItems(icons)
+
+        self.time_format_label.setText(_("Time Format"))
+        self.date_format_label.setText(_("Date Format"))
+
+        self.boxcar_email_button.setText(_("Boxcar Email"))
+        self.boxcar_notification_label.setText(_("Boxcar Notification"))
+
+        self.help_button.setText(_("Help"))
+        self.cancel_button.setText(_("Cancel"))
+        self.save_button.setText(_("Save"))
 
     @Slot()
     def on_help_button_pressed(self):

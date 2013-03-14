@@ -515,7 +515,7 @@ sound settings</string>
            </spacer>
           </item>
           <item row="3" column="0">
-           <widget class="QLabel" name="quick_slider">
+           <widget class="QLabel" name="quick_slider_label">
             <property name="text">
              <string>Use Slider</string>
             </property>
