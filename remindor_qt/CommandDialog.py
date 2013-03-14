@@ -35,9 +35,46 @@ class CommandDialog(QDialog):
         super(CommandDialog, self).__init__(parent)
         helpers.setup_ui(self, "CommandDialog.ui")
 
+        self.insert_button = self.findChild(QPushButton, "insert_button")
         self.insert_combo = self.findChild(QComboBox, "insert_combo")
+
+        self.command_label = self.findChild(QLabel, "command_label")
         self.command_edit = self.findChild(QLineEdit, "command_edit")
         self.command_edit.setText(command)
+
+        self.cancel_button = self.findChild(QPushButton, "cancel_button")
+        self.ok_button = self.findChild(QPushButton, "ok_button")
+
+        self.translate()
+
+    def translate(self):
+        self.setWindowTitle(_("Edit Command"))
+        self.insert_button.setText(_("Insert"))
+
+        inserts = [
+            _("Date"),
+            _("Month"),
+            _("Month Name"),
+            _("Day"),
+            _("Day Name"),
+            _("Day of Year"),
+            _("Year"),
+            _("Time"),
+            _("Hour (24)"),
+            _("Hour (12)"),
+            _("Minutes"),
+            _("Seconds"),
+            _("Microseconds"),
+            _("Sound File/Path"),
+            _("Sound File")
+        ]
+
+        self.insert_combo.clear()
+        self.insert_combo.addItems(inserts)
+
+        self.command_label.setText(_("Command"))
+        self.cancel_button.setText(_("Cancel"))
+        self.ok_button.setText(_("Ok"))
 
     @Slot()
     def on_ok_button_pressed(self):

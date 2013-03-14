@@ -65,7 +65,7 @@ class ReminderDialog(QDialog):
         self.time_button = self.findChild(QPushButton, "time_button")
         self.date_button = self.findChild(QPushButton, "date_button")
         self.command_button = self.findChild(QPushButton, "command_button")
-        self.notes_button = self.findChild(QPushButton, "notes_button")
+        self.insert_button = self.findChild(QPushButton, "notes_button")
 
         self.time_error = self.findChild(QToolButton, "time_error")
         self.time_error.hide()
@@ -138,7 +138,7 @@ class ReminderDialog(QDialog):
         self.time_button.setText(_("Edit"))
         self.date_button.setText(_("Edit"))
         self.command_button.setText(_("Edit"))
-        self.help_button.setText(_("Insert"))
+        self.insert_button.setText(_("Insert"))
 
         self.tabs.setTabText(0, _("Notification"))
         self.popup_check.setText(_("Popup"))

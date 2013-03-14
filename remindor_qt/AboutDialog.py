@@ -29,8 +29,20 @@ class AboutDialog(QDialog):
         super(AboutDialog, self).__init__(parent)
         helpers.setup_ui(self, "AboutDialog.ui")
 
-        child = self.findChild(QLabel, "version_label")
-        child.setText(get_version())
+        self.license_label = self.findChild(QLabel, "license_label")
+        self.version_label = self.findChild(QLabel, "version_label")
+        self.version_label.setText(get_version())
+
+        self.credits_button = self.findChild(QPushButton, "credits_button")
+        self.close_button = self.findChild(QPushButton, "close_button")
+
+        self.translate()
+
+    def translate(self):
+        self.setWindowTitle(_("About Remindor-Qt"))
+        self.license_label.setText(_("License: GPL-3"))
+        self.credits_button.setText(_("Credits"))
+        self.close_button.setText(_("Close"))
 
     @Slot()
     def on_close_button_pressed(self):
@@ -38,4 +50,4 @@ class AboutDialog(QDialog):
 
     @Slot()
     def on_credits_button_pressed(self):
-        QMessageBox.information(self, _("Credits"), "Author: Brian Douglass", QMessageBox.Close)
+        QMessageBox.information(self, _("Credits"), _("Author: Brian Douglass"), QMessageBox.Close)

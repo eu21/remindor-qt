@@ -114,12 +114,12 @@
      </item>
      <item>
       <property name="text">
-       <string>every X minutes</string>
+       <string>Every X Minutes</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>every X hours</string>
+       <string>Every X Hours</string>
       </property>
      </item>
     </widget>

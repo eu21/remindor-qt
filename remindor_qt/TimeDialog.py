@@ -36,6 +36,10 @@ class TimeDialog(QDialog):
         helpers.setup_ui(self, "TimeDialog.ui")
         self.info = TimeDialogInfo(time_s, helpers.database_file())
 
+        self.cancel_button = self.findChild(QPushButton, "cancel_button")
+        self.ok_button = self.findChild(QPushButton, "ok_button")
+
+        self.time_label = self.findChild(QLabel, "time_label")
         self.time_combo = self.findChild(QComboBox, "time_combo")
 
         self.error_label = self.findChild(QLabel, "error_label")
@@ -67,6 +71,30 @@ class TimeDialog(QDialog):
         #setup window
         self.on_time_combo_currentIndexChanged()
         self.validate_from_to()
+
+        self.translate()
+
+    def translate(self):
+        self.setWindowTitle(_("Edit Time"))
+        self.time_label.setText(_("Time"))
+
+        times = [
+            _("Once"),
+            _("Every X Minutes"),
+            _("Every X Hours")
+        ]
+
+        self.time_combo.clear()
+        self.time_combo.addItems(times)
+
+        self.at_label.setText(_("At"))
+        self.every_label.setText(_("Every"))
+        self.from_label.setText(_("From"))
+        self.to_label.setText(_("To"))
+        self.error_label.setText(_("From must be before To"))
+
+        self.cancel_button.setText(_("Cancel"))
+        self.ok_button.setText(_("Ok"))
 
     @Slot()
     def on_from_time_timeChanged(self):
