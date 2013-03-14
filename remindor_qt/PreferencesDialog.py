@@ -43,6 +43,7 @@ class PreferencesDialog(QDialog):
         self.info = PreferencesDialogInfo(helpers.database_file())
         self.settings = self.info.settings
         self.boxcar_info = self.info.services.service("boxcar")
+        self.boxcar_original = self.boxcar_info.email
 
         self.stack_widget = self.findChild(QStackedWidget, "stack")
         self.list_widget = self.findChild(QListWidget, "list")
@@ -226,7 +227,7 @@ class PreferencesDialog(QDialog):
         self.time_loop_label.setText(_("Times to Loop"))
 
         self.quick_label_label.setText(_("Default Quick Label"))
-        self.quick_minutes_label.setText(_("Default Quick Minutes"))
+        self.quick_minutes_label.setText(_("Default Quick Time"))
         self.quick_unit_label.setText(_("Default Quick Unit"))
         self.quick_slider_label.setText(_("Use Slider"))
         self.quick_popup_label.setText(_("Popup Notification"))
@@ -243,9 +244,9 @@ class PreferencesDialog(QDialog):
         self.quick_unit_combo.clear()
         self.quick_unit_combo.addItems(units)
 
-        self.today_label.setText(_("Today's Color"))
-        self.future_label.setText(_("Future Color"))
-        self.past_label.setText(_("Past Color"))
+        self.today_label.setText(_("Today's Reminder Color"))
+        self.future_label.setText(_("Future Reminder Color"))
+        self.past_label.setText(_("Past Reminder Color"))
         self.new_label.setText(_("Show News\nNotifications"))
         self.icon_label.setText(_("Tray Icon"))
         self.hide_label.setText(_("Hide Tray Icon"))
@@ -416,12 +417,28 @@ class PreferencesDialog(QDialog):
         self.settings.time_format = self.time_format_combo.currentIndex()
         self.settings.date_format = self.date_format_combo.currentIndex()
 
-        self.boxcar_info.email = self.boxcar_email_edit.text()
-        self.boxcar_info.default_notify = self.boxcar_notification_check.isChecked()
+        boxcar_email = self.boxcar_email_edit.text()
+        boxcar_notify = self.boxcar_notification_check.isChecked()
 
         ok = True
-        if self.settings.hide_indicator and not self.hide_start:
-            message = _("You have chosen to hide the indicator.\nOnly use this option if you know what you are doing!\n\nYou can run the command \"remindor-qt -p\"\nfrom the command line to open the preferences dialog\nto change this option.\n\nWould you like to continue?")
+        status = self.info.validate_boxcar(boxcar_email, boxcar_notify, self.boxcar_original)
+        if status == self.info.boxcar_add:
+            self.boxcar_info.email = boxcar_email
+            self.boxcar_info.default_notify = boxcar_notify
+        elif status == self.info.boxcar_delete:
+            self.boxcar_info.email = ""
+            self.boxcar_info.default_notify = False
+        elif status == self.info.boxcar_subscribe:
+            message = _("It seems that you are not yet signed up for Boxcar.\nPlease visit boxcar.io to signup.")
+            QMessageBox.information(self, "Boxcar", message)
+            ok = False
+        else:
+            message = _("There has been a error connecting with Boxcar,\nplease check your email address or network connection.")
+            QMessageBox.critical(self, "Boxcar", message)
+            ok = False
+
+        if ok and self.settings.hide_indicator and not self.hide_start:
+            message = _("You have chosen to hide the indicator.\nOnly use this option if you know what you are doing!\n\nYou can run the command \"%s -p\"\nfrom the command line to open the preferences dialog\nto change this option.\n\nWould you like to continue?") % "remindor-qt"
             ans = QMessageBox.question(self, _("Important!"), message, QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
             if ans == QMessageBox.No:
                 ok = False

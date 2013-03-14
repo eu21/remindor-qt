@@ -121,7 +121,7 @@ class RemindorQtWindow(QMainWindow):
         b.start()
 
     def translate(self):
-        self.setWindowTitle("Mange Reminders")
+        self.setWindowTitle("Manage Reminders")
 
         self.action_add.setText(_("Add"))
         self.action_quick_add.setText(_("Quick Add"))

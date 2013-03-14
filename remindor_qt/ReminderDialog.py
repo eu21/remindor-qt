@@ -144,6 +144,7 @@ class ReminderDialog(QDialog):
         self.popup_check.setText(_("Popup"))
         self.dialog_check.setText(_("Dialog Box"))
         #self.boxcar_check #doesn't need translated
+        self.boxcar_label.setText(_("Boxcar has not been\nsetup in Preferences"))
 
         self.tabs.setTabText(0, _("Sound"))
         self.sound_label.setText(_("Play Sound"))

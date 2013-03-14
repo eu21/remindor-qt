@@ -476,7 +476,7 @@ sound settings</string>
           <item row="1" column="0">
            <widget class="QLabel" name="quick_minutes_label">
             <property name="text">
-             <string>Default Quick Minutes</string>
+             <string>Default Quick Time</string>
             </property>
            </widget>
           </item>
@@ -656,7 +656,7 @@ sound settings</string>
           <item row="1" column="0">
            <widget class="QLabel" name="future_label">
             <property name="text">
-             <string>Future Color</string>
+             <string>Future Reminder Color</string>
             </property>
            </widget>
           </item>
@@ -678,7 +678,7 @@ Notifications</string>
           <item row="0" column="0">
            <widget class="QLabel" name="today_label">
             <property name="text">
-             <string>Today's Color</string>
+             <string>Today's Reminder Color</string>
             </property>
            </widget>
           </item>
@@ -692,7 +692,7 @@ Notifications</string>
           <item row="2" column="0">
            <widget class="QLabel" name="past_label">
             <property name="text">
-             <string>Past Color</string>
+             <string>Past Reminder Color</string>
             </property>
            </widget>
           </item>
