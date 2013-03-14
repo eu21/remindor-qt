@@ -21,9 +21,12 @@ from PySide.QtUiTools import *
 import logging
 logger = logging.getLogger('remindor_qt')
 
+import gettext
+from gettext import gettext as _
+gettext.textdomain('remindor-qt')
+
 from remindor_qt import helpers
 from remindor_common.helpers import DateDialogInfo
-from remindor_common import translations as tr
 
 class DateDialog(QDialog):
     update = Signal(str)
@@ -74,25 +77,61 @@ class DateDialog(QDialog):
         self.translate()
 
     def translate(self):
-        self.date_label.setText(tr.date)
-        self.on_label.setText(tr.on)
-        self.every_label.setText(tr.every)
-        self.every_label2.setText(tr.every)
-        self.from_label.setText(tr.from_item)
-        self.to_label.setText(tr.to_item)
-        self.error_label.setText(tr.from_before_to)
+        self.date_label.setText(_("Date"))
+        self.on_label.setText(_("On"))
+        self.every_label.setText(_("Every"))
+        self.every_label2.setText(_("Every"))
+        self.from_label.setText(_("From"))
+        self.to_label.setText(_("To"))
+        self.error_label.setText(_("From must be before To"))
+
+        date_types = [
+            _("Once"),
+            _("Every Day"),
+            _("Every X Days"),
+            _("Every Xth of the Month"),
+            _("Every <day>"),
+            _("Every Other Day"),
+            _("Next X Days")
+        ]
 
         self.date_combo.clear()
-        self.date_combo.addItems(tr.date_types)
+        self.date_combo.addItems(date_types)
+
+        dates = [
+            _("Other"),
+            _("Today"),
+            _("Tomorrow"),
+            _("Monday"),
+            _("Tuesday"),
+            _("Wednesday"),
+            _("Thursday"),
+            _("Friday"),
+            _("Saturday"),
+            _("Sunday"),
+            _("Christmas")
+        ]
 
         self.on_combo.clear()
-        self.on_combo.addItems(tr.dates)
+        self.on_combo.addItems(dates)
+
+        weekdays = [
+            _("Monday"),
+            _("Tuesday"),
+            _("Wednesday"),
+            _("Thursday"),
+            _("Friday"),
+            _("Saturday"),
+            _("Sunday"),
+            _("Weekday"),
+            _("Weekend")
+        ]
 
         self.every_combo.clear()
-        self.every_combo.addItems(tr.weekdays)
+        self.every_combo.addItems(weekdays)
 
-        self.cancel_button.setText(tr.cancel)
-        self.ok_button.setText(tr.ok)
+        self.cancel_button.setText(_("Cancel"))
+        self.ok_button.setText(_("Ok"))
 
     @Slot()
     def on_from_date_dateChanged(self):
@@ -158,24 +197,24 @@ class DateDialog(QDialog):
             self.on_on_combo_currentIndexChanged()
         elif index == self.info.every_days:
             self.every_label2.show()
-            self.every_label2.setText(tr.every)
+            self.every_label2.setText(_("Every"))
             self.every_spin.show()
             self.every_spin.setMaximum(600)
             self.days_label.show()
-            self.days_label.setText(tr.days)
+            self.days_label.setText(_("Day(s)"))
         elif index == self.info.every_month:
             self.every_label2.show()
-            self.every_label2.setText(tr.every)
+            self.every_label2.setText(_("Every"))
             self.every_spin.show()
             self.every_spin.setMaximum(12)
             self.days_label.show()
-            self.days_label.setText(tr.of_the_month)
+            self.days_label.setText(_("of the month"))
         elif index == self.info.every:
             self.every_label.show()
             self.every_combo.show()
         elif index == self.info.next_days:
             self.every_label2.show()
-            self.every_label2.setText(tr.next)
+            self.every_label2.setText(_("Next"))
             self.every_spin.show()
             self.every_spin.setMaximum(600)
             self.days_label.show()

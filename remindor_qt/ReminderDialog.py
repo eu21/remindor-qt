@@ -21,6 +21,10 @@ from PySide.QtUiTools import *
 import logging
 logger = logging.getLogger('remindor_qt')
 
+import gettext
+from gettext import gettext as _
+gettext.textdomain('remindor-qt')
+
 from remindor_qt import helpers
 from remindor_qt.CommandDialog import CommandDialog
 from remindor_qt.DateDialog import DateDialog
@@ -29,7 +33,6 @@ from remindor_qt.remindor_qtconfig import get_data_file
 
 from remindor_common.helpers import ReminderDialogInfo, insert_values, valid_date, valid_time
 from remindor_common import datetimeutil, database as db
-from remindor_common import translations as tr
 
 class ReminderDialog(QDialog):
     added = Signal(int)
@@ -96,39 +99,58 @@ class ReminderDialog(QDialog):
         self.translate()
 
     def translate(self):
-        self.setWindowTitle(tr.add_reminder)
+        self.setWindowTitle(_("Add Reminder"))
 
-        self.help_button.setText(tr.help)
-        self.cancel_button.setText(tr.cancel)
-        self.add_button.setText(tr.add)
-        self.save_button.setText(tr.save)
+        self.help_button.setText(_("Help"))
+        self.cancel_button.setText(_("Cancel"))
+        self.add_button.setText(_("Add"))
+        self.save_button.setText(_("Save"))
+
+        inserts = [
+            _("Date"),
+            _("Month"),
+            _("Month Name"),
+            _("Day"),
+            _("Day Name"),
+            _("Day of Year"),
+            _("Year"),
+            _("Time"),
+            _("Hour (24)"),
+            _("Hour (12)"),
+            _("Minutes"),
+            _("Seconds"),
+            _("Microseconds"),
+            _("Sound File/Path"),
+            _("Sound File"),
+            _("Command")
+        ]
 
         self.insert_combo.clear()
-        self.insert_combo.addItems(tr.inserts)
+        self.insert_combo.addItems(inserts)
 
-        self.tabs.setTabText(0, tr.reminder)
-        self.label_label.setText(tr.label)
-        self.time_label.setText(tr.time)
-        self.date_label.setText(tr.date)
-        self.command_label.setText(tr.command)
-        self.notes_label.setText(tr.notes)
+        self.tabs.setTabText(0, _("Reminder"))
+        self.label_label.setText(_("Label"))
+        self.time_label.setText(_("Time"))
+        self.date_label.setText(_("Date"))
+        self.command_label.setText(_("Command"))
+        self.notes_label.setText(_("Notes:"))
 
-        self.time_button.setText(tr.edit)
-        self.date_button.setText(tr.edit)
-        self.command_button.setText(tr.edit)
-        self.help_button.setText(tr.insert)
+        self.time_button.setText(_("Edit"))
+        self.date_button.setText(_("Edit"))
+        self.command_button.setText(_("Edit"))
+        self.help_button.setText(_("Insert"))
 
-        self.tabs.setTabText(0, tr.notification)
-        self.popup_check.setText(tr.popup)
-        self.dialog_check.setText(tr.dialog)
+        self.tabs.setTabText(0, _("Notification"))
+        self.popup_check.setText(_("Popup"))
+        self.dialog_check.setText(_("Dialog Box"))
         #self.boxcar_check #doesn't need translated
 
-        self.tabs.setTabText(0, tr.sound)
-        self.sound_label.setText(tr.play_sound)
-        self.file_label.setText(tr.sound_file)
-        self.length_label.setText(tr.play_length)
-        self.loop_label.setText(tr.loop)
-        self.length_label2.setText(tr.play_length2)
+        self.tabs.setTabText(0, _("Sound"))
+        self.sound_label.setText(_("Play Sound"))
+        self.file_label.setText(_("Sound File"))
+        self.length_label.setText(_("Play Length"))
+        self.loop_label.setText(_("Loop"))
+        self.length_label2.setText(_("s (0 for end)"))
 
     @Slot()
     def on_add_button_pressed(self):
@@ -154,12 +176,12 @@ class ReminderDialog(QDialog):
             self.accept()
         else:
             if status == self.info.file_error:
-                title = tr.file_not_exist_title
+                title = _("File does not exist")
                 message = ""
                 if sound_file != "":
-                    message = "%s\n\n%s" % (tr.file_not_exist_message, sound_file)
+                    message = "%s\n\n%s" % (_("The following file does not exist.\nPlease choose another sound file."), sound_file)
                 else:
-                    message = tr.file_not_exist_choose
+                    message = _("Please choose a sound file.")
                 QMessageBox.warning(self, title, message)
             elif status == self.info.time_error:
                 self.time_error.show()
@@ -168,8 +190,8 @@ class ReminderDialog(QDialog):
                 self.date_error.show()
                 self.date_edit.setFocus()
             elif status == self.info.notify_warn:
-                title = tr.empty_notify_title
-                message = tr.empty_notify_message
+                title = _("Empty Notifications")
+                message = _("The label and notes for this reminder are empty,\nwould you still like to use a notification?")
                 ans = QMessageBox.question(self, title, message, QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
                 if ans == QMessageBox.Yes:
                     (status, id) = self.info.reminder(label, time, date, command, notes,
@@ -245,9 +267,9 @@ class ReminderDialog(QDialog):
 
     @Slot()
     def on_file_button_pressed(self):
-        caption = tr.choose_sound_title
+        caption = _("Choose Sound")
         sound_dir = get_data_file('media', 'sounds')
-        file_filter = tr.choose_sound_filter
+        file_filter = _("Sounds (*.mp3 *.ogg *.wav);;MP3 (*.mp3);;Ogg (*.ogg);;WAVE (*.wav)")
 
         (filename, selected_filter) = QFileDialog.getOpenFileName(self, caption, sound_dir, file_filter)
         self.file_edit.setText(filename)
@@ -265,7 +287,7 @@ class ReminderDialog(QDialog):
     def edit(self, reminder):
         self.save_button.show()
         self.add_button.hide()
-        self.setWindowTitle(tr.edit_reminder)
+        self.setWindowTitle(_("Edit Reminder"))
 
         self.database = db.Database(helpers.database_file())
         r = self.database.alarm(reminder)
@@ -303,4 +325,4 @@ class ReminderDialog(QDialog):
         self.file_edit.setText(sound_file)
         self.length_spin.setValue(length)
         self.loop_check.setChecked(loop)
-        self.loop_check.setText(tr.loop_times % self.info.sound_loop_times)
+        self.loop_check.setText(_("(Will loop %s times)") % self.info.sound_loop_times)
