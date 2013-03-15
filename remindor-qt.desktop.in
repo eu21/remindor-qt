@@ -6,3 +6,28 @@ Exec=remindor-qt
 Icon=remindor-qt
 Terminal=false
 Type=Application
+
+[Desktop Action add]
+Name=Add Reminder
+Exec=remindor-qt --add
+OnlyShowIn=Unity;
+
+[Desktop Action quick]
+Name=Quick Reminder
+Exec=remindor-qt --quick
+OnlyShowIn=Unity;
+
+[Desktop Action stop]
+Name=Stop Sound
+Exec=remindor-qt --stop
+OnlyShowIn=Unity;
+
+[Desktop Action manage]
+Name=Manage Reminders
+Exec=remindor-qt --manage
+OnlyShowIn=Unity;
+
+[Desktop Action prefs]
+Name=Preferences
+Exec=remindor-qt --preferences
+OnlyShowIn=Unity;
