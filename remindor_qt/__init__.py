@@ -53,6 +53,8 @@ def main():
     app.setOrganizationDomain("http://bhdouglass.tk/indicator-remindor/")
     app.setQuitOnLastWindowClosed(False)
 
+    QTextCodec.setCodecForCStrings(QTextCodec.codecForName("UTF-8"))
+
     DBusGMainLoop(set_as_default=True)
     session_bus = dbus.SessionBus()
     ds = dbus_service(session_bus)
