@@ -246,7 +246,10 @@ def check_autostart():
 
 def config_dir():
     #return os.getenv('HOME') + '/.config/indicator-remindor'
-    return QDesktopServices.storageLocation(QDesktopServices.HomeLocation) + '/.config/indicator-remindor'
+    if os.name == 'nt':
+        return os.getenv('APPDATA') + '/remindor'
+    else:
+        return QDesktopServices.storageLocation(QDesktopServices.HomeLocation) + '/.config/indicator-remindor'
 
 def database_file():
     return config_dir() + '/indicator-remindor.db'

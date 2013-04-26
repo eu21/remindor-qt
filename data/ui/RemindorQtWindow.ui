@@ -316,9 +316,8 @@
   </action>
   <action name="action_clear_icon">
    <property name="icon">
-    <iconset theme="edit-clear">
-     <normaloff/>
-    </iconset>
+    <iconset theme="edit-clear" resource="../../resources.qrc">
+     <normaloff>:/icons/delete.png</normaloff>:/icons/delete.png</iconset>
    </property>
    <property name="text">
     <string>Clear Icon</string>
@@ -420,9 +419,8 @@
   </action>
   <action name="action_stop">
    <property name="icon">
-    <iconset theme="media-playback-stop">
-     <normaloff/>
-    </iconset>
+    <iconset theme="media-playback-stop" resource="../../resources.qrc">
+     <normaloff>:/icons/quit.png</normaloff>:/icons/quit.png</iconset>
    </property>
    <property name="text">
     <string>Stop Sound</string>
