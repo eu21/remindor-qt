@@ -76,6 +76,7 @@ class RemindorQtWindow(QMainWindow):
 
         self.active_icon = QIcon(helpers.get_data_file("media", "remindor-qt-active.svg"))
         self.app_icon = QIcon(helpers.get_data_file("media", "remindor-qt.svg"))
+        self.attention_icon = QIcon.fromTheme("remindor-qt-attention", QIcon(helpers.get_data_file("media", "remindor-qt-attention.svg")))
         self.tray_icons = [QIcon.fromTheme("remindor-qt-active", self.active_icon),
                            self.active_icon,
                            QIcon(helpers.get_data_file("media", "remindor-qt-active_dark.svg")),
@@ -107,7 +108,7 @@ class RemindorQtWindow(QMainWindow):
         self.tray_icon.show()
         self.tray_icon.activated.connect(self.tray_activated)
 
-        self.scheduler = SchedulerQt(self.tray_icon, self.update, helpers.database_file())
+        self.scheduler = SchedulerQt(self.tray_icon, self.attention_icon, self.update_slot, helpers.database_file())
         if not self.dbus_service == None:
             self.scheduler.add_dbus_service(self.dbus_service)
 
@@ -146,6 +147,8 @@ class RemindorQtWindow(QMainWindow):
 
     @Slot()
     def tray_activated(self, reason):
+        self.tray_icon.setIcon(self.tray_icons[self.info.indicator_icon])
+
         if reason == QSystemTrayIcon.Trigger:
             self.show()
         elif reason == QSystemTrayIcon.MiddleClick:
@@ -278,7 +281,7 @@ class RemindorQtWindow(QMainWindow):
         self.update()
 
     @Slot()
-    def update(self):
+    def update(self, update_icon = True):
         logger.debug("update")
 
         if self.setup_schedule:
@@ -299,9 +302,7 @@ class RemindorQtWindow(QMainWindow):
             if not self.tray_icon.isVisible():
                 self.tray_icon.show()
 
-        icon = self.tray_icon.icon()
-        icon_name = icon.name()
-        if icon_name != "remindor-qt-active":
+        if update_icon:
             self.tray_icon.setIcon(self.tray_icons[self.info.indicator_icon])
 
         logger.debug("update: setting up headers")
@@ -342,6 +343,12 @@ class RemindorQtWindow(QMainWindow):
         self.reminder_tree.expandAll()
 
         logger.debug("update: done setting up tree")
+
+        return True
+
+    @Slot()
+    def update_slot(self):
+        self.update(False)
 
         return True
 

@@ -83,7 +83,7 @@ class PreferencesDialog(QDialog):
         self.dialog_check = self.findChild(QCheckBox, "dialog_check")
         self.dialog_check.setChecked(self.settings.dialog)
         self.change_icon_check = self.findChild(QCheckBox, "change_icon_check")
-        self.change_icon_check.setChecked(self.settings.indicator_icon)
+        self.change_icon_check.setChecked(self.settings.change_icon)
 
         self.file_label = self.findChild(QLabel, "sound_label")
         self.length_label = self.findChild(QLabel, "length_label")
@@ -392,7 +392,7 @@ class PreferencesDialog(QDialog):
 
         self.settings.notification = self.popup_check.isChecked()
         self.settings.dialog = self.dialog_check.isChecked()
-        self.settings.indicator_icon = self.change_icon_check.isChecked()
+        self.settings.change_icon = self.change_icon_check.isChecked()
 
         self.settings.sound_file = self.file_edit.text()
         self.settings.sound_length = self.length_spin.value()

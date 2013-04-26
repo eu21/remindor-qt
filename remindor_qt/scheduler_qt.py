@@ -50,9 +50,10 @@ class SchedulerQtHelper(QObject):
 class SchedulerQt(GenericScheduler):
     dialog = None
 
-    def __init__(self, tray_icon, slot, file):
+    def __init__(self, tray_icon, attention_icon, slot, file):
         GenericScheduler.__init__(self, file)
         self.tray_icon = tray_icon
+        self.attention_icon = attention_icon
         self.helper = SchedulerQtHelper(slot)
 
         if use_pynotify:
@@ -64,7 +65,7 @@ class SchedulerQt(GenericScheduler):
 
     def change_icon(self):
         logger.debug("schedulerqt: change_icon")
-        self.tray_icon.setIcon(QIcon.fromTheme("remindor-qt-active"))
+        self.tray_icon.setIcon(self.attention_icon)
 
         if self.dbus_service != None:
             logger.debug("emmiting dbus attention signal")
