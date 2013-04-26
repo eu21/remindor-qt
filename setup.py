@@ -38,13 +38,15 @@ def update_config(values = {}):
                 oldvalues[fields[0]] = fields[1].strip()
                 line = "%s = %s\n" % (fields[0], values[fields[0]])
             fout.write(line)
-
+			
         fout.flush()
         fout.close()
         fin.close()
+		os.rename(fin.name, fin.name + '.old')
         os.rename(fout.name, fin.name)
+		os.remove(fin.name + '.old')
     except (OSError, IOError), e:
-        print ("ERROR: Can't find remindor_qt_lib/remindor_qtconfig.py")
+        print ("ERROR: Can't find remindor_qt/remindor_qtconfig.py")
         sys.exit(1)
     return oldvalues
 
@@ -56,18 +58,9 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
         DistUtilsExtra.auto.install_auto.run(self)
         update_config(previous_values)
 
-
-DistUtilsExtra.auto.setup(
-    name='remindor-qt',
-    version='13.03',
-    license='GPL-3',
-    author='Brian Douglass',
-    author_email='bhdouglass@gmail.com',
-    description='Schedule reminders easily from a tray icon',
-    url='http://bhdouglass.tk/remindor-qt/',
-    long_description='Remindor-Qt is an system tray app that allows you to schedule reminders.  A reminder can be configured to show a notification, play a sound, and/or run a command.  Reminders can be scheduled on one day or they can be set to repeat every day, every monday, every 30 days, etc.  They can also be set to repeat minutely or hourly.',
-    cmdclass={'install': InstallAndUpdateDataDirectory},
-    data_files=[
+data_files = [];
+if os.name != 'nt':
+	data_files = [
         ('/usr/share/icons/hicolor/16x16/apps/', ['data/media/hicolor/16x16/apps/remindor-qt.png']),
         ('/usr/share/icons/hicolor/22x22/apps/', ['data/media/hicolor/22x22/apps/remindor-qt.png']),
         ('/usr/share/icons/hicolor/24x24/apps/', ['data/media/hicolor/24x24/apps/remindor-qt.png']),
@@ -89,5 +82,28 @@ DistUtilsExtra.auto.setup(
         ('/usr/share/icons/Faenza/status/scalable/', ['data/media/Faenza/status/scalable/remindor-qt-error.svg']),
         ('/usr/share/icons/Mint-X/status/scalable/', ['data/media/Mint-X/status/scalable/remindor-qt-active.svg']),
         ('/usr/share/icons/Mint-X-Dark/status/scalable/', ['data/media/Mint-X-Dark/status/scalable/remindor-qt-active.svg'])
-        ]
-    )
+    ]
+else:
+    for item in os.walk('data'):
+        path = item[0].replace('data/', 'share/remindor-qt/')
+        path = item[0].replace('data\\', 'share\\remindor-qt\\')
+        if item[2]:
+            files = []
+            for f in item[2]:
+                files.append(item[0] + '/' + f)
+
+            data_files.append((path, files))
+
+DistUtilsExtra.auto.setup(
+    name = 'remindor-qt',
+    version = '13.03',
+    license = 'GPL-3',
+    author = 'Brian Douglass',
+    author_email = 'bhdouglass@gmail.com',
+    description = 'Schedule reminders easily from a tray icon',
+    url = 'http://bhdouglass.tk/remindor-qt/',
+    long_description = 'Remindor-Qt is an system tray app that allows you to schedule reminders.  A reminder can be configured to show a notification, play a sound, and/or run a command.  Reminders can be scheduled on one day or they can be set to repeat every day, every monday, every 30 days, etc.  They can also be set to repeat minutely or hourly.',
+    cmdclass = {'install': InstallAndUpdateDataDirectory},
+    data_files = data_files,
+    packages = ['remindor_qt', 'remindor_common']
+)

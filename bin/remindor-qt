@@ -26,8 +26,14 @@ gettext.textdomain('remindor-qt')
 PROJECT_ROOT_DIRECTORY = os.path.abspath(
     os.path.dirname(os.path.dirname(os.path.realpath(sys.argv[0]))))
 
+path = ''
+if getattr(sys, 'frozen', False):
+    path = sys.executable
+elif __file__:
+    path = __file__
+
 python_path = []
-if os.path.abspath(__file__).startswith('/opt'):
+if os.path.abspath(path).startswith('/opt'):
     syspath = sys.path[:] # copy to avoid infinite loop in pending objects
     for path in syspath:
         opt_path = path.replace('/usr', '/opt/extras.ubuntu.com/remindor-qt')

@@ -238,11 +238,11 @@ class RemindorQtWindow(QMainWindow):
 
     @Slot()
     def on_action_bugs_triggered(self):
-        helpers.show_uri(bugsite)
+        helpers.show_uri(bugsite_qt)
 
     @Slot()
     def on_action_request_triggered(self):
-        helpers.show_uri(featuresite)
+        helpers.show_uri(featuresite_qt)
 
     @Slot()
     def on_action_translate_triggered(self):
@@ -250,11 +250,11 @@ class RemindorQtWindow(QMainWindow):
 
     @Slot()
     def on_action_donate_triggered(self):
-        helpers.show_uri(donatestie)
+        helpers.show_uri(donatesite)
 
     @Slot()
     def on_action_ask_triggered(self):
-        helpers.show_uri(questionsite)
+        helpers.show_uri(questionsite_qt)
 
     @Slot()
     def on_action_website_triggered(self):

@@ -163,7 +163,6 @@ class PreferencesDialog(QDialog):
         self.new_check = self.findChild(QCheckBox, "new_check")
         self.new_check.setChecked(self.settings.show_news)
         self.icon_combo = self.findChild(QComboBox, "icon_combo")
-        self.icon_combo.setCurrentIndex(self.settings.indicator_icon)
         self.hide_check = self.findChild(QCheckBox, "hide_check")
         self.hide_check.setChecked(self.settings.hide_indicator)
         self.hide_start = self.settings.hide_indicator
@@ -172,9 +171,7 @@ class PreferencesDialog(QDialog):
         self.date_format_label = self.findChild(QLabel, "date_format_label")
 
         self.time_format_combo = self.findChild(QComboBox, "time_format_combo")
-        self.time_format_combo.setCurrentIndex(self.settings.time_format)
         self.date_format_combo = self.findChild(QComboBox, "date_format_combo")
-        self.date_format_combo.setCurrentIndex(self.settings.date_format)
 
         self.boxcar_email_button = self.findChild(QCommandLinkButton, "boxcar_email_button")
         self.boxcar_notification_label = self.findChild(QLabel, "boxcar_notification_label")
@@ -189,6 +186,10 @@ class PreferencesDialog(QDialog):
         self.save_button = self.findChild(QPushButton, "save_button")
 
         self.translate()
+
+        self.icon_combo.setCurrentIndex(self.settings.indicator_icon)
+        self.time_format_combo.setCurrentIndex(self.settings.time_format)
+        self.date_format_combo.setCurrentIndex(self.settings.date_format)
 
     def translate(self):
         self.setWindowTitle(_("Preferences"))

@@ -60,6 +60,8 @@ class DateDialog(QDialog):
         self.error_label = self.findChild(QLabel, "error_label")
         self.error_label.hide()
 
+        self.translate()
+
         self.on_date.setDisplayFormat(self.info.qt_date_format)
         self.on_date.setDate(QDate.fromString(self.info.once_date, self.info.qt_date_format))
         self.from_date.setDisplayFormat(self.info.qt_date_format)
@@ -73,8 +75,6 @@ class DateDialog(QDialog):
         self.every_spin.setValue(self.info.every_spin)
 
         self.on_date_combo_currentIndexChanged()
-
-        self.translate()
 
     def translate(self):
         self.setWindowTitle(_("Edit Date"))

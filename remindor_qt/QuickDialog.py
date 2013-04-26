@@ -52,9 +52,7 @@ class QuickDialog(QDialog):
         self.in_spin.setValue(self.info.minutes)
 
         self.unit_combo = self.findChild(QComboBox, "unit_combo")
-        self.unit_combo.setCurrentIndex(self.info.unit)
         self.unit_combo2 = self.findChild(QComboBox, "unit_combo2")
-        self.unit_combo2.setCurrentIndex(self.info.unit)
 
         self.info_label = self.findChild(QLabel, "info_label")
         self.info_label.setText(self.info.info)
@@ -74,6 +72,9 @@ class QuickDialog(QDialog):
             self.unit_combo2.hide()
 
         self.translate()
+
+        self.unit_combo.setCurrentIndex(self.info.unit)
+        self.unit_combo2.setCurrentIndex(self.info.unit)
 
     def translate(self):
         self.setWindowTitle(_("Add Quick Reminder"))

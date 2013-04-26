@@ -57,6 +57,8 @@ class TimeDialog(QDialog):
         self.to_label = self.findChild(QLabel, "to_label")
         self.to_time = self.findChild(QTimeEdit, "to_time")
 
+        self.translate()
+
         self.at_time.setDisplayFormat(self.info.qt_time_format)
         self.at_time.setTime(QTime.fromString(self.info.once_s, self.info.qt_time_format))
         self.from_time.setDisplayFormat(self.info.qt_time_format)
@@ -71,8 +73,6 @@ class TimeDialog(QDialog):
         #setup window
         self.on_time_combo_currentIndexChanged()
         self.validate_from_to()
-
-        self.translate()
 
     def translate(self):
         self.setWindowTitle(_("Edit Time"))
