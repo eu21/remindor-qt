@@ -48,8 +48,7 @@ class PreferencesDialog(QDialog):
         helpers.setup_ui(self, "PreferencesDialog.ui")
         self.info = PreferencesDialogInfo(helpers.database_file())
         self.settings = self.info.settings
-        self.boxcar_info = self.info.services.service("boxcar")
-        self.boxcar_original = self.boxcar_info.email
+        self.boxcar_original = self.settings.boxcar_email
 
         self.stack_widget = self.findChild(QStackedWidget, "stack")
         self.list_widget = self.findChild(QListWidget, "list")
@@ -85,11 +84,11 @@ class PreferencesDialog(QDialog):
         self.change_icon_label = self.findChild(QLabel, "change_icon_label")
 
         self.popup_check = self.findChild(QCheckBox, "popup_check")
-        self.popup_check.setChecked(self.settings.notification)
+        self.popup_check.setChecked(self.settings.popup)
         self.dialog_check = self.findChild(QCheckBox, "dialog_check")
         self.dialog_check.setChecked(self.settings.dialog)
         self.change_icon_check = self.findChild(QCheckBox, "change_icon_check")
-        self.change_icon_check.setChecked(self.settings.change_icon)
+        self.change_icon_check.setChecked(self.settings.change_indicator)
 
         self.file_label = self.findChild(QLabel, "sound_label")
         self.length_label = self.findChild(QLabel, "length_label")
@@ -100,7 +99,7 @@ class PreferencesDialog(QDialog):
         self.file_edit = self.findChild(QLineEdit, "file_edit")
         self.file_edit.setText(self.settings.sound_file)
         self.length_spin = self.findChild(QSpinBox, "length_spin")
-        self.length_spin.setValue(int(self.settings.sound_length))
+        self.length_spin.setValue(int(self.settings.sound_play_length))
         self.loop_check = self.findChild(QCheckBox, "loop_check")
         self.loop_check.setChecked(self.settings.sound_loop)
         self.time_loop_spin = self.findChild(QSpinBox, "time_loop_spin")
@@ -120,7 +119,6 @@ class PreferencesDialog(QDialog):
         self.quick_minutes_spin = self.findChild(QSpinBox, "quick_minutes_spin")
         self.quick_minutes_spin.setValue(self.settings.quick_minutes)
         self.quick_unit_combo = self.findChild(QComboBox, "quick_unit_combo")
-        self.quick_unit_combo.setCurrentIndex(self.settings.quick_unit)
         self.quick_slider_check = self.findChild(QCheckBox, "quick_slider_check")
         self.quick_slider_check.setChecked(self.settings.quick_slider)
         self.quick_popup_check = self.findChild(QCheckBox, "quick_popup_check")
@@ -188,9 +186,9 @@ class PreferencesDialog(QDialog):
         self.boxcar_notification_label = self.findChild(QLabel, "boxcar_notification_label")
 
         self.boxcar_email_edit = self.findChild(QLineEdit, "boxcar_email_edit")
-        self.boxcar_email_edit.setText(self.boxcar_info.email)
+        self.boxcar_email_edit.setText(self.settings.boxcar_email)
         self.boxcar_notification_check = self.findChild(QCheckBox, "boxcar_notification_check")
-        self.boxcar_notification_check.setChecked(self.boxcar_info.default_notify)
+        self.boxcar_notification_check.setChecked(self.settings.boxcar_notify)
 
         self.help_button = self.findChild(QPushButton, "help_button")
         self.cancel_button = self.findChild(QPushButton, "cancel_button")
@@ -201,6 +199,7 @@ class PreferencesDialog(QDialog):
         self.icon_combo.setCurrentIndex(self.settings.indicator_icon)
         self.time_format_combo.setCurrentIndex(self.settings.time_format)
         self.date_format_combo.setCurrentIndex(self.settings.date_format)
+        self.quick_unit_combo.setCurrentIndex(self.settings.quick_unit)
 
     def translate(self):
         self.setWindowTitle(_("Preferences"))
@@ -401,12 +400,12 @@ class PreferencesDialog(QDialog):
         self.settings.command = self.command_edit.text()
         self.settings.postpone = self.postpone_spin.value()
 
-        self.settings.notification = self.popup_check.isChecked()
+        self.settings.popup = self.popup_check.isChecked()
         self.settings.dialog = self.dialog_check.isChecked()
-        self.settings.change_icon = self.change_icon_check.isChecked()
+        self.settings.change_indicator = self.change_icon_check.isChecked()
 
         self.settings.sound_file = self.file_edit.text()
-        self.settings.sound_length = self.length_spin.value()
+        self.settings.sound_play_length = self.length_spin.value()
         self.settings.sound_loop = self.loop_check.isChecked()
         self.settings.sound_loop_times = self.time_loop_spin.value()
 
@@ -435,11 +434,11 @@ class PreferencesDialog(QDialog):
         ok = True
         status = self.info.validate_boxcar(boxcar_email, boxcar_notify, self.boxcar_original)
         if status == self.info.boxcar_add:
-            self.boxcar_info.email = boxcar_email
-            self.boxcar_info.default_notify = boxcar_notify
+            self.settings.boxcar_email = boxcar_email
+            self.settings.boxcar_notify = boxcar_notify
         elif status == self.info.boxcar_delete:
-            self.boxcar_info.email = ""
-            self.boxcar_info.default_notify = False
+            self.settings.boxcar_email = ""
+            self.settings.boxcar_notify = False
         elif status == self.info.boxcar_subscribe:
             message = _("It seems that you are not yet signed up for Boxcar.\nPlease visit boxcar.io to signup.")
             QMessageBox.information(self, "Boxcar", message)
@@ -456,7 +455,7 @@ class PreferencesDialog(QDialog):
                 ok = False
 
         if ok:
-            value = self.info.preferences(self.settings, self.boxcar_info)
+            value = self.info.preferences(self.settings)
             if value == self.info.time_error:
                 self.time_error.show()
                 self.stack_widget.setCurrentIndex(0)
