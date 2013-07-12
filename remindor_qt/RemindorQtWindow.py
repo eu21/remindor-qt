@@ -31,6 +31,7 @@ from remindor_qt.AboutDialog import AboutDialog
 from remindor_qt.PreferencesDialog import PreferencesDialog
 from remindor_qt.QuickDialog import QuickDialog
 from remindor_qt.ReminderDialog import ReminderDialog
+from remindor_qt.SimpleDialog import SimpleDialog
 from remindor_qt.scheduler_qt import SchedulerQt
 from remindor_qt import helpers
 
@@ -176,6 +177,12 @@ class RemindorQtWindow(QMainWindow):
         dialog.exec_()
 
     @Slot()
+    def on_action_simple_add_triggered(self):
+        dialog = SimpleDialog(self)
+        dialog.added.connect(self.add_to_schedule)
+        dialog.exec_()
+
+    @Slot()
     def on_action_edit_triggered(self):
         (selected, is_parent) = self.get_selected()
 
@@ -261,7 +268,7 @@ class RemindorQtWindow(QMainWindow):
 
     @Slot()
     def on_action_website_triggered(self):
-        helpers.show_uri(website)
+        helpers.show_uri(website_qt)
 
     @Slot()
     def on_action_about_triggered(self):

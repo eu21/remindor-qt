@@ -78,6 +78,7 @@
      <string>&amp;File</string>
     </property>
     <addaction name="action_add"/>
+    <addaction name="action_simple_add"/>
     <addaction name="action_quick_add"/>
     <addaction name="separator"/>
     <addaction name="action_close"/>
@@ -137,6 +138,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="action_add"/>
+   <addaction name="action_simple_add"/>
    <addaction name="action_quick_add"/>
    <addaction name="separator"/>
    <addaction name="action_edit"/>
@@ -427,6 +429,14 @@
    </property>
    <property name="toolTip">
     <string>Stop Playing Sound</string>
+   </property>
+  </action>
+  <action name="action_simple_add">
+   <property name="icon">
+    <iconset theme="media-playback-start"/>
+   </property>
+   <property name="text">
+    <string>Simple Add</string>
    </property>
   </action>
  </widget>

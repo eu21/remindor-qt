@@ -23,7 +23,7 @@ gettext.textdomain('remindor-common')
 import PySide
 from PySide.QtCore import *
 from PySide.QtGui import *
-from PySide import QtSvg
+from PySide import QtSvg, QtXml
 
 use_dbus = True
 try:
@@ -81,6 +81,13 @@ def main():
 
         elif options.quick:
             dialog = QuickDialog(None)
+            dialog.exec_()
+
+            ds.emitUpdate()
+            sys.exit(0)
+
+        elif options.simple:
+            dialog = SimpleDialog(None)
             dialog.exec_()
 
             ds.emitUpdate()

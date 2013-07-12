@@ -18,6 +18,12 @@
 import os
 import sys
 
+use_py2exe = True
+try:
+    import py2exe
+except:
+    use_py2exe = False
+
 try:
     import DistUtilsExtra.auto
 except ImportError:
@@ -38,13 +44,13 @@ def update_config(values = {}):
                 oldvalues[fields[0]] = fields[1].strip()
                 line = "%s = %s\n" % (fields[0], values[fields[0]])
             fout.write(line)
-			
+            
         fout.flush()
         fout.close()
         fin.close()
-		os.rename(fin.name, fin.name + '.old')
+        os.rename(fin.name, fin.name + '.old')
         os.rename(fout.name, fin.name)
-		os.remove(fin.name + '.old')
+        os.remove(fin.name + '.old')
     except (OSError, IOError), e:
         print ("ERROR: Can't find remindor_qt/remindor_qtconfig.py")
         sys.exit(1)
@@ -52,7 +58,11 @@ def update_config(values = {}):
 
 class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
     def run(self):
-        values = {'__remindor_qt_data_directory__': "'%s'" % (self.prefix + '/share/remindor-qt/'),
+        data_dir = self.prefix + '/share/remindor-qt/'
+        if os.name == 'nt' and use_py2exe:
+            data_dir = '../../share/remindor-qt/'
+    
+        values = {'__remindor_qt_data_directory__': "'%s'" % (data_dir),
                   '__version__': "'%s'" % self.distribution.get_version()}
         previous_values = update_config(values)
         DistUtilsExtra.auto.install_auto.run(self)
@@ -60,7 +70,7 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
 
 data_files = [];
 if os.name != 'nt':
-	data_files = [
+    data_files = [
         ('/usr/share/icons/hicolor/16x16/apps/', ['data/media/hicolor/16x16/apps/remindor-qt.png']),
         ('/usr/share/icons/hicolor/22x22/apps/', ['data/media/hicolor/22x22/apps/remindor-qt.png']),
         ('/usr/share/icons/hicolor/24x24/apps/', ['data/media/hicolor/24x24/apps/remindor-qt.png']),
@@ -105,5 +115,8 @@ DistUtilsExtra.auto.setup(
     long_description = 'Remindor-Qt is an system tray app that allows you to schedule reminders.  A reminder can be configured to show a notification, play a sound, and/or run a command.  Reminders can be scheduled on one day or they can be set to repeat every day, every monday, every 30 days, etc.  They can also be set to repeat minutely or hourly.',
     cmdclass = {'install': InstallAndUpdateDataDirectory},
     data_files = data_files,
-    packages = ['remindor_qt', 'remindor_common']
+    packages = ['remindor_qt', 'remindor_common'],
+    console = ['remindor_qt.py'],
+    options = {'py2exe': {'includes': ['feedparser']}},
+    windows = [{'script': 'remindor_qt.py', 'icon_resources': [(1, 'data/media/remindor-qt-windows.ico')] }]
 )

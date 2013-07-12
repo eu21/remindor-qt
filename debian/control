@@ -16,6 +16,7 @@ Depends: ${misc:Depends},
  python-pyside.qtgui,
  python-pyside.qtuitools,
  python-pyside.phonon,
+ python-pyside.qtsvg,
  python-notify,
  remindor-common
 Recommends: sni-qt

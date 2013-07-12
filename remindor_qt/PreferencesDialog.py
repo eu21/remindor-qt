@@ -25,6 +25,12 @@ import gettext
 from gettext import gettext as _
 gettext.textdomain('remindor-common')
 
+use_dbus = True
+try:
+    import dbus
+except:
+    use_dbus = False
+
 from remindor_qt import helpers
 from remindor_qt.remindor_qtconfig import get_data_file
 from remindor_qt.CommandDialog import CommandDialog
@@ -166,6 +172,11 @@ class PreferencesDialog(QDialog):
         self.hide_check = self.findChild(QCheckBox, "hide_check")
         self.hide_check.setChecked(self.settings.hide_indicator)
         self.hide_start = self.settings.hide_indicator
+
+        if not use_dbus:
+            self.hide_check.setChecked(False)
+            self.hide_check.setDisabled(True)
+            self.hide_label.setDisabled(True)
 
         self.time_format_label = self.findChild(QLabel, "time_format_label")
         self.date_format_label = self.findChild(QLabel, "date_format_label")
