@@ -1,9 +1,6 @@
 #dolphon settings
 .directory
 
-#kate project
-.kateproject.d
-
 #qtcreator settings
 *.pro.user
 
