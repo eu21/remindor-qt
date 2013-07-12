@@ -1,0 +1,3 @@
+[submodule ".remindor-common"]
+	path = .remindor-common
+	url = git@github.com:bhdouglass/remindor-common.git

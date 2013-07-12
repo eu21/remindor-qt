@@ -7,9 +7,6 @@
 #qtcreator settings
 *.pro.user
 
-#symlink to remindor_common
-remindor_common
-
 *.py[cod]
 
 # C extensions
