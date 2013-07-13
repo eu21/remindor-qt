@@ -99,6 +99,7 @@ class RemindorQtWindow(QMainWindow):
 
         self.tray_menu = QMenu()
         self.tray_menu.addAction(QIcon.fromTheme("add", QIcon(":/icons/add.png")), _("Add"), self, SLOT("on_action_add_triggered()"))
+        self.tray_menu.addAction(QIcon.fromTheme("media-playback-start", QIcon(":/icons/wand.png")), _("Simple Add"), self, SLOT("on_action_simple_add_triggered()"))
         self.tray_menu.addAction(QIcon.fromTheme("media-skip-forward", QIcon(":/icons/quick.png")), _("Quick Add"), self, SLOT("on_action_quick_add_triggered()"))
         self.tray_menu.addAction(QIcon.fromTheme("media-playback-stop", QIcon(":/icons/delete.png")), _("Stop Sound"), self, SLOT("on_action_stop_triggered()"))
         self.tray_menu.addAction(QIcon.fromTheme("stock_properties", QIcon(":/icons/manage.png")), _("Manage"), self, SLOT("show()"))

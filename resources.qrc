@@ -20,6 +20,7 @@
         <file alias="save.png">data/media/onebit/save.png</file>
         <file alias="ok.png">data/media/onebit/ok.png</file>
         <file alias="users.png">data/media/onebit/users.png</file>
+		<file alias="wand.png">data/media/onebit/wand.png</file>
     </qresource>
     <qresource prefix="/services">
         <file alias="boxcar.png">data/media/boxcar.png</file>
