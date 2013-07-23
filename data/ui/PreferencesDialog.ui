@@ -101,7 +101,7 @@
          </size>
         </property>
         <property name="currentRow">
-         <number>0</number>
+         <number>-1</number>
         </property>
         <item>
          <property name="text">
@@ -121,6 +121,11 @@
         <item>
          <property name="text">
           <string>Quick Reminders</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Simple Reminders</string>
          </property>
         </item>
         <item>
@@ -604,6 +609,66 @@ sound settings</string>
              </property>
             </item>
            </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="simple_page">
+         <layout class="QGridLayout" name="gridLayout_9">
+          <item row="0" column="0">
+           <widget class="QLabel" name="simple_popup_label">
+            <property name="text">
+             <string>Popup Notification</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="simple_dialog_label">
+            <property name="text">
+             <string>Dialog Notification</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QCheckBox" name="simple_sound_check">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QCheckBox" name="simple_dialog_check">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="simple_sound_label">
+            <property name="text">
+             <string>Use standard reminder
+sound settings</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="simple_popup_check">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="2">
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </widget>

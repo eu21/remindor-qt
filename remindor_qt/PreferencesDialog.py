@@ -130,6 +130,17 @@ class PreferencesDialog(QDialog):
         self.quick_info_check = self.findChild(QCheckBox, "quick_info_check")
         self.quick_info_check.setChecked(self.settings.quick_info)
 
+        self.simple_popup_label = self.findChild(QLabel, "simple_popup_label")
+        self.simple_dialog_label = self.findChild(QLabel, "simple_dialog_label")
+        self.simple_sound_label = self.findChild(QLabel, "simple_sound_label")
+
+        self.simple_popup_check = self.findChild(QCheckBox, "simple_popup_check")
+        self.simple_popup_check.setChecked(self.settings.simple_popup)
+        self.simple_dialog_check = self.findChild(QCheckBox, "simple_dialog_check")
+        self.simple_dialog_check.setChecked(self.settings.simple_dialog)
+        self.simple_sound_check = self.findChild(QCheckBox, "simple_sound_check")
+        self.simple_sound_check.setChecked(self.settings.simple_sound)
+
         self.today_label = self.findChild(QLabel, "today_label")
         self.future_label = self.findChild(QLabel, "future_label")
         self.past_label = self.findChild(QLabel, "past_label")
@@ -209,6 +220,7 @@ class PreferencesDialog(QDialog):
             _("Notifications"),
             _("Sound"),
             _("Quick Reminders"),
+            _("Simple Reminders"),
             _("Interface"),
             _("Format"),
             _("Services")
@@ -254,6 +266,10 @@ class PreferencesDialog(QDialog):
 
         self.quick_unit_combo.clear()
         self.quick_unit_combo.addItems(units)
+
+        self.simple_popup_label.setText(_("Popup Notification"))
+        self.simple_dialog_label.setText(_("Dialog Notification"))
+        self.simple_sound_label.setText(_("Use standard reminder\nsound settings"))
 
         self.today_label.setText(_("Today's Reminder Color"))
         self.future_label.setText(_("Future Reminder Color"))
@@ -417,6 +433,10 @@ class PreferencesDialog(QDialog):
         self.settings.quick_dialog = self.quick_dialog_check.isChecked()
         self.settings.quick_sound = self.quick_sound_check.isChecked()
         self.settings.quick_info = self.quick_info_check.isChecked()
+
+        self.settings.simple_popup = self.simple_popup_check.isChecked()
+        self.settings.simple_dialog = self.simple_dialog_check.isChecked()
+        self.settings.simple_sound = self.simple_sound_check.isChecked()
 
         self.settings.today_color = self.today_color
         self.settings.future_color = self.future_color
