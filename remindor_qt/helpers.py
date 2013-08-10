@@ -25,7 +25,7 @@ import sys
 
 from remindor_qt.remindor_qtconfig import get_data_file, get_data_path
 
-from remindor_common import database as db
+from remindor_common import database as db, helpers
 
 import gettext
 from gettext import gettext as _
@@ -67,11 +67,7 @@ def get_media_file(media_file_name):
     return "file:///" + media_filename
 
 def get_html_file(html_file_name):
-    html_filename = get_data_file('html', '%s.html' % (html_file_name,))
-    if not os.path.exists(html_filename):
-        html_filename = None
-
-    return "file:///" + html_filename
+    return helpers.data_file('html', '%s.html' % html_file_name)
 
 '''class NullHandler(logging.Handler):
     def emit(self, record):
