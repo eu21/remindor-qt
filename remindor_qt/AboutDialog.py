@@ -50,5 +50,5 @@ class AboutDialog(QDialog):
 
     @Slot()
     def on_credits_button_pressed(self):
-        message = _("Author: Brian Douglass\n\nTranslators:\nJan Schürmann (German)\nA.J. Baudrez (Dutch)\nPastor (Polish)\nasensio (Portuguese)")
+        message = _("Author: Brian Douglass\n\nTranslators:\nSid Roberts (UK English)\njc1 (French)\nConnyLo (German)\nJan Schürmann (German)\nTomas Lycken (Gernam)\nA.J. Baudrez (Dutch)\nPastor (Polish)\nasensio (Portuguese)\nLaurențiu Lozan (Romanian)")
         QMessageBox.information(self, _("Credits"), message, QMessageBox.Close)
