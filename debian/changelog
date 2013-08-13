@@ -1,4 +1,14 @@
-remindor-qt (13.03-0ubuntu1~quantal) quantal; urgency=low
+remindor-qt (13.08-0ubuntu1~raring) raring; urgency=low
+
+  * Added more translator credits
+  * Added simple reminders
+  * Converted to using new config file
+  * Switched Linux Mint icons
+  * Fixed tray icon not updating correctly
+
+ -- Brian Douglass <bhdouglass@gmail.com>  Mon, 12 Aug 2013 19:25:00 -0500
+
+remindor-qt (13.03-0ubuntu1~raring) raring; urgency=low
 
   * Initial release.
 
