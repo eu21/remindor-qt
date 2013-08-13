@@ -68,7 +68,8 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
         DistUtilsExtra.auto.install_auto.run(self)
         update_config(previous_values)
 
-data_files = [];
+data_files = []
+packages = []
 if os.name != 'nt':
     data_files = [
         ('/usr/share/icons/hicolor/16x16/apps/', ['data/media/hicolor/16x16/apps/remindor-qt.png']),
@@ -94,6 +95,8 @@ if os.name != 'nt':
         ('/usr/share/icons/Mint-X-Dark/status/scalable/', ['data/media/Mint-X-Dark/status/scalable/remindor-qt-active.svg'])
     ]
 else:
+	packages = ['remindor_qt', 'remindor_common']
+
     for item in os.walk('data'):
         path = item[0].replace('data/', 'share/remindor-qt/')
         path = item[0].replace('data\\', 'share\\remindor-qt\\')
@@ -115,7 +118,7 @@ DistUtilsExtra.auto.setup(
     long_description = 'Remindor-Qt is an system tray app that allows you to schedule reminders.  A reminder can be configured to show a notification, play a sound, and/or run a command.  Reminders can be scheduled on one day or they can be set to repeat every day, every monday, every 30 days, etc.  They can also be set to repeat minutely or hourly.',
     cmdclass = {'install': InstallAndUpdateDataDirectory},
     data_files = data_files,
-    packages = ['remindor_qt', 'remindor_common'],
+    packages = packages,
     console = ['remindor_qt.py'],
     options = {'py2exe': {'includes': ['feedparser']}},
     windows = [{'script': 'remindor_qt.py', 'icon_resources': [(1, 'data/media/remindor-qt-windows.ico')] }]
