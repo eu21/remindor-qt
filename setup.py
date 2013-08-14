@@ -71,6 +71,8 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
 data_files = []
 packages = []
 if os.name != 'nt':
+	packages = ['remindor_qt']
+
     data_files = [
         ('/usr/share/icons/hicolor/16x16/apps/', ['data/media/hicolor/16x16/apps/remindor-qt.png']),
         ('/usr/share/icons/hicolor/22x22/apps/', ['data/media/hicolor/22x22/apps/remindor-qt.png']),
