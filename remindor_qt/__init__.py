@@ -48,7 +48,7 @@ def main():
     check_database()
 
     (options, parser) = parse_options(get_version())
-    set_up_logging("remindor_qt", log_file(), config_dir(), options)
+    set_up_logging("remindor_qt", log_file(), config_dir(), options, get_version())
 
     import logging
     logger = logging.getLogger('remindor_qt')
