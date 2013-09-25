@@ -18,7 +18,7 @@ from PySide.QtCore import *
 from PySide.QtGui import *
 from PySide.phonon import Phonon
 
-from remindor_qt.helpers import RTimer, get_data_file
+from remindor_qt.helpers import RTimer, get_data_file, config_dir
 from remindor_common.scheduler import GenericScheduler
 
 import gettext
@@ -51,7 +51,7 @@ class SchedulerQt(GenericScheduler):
     dialog = None
 
     def __init__(self, tray_icon, attention_icon, slot, file):
-        GenericScheduler.__init__(self, file)
+        GenericScheduler.__init__(self, file, config_dir())
         self.tray_icon = tray_icon
         self.attention_icon = attention_icon
         self.helper = SchedulerQtHelper(slot)
