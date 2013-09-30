@@ -1,3 +1,9 @@
+remindor-qt (13.08.1-0ubuntu1~raring) raring; urgency=low
+
+  * Updated to use remindor-common's new command runner
+
+ -- Brian Douglass <bhdouglass@gmail.com>  Sun, 29 Sep 2013 21:09:00 -0500
+
 remindor-qt (13.08-0ubuntu1~raring) raring; urgency=low
 
   * Added more translator credits

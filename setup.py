@@ -111,7 +111,7 @@ else:
 
 DistUtilsExtra.auto.setup(
     name = 'remindor-qt',
-    version = '13.08',
+    version = '13.08.1',
     license = 'GPL-3',
     author = 'Brian Douglass',
     author_email = 'bhdouglass@gmail.com',
