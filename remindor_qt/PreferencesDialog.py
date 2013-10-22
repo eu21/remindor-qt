@@ -487,5 +487,5 @@ class PreferencesDialog(QDialog):
                 self.list_widget.setCurrentRow(0)
                 self.date_edit.setFocus()
             elif value == self.info.ok:
-				self.update.emit()
+                self.update.emit()
                 self.accept()

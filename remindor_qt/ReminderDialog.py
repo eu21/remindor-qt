@@ -93,8 +93,8 @@ class ReminderDialog(QDialog):
 
         self.info = ReminderDialogInfo(helpers.database_file())
         self.set_data(self.info.label, self.info.time, self.info.date, self.info.command,
-                      self.info.notes, self.info.popup, self.info.dialog, self.info.boxcar,
-                      self.info.sound_file, self.info.sound_length, self.info.sound_loop)
+                    self.info.notes, self.info.popup, self.info.dialog, self.info.boxcar,
+                    self.info.sound_file, self.info.sound_length, self.info.sound_loop)
 
         self.translate()
 
@@ -169,8 +169,8 @@ class ReminderDialog(QDialog):
         sound_loop = self.loop_check.isChecked()
 
         (status, id) = self.info.reminder(label, time, date, command, notes, popup, dialog,
-                                          boxcar, play, sound_file, sound_length, sound_loop,
-                                          self.delete_id, True)
+                                        boxcar, play, sound_file, sound_length, sound_loop,
+                                        self.delete_id, True)
 
         if status == self.info.ok:
             self.added.emit(id)
@@ -196,9 +196,9 @@ class ReminderDialog(QDialog):
                 ans = QMessageBox.question(self, title, message, QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
                 if ans == QMessageBox.Yes:
                     (status, id) = self.info.reminder(label, time, date, command, notes,
-                                                      popup, dialog, boxcar, play,
-                                                      sound_file, sound_length, sound_loop,
-                                                      self.delete_id)
+                                                    popup, dialog, boxcar, play,
+                                                    sound_file, sound_length, sound_loop,
+                                                    self.delete_id)
                     #already checked the status (boxcar is the last check)
                     self.added.emit(id)
                     self.accept()
@@ -301,7 +301,7 @@ class ReminderDialog(QDialog):
         self.delete_id = reminder
 
     def set_data(self, label, time, date, command, notes, popup,
-                 dialog, boxcar, sound_file, length, loop):
+                dialog, boxcar, sound_file, length, loop):
         self.label_edit.setText(label)
         self.time_edit.setText(time)
         self.date_edit.setText(date)

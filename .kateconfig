@@ -1,0 +1,1 @@
+kate: indent-mode python; indent-width 4; newline-at-eof on; remove-trailing-spaces all; replace-tabs true; replace-tabs-save true; tab-indents true; tab-width 4; eol unix;

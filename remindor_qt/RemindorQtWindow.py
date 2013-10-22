@@ -79,9 +79,9 @@ class RemindorQtWindow(QMainWindow):
         self.app_icon = QIcon(helpers.get_data_file("media", "remindor-qt.svg"))
         self.attention_icon = QIcon.fromTheme("remindor-qt-attention", QIcon(helpers.get_data_file("media", "remindor-qt-attention.svg")))
         self.tray_icons = [QIcon.fromTheme("remindor-qt-active", self.active_icon),
-                           self.active_icon,
-                           QIcon(helpers.get_data_file("media", "remindor-qt-active_dark.svg")),
-                           QIcon.fromTheme("remindor-qt", self.app_icon)]
+                        self.active_icon,
+                        QIcon(helpers.get_data_file("media", "remindor-qt-active_dark.svg")),
+                        QIcon.fromTheme("remindor-qt", self.app_icon)]
 
         self.reminder_tree = self.findChild(QTreeWidget, "reminder_tree")
         self.reminder_tree.setColumnWidth(0, 200)

@@ -29,66 +29,66 @@ from remindor_qt import helpers
 from remindor_common.helpers import SimpleDialogInfo
 
 class SimpleDialog(QDialog):
-	added = Signal(int)
+    added = Signal(int)
 
-	def __init__(self, parent = None):
-		super(SimpleDialog, self).__init__(parent)
-		helpers.setup_ui(self, "SimpleDialog.ui")
+    def __init__(self, parent = None):
+        super(SimpleDialog, self).__init__(parent)
+        helpers.setup_ui(self, "SimpleDialog.ui")
 
-		self.info = SimpleDialogInfo(helpers.database_file())
+        self.info = SimpleDialogInfo(helpers.database_file())
 
-		self.reminder_edit = self.findChild(QLineEdit, "reminder_edit")
-		self.reminder_label = self.findChild(QLabel, "reminder_label")
-		self.reminder_error = self.findChild(QToolButton, "reminder_error")
-		self.reminder_error.hide()
+        self.reminder_edit = self.findChild(QLineEdit, "reminder_edit")
+        self.reminder_label = self.findChild(QLabel, "reminder_label")
+        self.reminder_error = self.findChild(QToolButton, "reminder_error")
+        self.reminder_error.hide()
 
-		self.help_button = self.findChild(QPushButton, "help_button")
-		self.cancel_button = self.findChild(QPushButton, "cancel_button")
-		self.add_button = self.findChild(QPushButton, "add_button")
+        self.help_button = self.findChild(QPushButton, "help_button")
+        self.cancel_button = self.findChild(QPushButton, "cancel_button")
+        self.add_button = self.findChild(QPushButton, "add_button")
 
-		self.translate()
+        self.translate()
 
-		self.info = SimpleDialogInfo(helpers.database_file())
-		self.show_label_error = False
+        self.info = SimpleDialogInfo(helpers.database_file())
+        self.show_label_error = False
 
-	def translate(self):
-		self.setWindowTitle(_("Add Simple Reminder"))
-		self.reminder_label.setText(_("Remind me to..."))
+    def translate(self):
+        self.setWindowTitle(_("Add Simple Reminder"))
+        self.reminder_label.setText(_("Remind me to..."))
 
-		self.help_button.setText(_("Help"))
-		self.cancel_button.setText(_("Cancel"))
-		self.add_button.setText(_("Add"))
+        self.help_button.setText(_("Help"))
+        self.cancel_button.setText(_("Cancel"))
+        self.add_button.setText(_("Add"))
 
-	@Slot()
-	def on_reminder_edit_textEdited(self):
-		text = self.reminder_edit.text()
-		(valid, date_s, time_s, label) = self.info.validate(text)
+    @Slot()
+    def on_reminder_edit_textEdited(self):
+        text = self.reminder_edit.text()
+        (valid, date_s, time_s, label) = self.info.validate(text)
 
-		if label == text and not self.show_label_error:
-			valid = True
+        if label == text and not self.show_label_error:
+            valid = True
 
-		if label != text and not self.show_label_error:
-			self.show_label_error = True
+        if label != text and not self.show_label_error:
+            self.show_label_error = True
 
-		if valid:
-			self.reminder_error.hide()
-		else:
-			self.reminder_error.show()
+        if valid:
+            self.reminder_error.hide()
+        else:
+            self.reminder_error.show()
 
-	@Slot()
-	def on_help_button_pressed(self):
-		helpers.show_html_help("simple-add")
+    @Slot()
+    def on_help_button_pressed(self):
+        helpers.show_html_help("simple-add")
 
-	@Slot()
-	def on_cancel_button_pressed(self):
-		self.reject()
+    @Slot()
+    def on_cancel_button_pressed(self):
+        self.reject()
 
-	@Slot()
-	def on_add_button_pressed(self):
-		id = self.info.reminder(self.reminder_edit.text())
-		if id != None:
-			self.added.emit(id)
-			self.accept()
-		else:
-			self.reminder_error.show()
-			self.show_label_error = True
+    @Slot()
+    def on_add_button_pressed(self):
+        id = self.info.reminder(self.reminder_edit.text())
+        if id != None:
+            self.added.emit(id)
+            self.accept()
+        else:
+            self.reminder_error.show()
+            self.show_label_error = True

@@ -63,7 +63,7 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
             data_dir = '../../share/remindor-qt/'
     
         values = {'__remindor_qt_data_directory__': "'%s'" % (data_dir),
-                  '__version__': "'%s'" % self.distribution.get_version()}
+                '__version__': "'%s'" % self.distribution.get_version()}
         previous_values = update_config(values)
         DistUtilsExtra.auto.install_auto.run(self)
         update_config(previous_values)
@@ -71,7 +71,7 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
 data_files = []
 packages = []
 if os.name != 'nt':
-	packages = ['remindor_qt']
+    packages = ['remindor_qt']
 
     data_files = [
         ('/usr/share/icons/hicolor/16x16/apps/', ['data/media/hicolor/16x16/apps/remindor-qt.png']),
@@ -97,7 +97,7 @@ if os.name != 'nt':
         ('/usr/share/icons/Mint-X-Dark/status/scalable/', ['data/media/Mint-X-Dark/status/scalable/remindor-qt-active.svg'])
     ]
 else:
-	packages = ['remindor_qt', 'remindor_common']
+    packages = ['remindor_qt', 'remindor_common']
 
     for item in os.walk('data'):
         path = item[0].replace('data/', 'share/remindor-qt/')

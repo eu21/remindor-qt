@@ -103,7 +103,7 @@ class SchedulerQt(GenericScheduler):
     def popup_dialog(self, label, notes):
         logger.debug("schedulerqt: popup_dialog: " + label + " " + notes)
 
-		message = "<b>%s</b><br/><br/>%s" % (label, notes)
+        message = "<b>%s</b><br/><br/>%s" % (label, notes)
 
         self.dialog = QMessageBox(QMessageBox.Information, 'Remindor-Qt', message, QMessageBox.Close)
         self.dialog.setIconPixmap(QPixmap(get_data_file("media", "remindor-qt.png")))
