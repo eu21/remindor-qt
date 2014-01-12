@@ -78,7 +78,10 @@ class ReminderDialog(QDialog):
         self.boxcar_label = self.findChild(QLabel, "boxcar_label")
         self.boxcar_label.hide()
 
-        #TODO: pushbullet
+        self.pushbullet_device_label = self.findChild(QLabel, 'pushbullet_device_label')
+        self.pushbullet_device_edit = self.findChild(QComboBox, 'pushbullet_device_edit')
+        self.pushbullet_info_label = self.findChild(QLabel, 'pushbullet_info_label')
+        self.pushbullet_refresh = self.findChild(QPushButton, 'pushbullet_refresh')
 
         self.sound_label = self.findChild(QLabel, "sound_label")
         self.file_label = self.findChild(QLabel, "file_label")
@@ -96,7 +99,8 @@ class ReminderDialog(QDialog):
         self.info = ReminderDialogInfo(helpers.database_file())
         self.set_data(self.info.label, self.info.time, self.info.date, self.info.command,
                     self.info.notes, self.info.popup, self.info.dialog, self.info.boxcar,
-                    self.info.sound_file, self.info.sound_length, self.info.sound_loop)
+                    self.info.pushbullet_device, self.info.sound_file,
+                    self.info.sound_length, self.info.sound_loop)
 
         self.translate()
 
@@ -142,15 +146,17 @@ class ReminderDialog(QDialog):
         self.command_button.setText(_("Edit"))
         self.insert_button.setText(_("Insert"))
 
-        self.tabs.setTabText(0, _("Notification"))
+        self.tabs.setTabText(1, _("Notification"))
         self.popup_check.setText(_("Popup"))
         self.dialog_check.setText(_("Dialog Box"))
         #self.boxcar_check #doesn't need translated
         self.boxcar_label.setText(_("Boxcar has not been\nsetup in Preferences"))
 
-        #TODO: pushbullet
+        self.pushbullet_device_label.setText(_('Pushbullet Device'))
+        self.pushbullet_refresh.setText(_('Refresh'))
+        self.pushbullet_info_label.setText(_('Pushbullet has not been\nsetup in Preferences'))
 
-        self.tabs.setTabText(0, _("Sound"))
+        self.tabs.setTabText(3, _("Sound"))
         self.sound_label.setText(_("Play Sound"))
         self.file_label.setText(_("Sound File"))
         self.length_label.setText(_("Play Length"))
@@ -167,7 +173,7 @@ class ReminderDialog(QDialog):
         popup = self.popup_check.isChecked()
         dialog = self.dialog_check.isChecked()
         boxcar = self.boxcar_check.isChecked()
-        #TODO: pushbullet
+        pushbullet_device = self.info.get_pushbullet_id(self.pushbullet_device_edit.currentIndex(), self.info.pushbullet_devices)
         play = self.sound_check.isChecked()
         sound_file = self.file_edit.text()
         sound_length = self.length_spin.value()
@@ -175,7 +181,7 @@ class ReminderDialog(QDialog):
 
         (status, id) = self.info.reminder(label, time, date, command, notes, popup, dialog,
                                         boxcar, play, sound_file, sound_length, sound_loop,
-                                        self.delete_id, True)
+                                        pushbullet_device, self.delete_id, True)
 
         if status == self.info.ok:
             self.added.emit(id)
@@ -290,6 +296,21 @@ class ReminderDialog(QDialog):
             else:
                 self.length_spin.setEnabled(True)
 
+    @Slot()
+    def on_pushbullet_refresh_clicked(self):
+        self.info.refresh_pushbullet_devices(self.info.pushbullet_api_key)
+        self.refresh_pushbullet_combobox()
+
+    def refresh_pushbullet_combobox(self):
+        devices = list(self.info.pushbullet_devices)
+        devices.insert(0, {'id': -1, 'name': _('None')})
+
+        self.pushbullet_device_edit.clear()
+        for device in devices:
+            self.pushbullet_device_edit.addItem(device['name'])
+
+        self.pushbullet_device_edit.setCurrentIndex(self.info.pushbullet_device_index)
+
     def edit(self, reminder):
         self.save_button.show()
         self.add_button.hide()
@@ -299,16 +320,14 @@ class ReminderDialog(QDialog):
         r = self.database.alarm(reminder)
         self.database.close()
 
-        #TODO: pushbullet
-
         self.set_data(r.label, datetimeutil.fix_time_format(r.time, self.info.time_format),
             datetimeutil.fix_date_format(r.date, self.info.date_format), r.command, r.notes,
-            r.notification, r.dialog, r.boxcar, r.sound_file, r.sound_length, r.sound_loop)
+            r.notification, r.dialog, r.boxcar, r.pushbullet_device, r.sound_file, r.sound_length, r.sound_loop)
 
         self.delete_id = reminder
 
     def set_data(self, label, time, date, command, notes, popup,
-                dialog, boxcar, sound_file, length, loop):
+                dialog, boxcar, pushbullet_device, sound_file, length, loop):
         self.label_edit.setText(label)
         self.time_edit.setText(time)
         self.date_edit.setText(date)
@@ -324,7 +343,17 @@ class ReminderDialog(QDialog):
             self.boxcar_check.setDisabled(True)
             self.boxcar_label.show()
 
-        #TODO: pushbullet
+        if self.info.pushbullet_ok:
+            self.pushbullet_info_label.hide()
+            self.pushbullet_device_edit.setEnabled(True)
+            self.pushbullet_refresh.setEnabled(True)
+
+            self.refresh_pushbullet_combobox()
+            self.pushbullet_device_edit.setCurrentIndex(self.info.get_pushbullet_index(pushbullet_device))
+        else:
+            self.pushbullet_info_label.show()
+            self.pushbullet_device_edit.setEnabled(False)
+            self.pushbullet_refresh.setEnabled(False)
 
         if sound_file is not None and not sound_file == "":
             self.sound_check.setChecked(True)
