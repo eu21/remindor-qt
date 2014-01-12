@@ -37,11 +37,12 @@ from remindor_qt.CommandDialog import CommandDialog
 from remindor_qt.DateDialog import DateDialog
 from remindor_qt.TimeDialog import TimeDialog
 
-from remindor_common.helpers import rgb_to_hex, PreferencesDialogInfo, valid_date, valid_time
+from remindor_common.helpers import rgb_to_hex, PreferencesDialogInfo, valid_date, valid_time, is_string
 from remindor_common import datetimeutil
 
 class PreferencesDialog(QDialog):
     update = Signal()
+    pushbullet_valid = ''
 
     def __init__(self, parent = None):
         super(PreferencesDialog, self).__init__(parent)
@@ -201,6 +202,16 @@ class PreferencesDialog(QDialog):
         self.boxcar_notification_check = self.findChild(QCheckBox, "boxcar_notification_check")
         self.boxcar_notification_check.setChecked(self.settings.boxcar_notify)
 
+        self.pushbullet_button = self.findChild(QCommandLinkButton, 'pushbullet_button')
+        self.pushbullet_device_label = self.findChild(QLabel, 'pushbullet_device_label')
+
+        self.pushbullet_api_key_edit = self.findChild(QLineEdit, 'pushbullet_api_key_edit')
+        self.pushbullet_api_key_edit.setText(self.settings.pushbullet_api_key)
+        self.pushbullet_device_edit = self.findChild(QComboBox, 'pushbullet_device_edit')
+        self.pushbullet_refresh = self.findChild(QPushButton, 'pushbullet_refresh')
+        self.refresh_pushbullet_combobox(self.settings.pushbullet_devices)
+        self.pushbullet_valid = self.settings.pushbullet_api_key
+
         self.help_button = self.findChild(QPushButton, "help_button")
         self.cancel_button = self.findChild(QPushButton, "cancel_button")
         self.save_button = self.findChild(QPushButton, "save_button")
@@ -294,6 +305,10 @@ class PreferencesDialog(QDialog):
         self.boxcar_email_button.setText(_("Boxcar Email"))
         self.boxcar_notification_label.setText(_("Boxcar Notification"))
 
+        self.pushbullet_button.setText(_('Pushbullet Api Key'))
+        self.pushbullet_device_label.setText(_('Pushbullet\nDefault Device'))
+        self.pushbullet_refresh.setText(_('Refresh'))
+
         self.help_button.setText(_("Help"))
         self.cancel_button.setText(_("Cancel"))
         self.save_button.setText(_("Save"))
@@ -364,6 +379,66 @@ class PreferencesDialog(QDialog):
     @Slot()
     def on_boxcar_email_button_pressed(self):
         helpers.show_html_help("services")
+
+    @Slot()
+    def on_pushbullet_button_pressed(self):
+        helpers.show_html_help('services')
+
+    @Slot()
+    def on_pushbullet_refresh_pressed(self):
+        if self.pushbullet_api_key_edit.text() == '':
+            message = _('Please provide a Pushbullet api key.')
+            QMessageBox.information(self, 'Pushbullet', message)
+        else:
+            self.validate_pushbullet()
+            self.refresh_pushbullet_combobox(self.settings.pushbullet_devices)
+
+    def validate_pushbullet(self):
+        value = True
+        if self.pushbullet_valid != self.pushbullet_api_key_edit.text():
+            if self.pushbullet_api_key_edit.text() == '':
+                self.settings.pushbullet_devices = []
+                self.settings.pushbullet_api_key = ''
+                value = True
+            else:
+                value = self.info.refresh_pushbullet_devices(self.pushbullet_api_key_edit.text())
+                if is_string(value):
+                    self.pushbullet_valid = ''
+
+                    message = ''
+                    if value == self.info.pushbullet_invalid:
+                        message = _('The api key you provided is invalid.\nPlease check your account on pushbullet.com.')
+                        self.settings.pushbullet_devices = []
+                        self.settings.pushbullet_api_key = ''
+                    elif value == self.info.pushbullet_error:
+                        message = _('There was an error connecting with Pushbullet.\nPlease check your api key or network connection.')
+                    elif value == self.info.pushbullet_retry:
+                        message = _('There was an error connecting with Pushbullet.\nPlease try again later.')
+                    elif value == self.info.pushbullet_delete:
+                        self.settings.pushbullet_devices = []
+                        self.settings.pushbullet_api_key = ''
+
+                    if message != '':
+                        QMessageBox.information(self, 'Pushbullet', message)
+
+                    value = False
+                else:
+                    self.pushbullet_valid = self.pushbullet_api_key_edit.text()
+                    self.settings.pushbullet_devices = value
+                    self.settings.pushbullet_api_key = self.pushbullet_api_key_edit.text()
+                    value = True
+
+        return value
+
+    def refresh_pushbullet_combobox(self, devices = []):
+        devices = list(devices)
+        devices.insert(0, {'id': -1, 'name': _('None')})
+
+        self.pushbullet_device_edit.clear()
+        for device in devices:
+            self.pushbullet_device_edit.addItem(device['name'])
+
+        self.pushbullet_device_edit.setCurrentIndex(self.info.pushbullet_device_index)
 
     @Slot()
     def on_today_button_pressed(self):
@@ -451,6 +526,10 @@ class PreferencesDialog(QDialog):
         boxcar_email = self.boxcar_email_edit.text()
         boxcar_notify = self.boxcar_notification_check.isChecked()
 
+        pushbullet_ok = self.validate_pushbullet()
+        if pushbullet_ok:
+            self.settings.pushbullet_device = self.info.get_pushbullet_id(self.pushbullet_device_edit.currentIndex(), self.settings.pushbullet_devices)
+
         ok = True
         status = self.info.validate_boxcar(boxcar_email, boxcar_notify, self.boxcar_original)
         if status == self.info.boxcar_add:
@@ -474,7 +553,7 @@ class PreferencesDialog(QDialog):
             if ans == QMessageBox.No:
                 ok = False
 
-        if ok:
+        if ok and pushbullet_ok:
             value = self.info.preferences(self.settings)
             if value == self.info.time_error:
                 self.time_error.show()

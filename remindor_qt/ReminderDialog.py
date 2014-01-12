@@ -78,6 +78,8 @@ class ReminderDialog(QDialog):
         self.boxcar_label = self.findChild(QLabel, "boxcar_label")
         self.boxcar_label.hide()
 
+        #TODO: pushbullet
+
         self.sound_label = self.findChild(QLabel, "sound_label")
         self.file_label = self.findChild(QLabel, "file_label")
         self.length_label = self.findChild(QLabel, "length_label")
@@ -146,6 +148,8 @@ class ReminderDialog(QDialog):
         #self.boxcar_check #doesn't need translated
         self.boxcar_label.setText(_("Boxcar has not been\nsetup in Preferences"))
 
+        #TODO: pushbullet
+
         self.tabs.setTabText(0, _("Sound"))
         self.sound_label.setText(_("Play Sound"))
         self.file_label.setText(_("Sound File"))
@@ -163,6 +167,7 @@ class ReminderDialog(QDialog):
         popup = self.popup_check.isChecked()
         dialog = self.dialog_check.isChecked()
         boxcar = self.boxcar_check.isChecked()
+        #TODO: pushbullet
         play = self.sound_check.isChecked()
         sound_file = self.file_edit.text()
         sound_length = self.length_spin.value()
@@ -294,6 +299,8 @@ class ReminderDialog(QDialog):
         r = self.database.alarm(reminder)
         self.database.close()
 
+        #TODO: pushbullet
+
         self.set_data(r.label, datetimeutil.fix_time_format(r.time, self.info.time_format),
             datetimeutil.fix_date_format(r.date, self.info.date_format), r.command, r.notes,
             r.notification, r.dialog, r.boxcar, r.sound_file, r.sound_length, r.sound_loop)
@@ -316,6 +323,8 @@ class ReminderDialog(QDialog):
             self.boxcar_check.setChecked(False)
             self.boxcar_check.setDisabled(True)
             self.boxcar_label.show()
+
+        #TODO: pushbullet
 
         if sound_file is not None and not sound_file == "":
             self.sound_check.setChecked(True)
