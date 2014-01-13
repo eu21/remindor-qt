@@ -209,7 +209,7 @@ class ReminderDialog(QDialog):
                     (status, id) = self.info.reminder(label, time, date, command, notes,
                                                     popup, dialog, boxcar, play,
                                                     sound_file, sound_length, sound_loop,
-                                                    self.delete_id)
+                                                    pushbullet_device, self.delete_id)
                     #already checked the status (boxcar is the last check)
                     self.added.emit(id)
                     self.accept()
