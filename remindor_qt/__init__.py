@@ -58,7 +58,7 @@ def main():
     app.setWindowIcon(QIcon.fromTheme("remindor-qt"))
     app.setApplicationName("Remindor-Qt")
     app.setApplicationVersion(get_version())
-    app.setOrganizationDomain("http://bhdouglass.tk/indicator-remindor/")
+    app.setOrganizationDomain("http://bhdouglass.com/remindor/")
     app.setQuitOnLastWindowClosed(False)
 
     if os.name == 'nt':

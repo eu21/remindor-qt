@@ -40,7 +40,7 @@ from remindor_common.helpers import ManageWindowInfo
 from remindor_common.threads import BlogReader
 from remindor_common import database as db
 
-class RemindorQtWindow(QMainWindow):
+class RemindorQtWindow(QMainWindow): #TODO: add font awesome as fallback icons
     setup_schedule = True
     ok_to_close = False
 

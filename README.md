@@ -1,7 +1,7 @@
 Remindor-Qt
 ===========
 
-The Qt based cousin to [Indicator Remindor](http://bhdouglass.tk/indicator-remindor.php)
+The Qt based cousin to [Indicator Remindor](http://bhdouglass.com/remindor/)
 
 *Needs [remindor-common](https://github.com/bhdouglass/remindor-common) to function*
 

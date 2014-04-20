@@ -116,7 +116,7 @@ DistUtilsExtra.auto.setup(
     author = 'Brian Douglass',
     author_email = 'bhdouglass@gmail.com',
     description = 'Schedule reminders easily from a tray icon',
-    url = 'http://bhdouglass.tk/remindor/qt/',
+    url = 'http://bhdouglass.com/remindor/',
     long_description = 'Remindor-Qt is an system tray app that allows you to schedule reminders.  A reminder can be configured to show a notification, play a sound, and/or run a command.  Reminders can be scheduled on one day or they can be set to repeat every day, every monday, every 30 days, etc.  They can also be set to repeat minutely or hourly.',
     cmdclass = {'install': InstallAndUpdateDataDirectory},
     data_files = data_files,
