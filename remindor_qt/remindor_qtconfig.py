@@ -30,7 +30,7 @@ __all__ = [
 #__remindor_qt_data_directory__ = '/usr/share/remindor-qt/'
 __remindor_qt_data_directory__ = '../data/'
 __license__ = 'GPL-3'
-__version__ = '14.01'
+__version__ = '14.06'
 
 import os
 

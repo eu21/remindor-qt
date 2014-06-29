@@ -963,12 +963,12 @@ Default Device</string>
            </spacer>
           </item>
           <item row="0" column="0">
-           <widget class="QCommandLinkButton" name="boxcar_email_button">
+           <widget class="QCommandLinkButton" name="boxcar_token_button">
             <property name="styleSheet">
              <string notr="true"/>
             </property>
             <property name="text">
-             <string>Boxcar Email</string>
+             <string>Boxcar Token</string>
             </property>
             <property name="icon">
              <iconset resource="../../resources.qrc">
@@ -992,7 +992,7 @@ Default Device</string>
            <widget class="QLineEdit" name="pushbullet_api_key_edit"/>
           </item>
           <item row="0" column="1" colspan="2">
-           <widget class="QLineEdit" name="boxcar_email_edit"/>
+           <widget class="QLineEdit" name="boxcar_token_edit"/>
           </item>
           <item row="1" column="1" colspan="2">
            <widget class="QCheckBox" name="boxcar_notification_check">
@@ -1045,8 +1045,8 @@ Default Device</string>
   <tabstop>hide_check</tabstop>
   <tabstop>time_format_combo</tabstop>
   <tabstop>date_format_combo</tabstop>
-  <tabstop>boxcar_email_button</tabstop>
-  <tabstop>boxcar_email_edit</tabstop>
+  <tabstop>boxcar_token_button</tabstop>
+  <tabstop>boxcar_token_edit</tabstop>
   <tabstop>boxcar_notification_check</tabstop>
  </tabstops>
  <resources>

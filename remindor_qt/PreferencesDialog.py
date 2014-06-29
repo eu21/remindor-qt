@@ -49,7 +49,7 @@ class PreferencesDialog(QDialog):
         helpers.setup_ui(self, "PreferencesDialog.ui")
         self.info = PreferencesDialogInfo(helpers.database_file())
         self.settings = self.info.settings
-        self.boxcar_original = self.settings.boxcar_email
+        self.boxcar_original = self.settings.boxcar_token
 
         self.stack_widget = self.findChild(QStackedWidget, "stack")
         self.list_widget = self.findChild(QListWidget, "list")
@@ -194,11 +194,11 @@ class PreferencesDialog(QDialog):
         self.time_format_combo = self.findChild(QComboBox, "time_format_combo")
         self.date_format_combo = self.findChild(QComboBox, "date_format_combo")
 
-        self.boxcar_email_button = self.findChild(QCommandLinkButton, "boxcar_email_button")
+        self.boxcar_token_button = self.findChild(QCommandLinkButton, "boxcar_token_button")
         self.boxcar_notification_label = self.findChild(QLabel, "boxcar_notification_label")
 
-        self.boxcar_email_edit = self.findChild(QLineEdit, "boxcar_email_edit")
-        self.boxcar_email_edit.setText(self.settings.boxcar_email)
+        self.boxcar_token_edit = self.findChild(QLineEdit, "boxcar_token_edit")
+        self.boxcar_token_edit.setText(self.settings.boxcar_token)
         self.boxcar_notification_check = self.findChild(QCheckBox, "boxcar_notification_check")
         self.boxcar_notification_check.setChecked(self.settings.boxcar_notify)
 
@@ -302,7 +302,7 @@ class PreferencesDialog(QDialog):
         self.time_format_label.setText(_("Time Format"))
         self.date_format_label.setText(_("Date Format"))
 
-        self.boxcar_email_button.setText(_("Boxcar Email"))
+        self.boxcar_token_button.setText(_("Boxcar Token"))
         self.boxcar_notification_label.setText(_("Boxcar Notification"))
 
         self.pushbullet_button.setText(_('Pushbullet Api Key'))
@@ -377,7 +377,7 @@ class PreferencesDialog(QDialog):
         self.file_edit.setText(filename)
 
     @Slot()
-    def on_boxcar_email_button_pressed(self):
+    def on_boxcar_token_button_pressed(self):
         helpers.show_html_help("services")
 
     @Slot()
@@ -523,14 +523,15 @@ class PreferencesDialog(QDialog):
         self.settings.time_format = self.time_format_combo.currentIndex()
         self.settings.date_format = self.date_format_combo.currentIndex()
 
-        boxcar_email = self.boxcar_email_edit.text()
-        boxcar_notify = self.boxcar_notification_check.isChecked()
+        self.settings.boxcar_token = self.boxcar_token_edit.text()
+        self.settings.boxcar_notify = self.boxcar_notification_check.isChecked()
 
         pushbullet_ok = self.validate_pushbullet()
         if pushbullet_ok:
             self.settings.pushbullet_device = self.info.get_pushbullet_id(self.pushbullet_device_edit.currentIndex(), self.settings.pushbullet_devices)
 
         ok = True
+        '''
         status = self.info.validate_boxcar(boxcar_email, boxcar_notify, self.boxcar_original)
         if status == self.info.boxcar_add:
             self.settings.boxcar_email = boxcar_email
@@ -546,6 +547,7 @@ class PreferencesDialog(QDialog):
             message = _("There has been a error connecting with Boxcar,\nplease check your email address or network connection.")
             QMessageBox.critical(self, "Boxcar", message)
             ok = False
+        '''
 
         if ok and self.settings.hide_indicator and not self.hide_start:
             message = _("You have chosen to hide the indicator.\nOnly use this option if you know what you are doing!\n\nYou can run the command \"%s -p\"\nfrom the command line to open the preferences dialog\nto change this option.\n\nWould you like to continue?") % "remindor-qt"
