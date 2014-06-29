@@ -1,3 +1,9 @@
+remindor-qt (14.06-0ubuntu1~raring) raring; urgency=low
+
+  * Changed from Boxcar 1 to Boxcar 2
+
+ -- Brian Douglass <bhdouglass@gmail.com>  Sat, 28 Jun 2014 21:12:00 -0500
+
 remindor-qt (14.01-0ubuntu1~raring) raring; urgency=low
 
   * Added Pushbullet integration
