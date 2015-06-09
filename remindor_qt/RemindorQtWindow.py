@@ -123,6 +123,9 @@ class RemindorQtWindow(QMainWindow): #TODO: add font awesome as fallback icons
         b = BlogReader(rssfeed, helpers.database_file())
         b.start()
 
+        for reminder in self.info.missed_reminders:
+            self.scheduler.run_alarm(reminder)
+
     def translate(self):
         self.setWindowTitle("Manage Reminders")
 

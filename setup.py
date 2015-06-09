@@ -44,7 +44,7 @@ def update_config(values = {}):
                 oldvalues[fields[0]] = fields[1].strip()
                 line = "%s = %s\n" % (fields[0], values[fields[0]])
             fout.write(line)
-            
+
         fout.flush()
         fout.close()
         fin.close()
@@ -61,7 +61,7 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
         data_dir = self.prefix + '/share/remindor-qt/'
         if os.name == 'nt' and use_py2exe:
             data_dir = '../../share/remindor-qt/'
-    
+
         values = {'__remindor_qt_data_directory__': "'%s'" % (data_dir),
                 '__version__': "'%s'" % self.distribution.get_version()}
         previous_values = update_config(values)
@@ -111,7 +111,7 @@ else:
 
 DistUtilsExtra.auto.setup(
     name = 'remindor-qt',
-    version = '14.06',
+    version = '15.06',
     license = 'GPL-3',
     author = 'Brian Douglass',
     author_email = 'bhdouglass@gmail.com',
