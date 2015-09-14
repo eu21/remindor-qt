@@ -217,6 +217,17 @@ def check_autostart():
             directory = os.path.dirname(filename)
             if not os.path.exists(directory):
                 os.makedirs(directory)
+            elif not os.path.isdir(directory):
+                temp = open(directory, 'r')
+                contents = temp.read()
+                temp.close()
+
+                os.unlink(directory)
+
+                os.makedirs(directory)
+                temp2 = open(os.path.join(directory, 'autostart.desktop'), 'w')
+                temp2.write(contents)
+                temp2.close()
 
             #create autostart file
             f = open(filename, 'w')
